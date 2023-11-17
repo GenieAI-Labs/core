@@ -7,6 +7,45 @@ type AdminChanged @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  approved: Bytes! # address
+  tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ApprovalForAll @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  operator: Bytes! # address
+  approved: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ArbitrationFeeTimeoutUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  arbitrationFeeTimeout: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ArbitratorUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  arbitrator: Bytes! # address
+  extraData: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
 type BeaconUpgraded @entity(immutable: true) {
   id: Bytes!
   beacon: Bytes! # address
@@ -15,9 +54,155 @@ type BeaconUpgraded @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
+type CidUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  newCid: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  version: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MinArbitrationFeeTimeoutUpdated @entity(immutable: true) {
+  id: Bytes!
+  minArbitrationFeeTimeout: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Mint @entity(immutable: true) {
+  id: Bytes!
+  platformOwnerAddress: Bytes! # address
+  platformId: BigInt! # uint256
+  platformName: String! # string
+  fee: BigInt! # uint256
+  arbitrationFeeTimeout: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MintFeeUpdated @entity(immutable: true) {
+  id: Bytes!
+  mintFee: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MintStatusUpdated @entity(immutable: true) {
+  id: Bytes!
+  mintStatus: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OriginServiceFeeRateUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  originServiceFeeRate: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OriginValidatedProposalFeeRateUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  originValidatedProposalFeeRate: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProposalPostingFeeUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  proposalPostingFee: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RoleAdminChanged @entity(immutable: true) {
+  id: Bytes!
+  role: Bytes! # bytes32
+  previousAdminRole: Bytes! # bytes32
+  newAdminRole: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RoleGranted @entity(immutable: true) {
+  id: Bytes!
+  role: Bytes! # bytes32
+  account: Bytes! # address
+  sender: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RoleRevoked @entity(immutable: true) {
+  id: Bytes!
+  role: Bytes! # bytes32
+  account: Bytes! # address
+  sender: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ServicePostingFeeUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  servicePostingFee: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SignerUpdated @entity(immutable: true) {
+  id: Bytes!
+  platformId: BigInt! # uint256
+  signer: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  tokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
 type Upgraded @entity(immutable: true) {
   id: Bytes!
   implementation: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserWhitelisted @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

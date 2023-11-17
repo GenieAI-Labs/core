@@ -6,7 +6,7 @@ import {
   beforeAll,
   afterAll
 } from "matchstick-as/assembly/index"
-import { Address } from "@graphprotocol/graph-ts"
+import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
 import { AdminChanged } from "../generated/schema"
 import { AdminChanged as AdminChangedEvent } from "../generated/Contract/Contract"
 import { handleAdminChanged } from "../src/contract"
