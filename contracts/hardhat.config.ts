@@ -36,8 +36,13 @@ function getChainConfig(chain: Network): NetworkUserConfig {
       jsonRpcUrl = 'https://polygon-rpc.com/'
       break
     case Network.MUMBAI:
-      jsonRpcUrl = process.env.MUMBAI_RPC || 'https://endpoints.omniatech.io/v1/matic/mumbai/public'
+      // jsonRpcUrl = process.env.MUMBAI_RPC || 'https://polygon-mumbai-bor.publicnode.com'
+      jsonRpcUrl = process.env.MUMBAI_RPC || 'https://polygon-mumbai-bor.publicnode.com'
+      // jsonRpcUrl = process.env.MUMBAI_RPC || 'https://endpoints.omniatech.io/v1/matic/mumbai/public'
       // jsonRpcUrl = process.env.MUMBAI_RPC || 'https://rpc-mumbai.maticvigil.com/'
+      break
+    case Network.GNOSIS:
+      jsonRpcUrl = 'https://1rpc.io/gnosis/'
       break
     default:
       jsonRpcUrl = 'https://mainnet.infura.io/v3/' + infuraApiKey
@@ -96,6 +101,7 @@ const config: HardhatUserConfig = {
     fuji: getChainConfig(Network.FUJI),
     polygon: getChainConfig(Network.POLYGON),
     mumbai: getChainConfig(Network.MUMBAI),
+    gnosis: getChainConfig(Network.GNOSIS),
   },
   paths: {
     artifacts: './artifacts',

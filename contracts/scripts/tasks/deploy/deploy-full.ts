@@ -82,7 +82,7 @@ task('deploy-full', 'Deploy all the contracts on their first version')
       console.log('after 2');
 
       if (verify) {
-        await verifyAddress(talentLayerID.address)
+        await verifyAddress(talentLayerID.address, [talentLayerPlatformID.address])
       }
       const talentLayerIDImplementationAddress =
         await // @ts-ignore: upgrades is imported in hardhat.config.ts - HardhatUpgrades
@@ -244,12 +244,27 @@ task('deploy-full', 'Deploy all the contracts on their first version')
 
         setDeploymentProperty(network.name, DeploymentProperty.SimpleERC20, simpleERC20.address)
 
+        // Grant escrow role
+        const escrowRole = await talentLayerService.ESCROW_ROLE()
+        await talentLayerService.grantRole(escrowRole, talentLayerEscrow.address)
+
+        // Deploy MagicLamp contract
+        const MagicLamp = await ethers.getContractFactory('MagicLamp')
+        const magicLampArgs: [string, string, string, string] = [
+          talentLayerService.address,
+          talentLayerID.address,
+          talentLayerEscrow.address,
+          talentLayerPlatformID.address,
+        ]
+
+        const magicLamp = await MagicLamp.deploy(...magicLampArgs)
+
+        console.log('magicLamp address:', magicLamp.address)
+
+        setDeploymentProperty(network.name, DeploymentProperty.MagicLamp, magicLamp.address)
       }
 
-      // Grant escrow role
-      const escrowRole = await talentLayerService.ESCROW_ROLE()
-      await talentLayerService.grantRole(escrowRole, talentLayerEscrow.address)
-    } catch (e) {
+      } catch (e) {
       console.log('------------------------')
       console.log('FAILED')
       console.error(e)

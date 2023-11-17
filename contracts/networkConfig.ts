@@ -6,6 +6,7 @@ export enum Network {
   FUJI = 43113,
   POLYGON = 137,
   MUMBAI = 80001,
+  GNOSIS = 10200,
 }
 
 export type NetworkConfig = {
@@ -88,6 +89,7 @@ const mumbai: NetworkConfig = {
 }
 
 const avalanche = {} as NetworkConfig
+const gnosis = {} as NetworkConfig
 const polygon: NetworkConfig = {
   multisigAddressList: {
     fee: '0x33B424f8aFF0d2a406f1E7386f1ff64aCacC62fe',
@@ -119,6 +121,7 @@ export const configs: { [networkId in Network]: NetworkConfig } = {
   [Network.FUJI]: fuji,
   [Network.POLYGON]: polygon,
   [Network.MUMBAI]: mumbai,
+  [Network.GNOSIS]: gnosis,
 }
 
 export const getConfig = (networkId: Network): NetworkConfig => {
