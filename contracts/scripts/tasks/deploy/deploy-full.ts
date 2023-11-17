@@ -261,6 +261,10 @@ task('deploy-full', 'Deploy all the contracts on their first version')
 
         console.log('magicLamp address:', magicLamp.address)
 
+        if (verify) {
+          await verifyAddress(magicLamp.address, magicLampArgs)
+        }
+
         setDeploymentProperty(network.name, DeploymentProperty.MagicLamp, magicLamp.address)
       }
 
