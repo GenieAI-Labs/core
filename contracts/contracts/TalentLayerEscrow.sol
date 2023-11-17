@@ -366,6 +366,10 @@ contract TalentLayerEscrow is
 
     // =========================== View functions ==============================
 
+    function getProtocolEscrowFeeRate() external view returns(uint16) {
+        return protocolEscrowFeeRate;
+    }
+
     /**
      * @dev Only the owner of the platform ID or the owner can execute this function
      * @param _token Token address ("0" for ETH)

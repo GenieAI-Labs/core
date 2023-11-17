@@ -42,11 +42,11 @@ interface ITalentLayerEscrow {
         uint256 _transactionId
     ) external view returns (Transaction memory);
 
-    function protocolEscrowFeeRate() external view returns(uint16);
-
     function updateProtocolEscrowFeeRate(
         uint16 _protocolEscrowFeeRate
     ) external;
+
+    function getProtocolEscrowFeeRate() external view returns(uint16);
 
     function updateProtocolWallet(address payable _protocolWallet) external;
 

@@ -171,6 +171,14 @@ contract TalentLayerID is ERC2771RecipientUpgradeable, ERC721Upgradeable, UUPSUp
     function totalSupply() public view returns (uint256) {
         return nextProfileId.current() - 1;
     }
+//
+//    /**
+//     * @notice Returns the profile associated to an id.
+//     * @param _userId The id of the user
+//     */
+//    function getProfile(uint256 _userId) external view returns (Profile memory) {
+//        return profiles[_userId];
+//    }
 
     /**
      * @notice Returns the platform ID of the platform which onboarded the user.
