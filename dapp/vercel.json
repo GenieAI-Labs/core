@@ -1,0 +1,24 @@
+{
+  "crons":[
+    {
+      "path":"/api/web3mail/new-proposal",
+      "schedule":"*/5 * * * *"
+    },
+    {
+      "path":"/api/web3mail/proposal-validated",
+      "schedule":"*/5 * * * *"
+    },
+    {
+      "path":"/api/web3mail/fund-release",
+      "schedule":"*/5 * * * *"
+    },
+    {
+      "path":"/api/web3mail/review",
+      "schedule":"*/5 * * * *"
+    },
+    {
+      "path":"/api/web3mail/new-service",
+      "schedule":"*/5 * * * *"
+    }
+  ]
+}
