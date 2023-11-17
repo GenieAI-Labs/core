@@ -11,6 +11,7 @@
     "@talentlayer/client": "^0.1.6",
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
+    "@worldcoin/idkit": "^0.5.1",
     "@xmtp/xmtp-js": "^11.0.0",
     "apexcharts": "^3.44.0",
     "axios": "^1.1.3",

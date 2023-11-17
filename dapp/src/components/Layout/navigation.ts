@@ -17,6 +17,7 @@ export const navigation = [
     current: false,
   },
   { name: 'Settings', href: '/dapp/profile/edit', icon: Cog8ToothIcon, current: false },
+  { name: 'Create a Genie', href: '/dev/create', icon: Cog8ToothIcon, current: false },
 ];
 
 export const navigationAdmin = [

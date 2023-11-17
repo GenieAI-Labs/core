@@ -11,6 +11,7 @@ interface IMessage {
 interface GenieContentProps {
   selectedGenie: Genie;
   onBack: () => void;
+  className?: string;
 }
 
 export default function GenieContent({ selectedGenie, onBack }: GenieContentProps) {
@@ -28,33 +29,6 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
     };
     fetchAssistant();
   }, []);
-
-  //   const sendMessageToAssistant = async (userMessage: string) => {
-  //     try {
-  //       const response = await openai.createChatCompletion({
-  //         model: 'gpt-3.5-turbo',
-  //         messages: [
-  //           { role: 'system', content: 'You are a helpful assistant.' },
-  //           { role: 'user', content: userMessage },
-  //         ],
-  //       });
-
-  //       return response?.data.choices[0].message.content;
-  //     } catch (error) {
-  //       console.error('Error calling OpenAI:', error);
-  //       return "I'm having trouble understanding right now.";
-  //     }
-  //   };
-
-  //   const sendMessage = async () => {
-  //     const userMessage: IMessage = { sender: 'user', text: userInput };
-  //     setConversation(prev => [...prev, userMessage]);
-  //     setUserInput('');
-
-  //     const assistantResponseText = await sendMessageToAssistant(userInput);
-  //     const openAIResponse: IMessage = { sender: 'assistant', text: assistantResponseText };
-  //     setConversation(prev => [...prev, openAIResponse]);
-  //   };
 
   return (
     <>

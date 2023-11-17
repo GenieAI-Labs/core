@@ -13,7 +13,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const openai = new OpenAI({ apiKey: openApiKey });
 
     const assistant = await openai.beta.assistants.retrieve('asst_MzDSgPrndkcyYkScrkaEXbSa');
-    console.log(assistant);
 
     // Send the assistant as a response
     res.status(200).json(assistant);
