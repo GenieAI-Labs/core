@@ -45,24 +45,28 @@
   },
   "mumbai": {
     "TalentLayerID": {
-      "address": "0x3F87289e6Ec2D05C32d8A74CCfb30773fF549306",
-      "startBlock": 33676850
+      "address": "0x9e55cBBa8fae952dA2D0Cc30C6b5Bf6D52CeA649",
+      "startBlock": 42520696
     },
     "TalentLayerReview": {
-      "address": "0x050F59E1871d3B7ca97e6fb9DCE64b3818b14B18",
-      "startBlock": 33676850
+      "address": "0xa745176a8cd316b9DB0A4741B68c979112579500",
+      "startBlock": 42520749
     },
     "TalentLayerService": {
-      "address": "0x27ED516dC1df64b4c1517A64aa2Bb72a434a5A6D",
-      "startBlock": 33676850
+      "address": "0x702f80339594B8c77054bb801944B68c83b3112F",
+      "startBlock": 42520719
     },
     "TalentLayerEscrow": {
-      "address": "0x4bE920eC3e8552292B2147480111063E0dc36872",
-      "startBlock": 33676850
+      "address": "0x2d9Dc3dCcFBB9166Cf00d11172677E6E0B473fb1",
+      "startBlock": 42521223
     },
     "TalentLayerPlatformID": {
-      "address": "0xEFD8dbC421380Ee04BAdB69216a0FD97F64CbFD4",
-      "startBlock": 33676850
+      "address": "0x23b8Ec6955b0dEC2Fb6d08291ab745Cdd79a44bf",
+      "startBlock": 42520686
+    },
+    "MagicLamp": {
+      "address": "0xBAdaF09400F111145450f0E6036f041051BD862F",
+      "startBlock": 42521439
     }
   },
   "matic": {

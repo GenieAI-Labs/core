@@ -1,0 +1,412 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_talentLayerServiceAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_talentLayerIDAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_talentLayerEscrowAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_talentLayerPlatformIdAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "constructor"
+  },
+  { "inputs": [], "name": "NotDelegate", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "genieId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "genieAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "ownerAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "ownerTalentLayerId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "schemaCid",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "serviceCid",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "proposalCid",
+        "type": "string"
+      }
+    ],
+    "name": "NewGenie",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "genieId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "_rating",
+        "type": "uint8"
+      }
+    ],
+    "name": "NewRating",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "wishId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "userId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "genieId",
+        "type": "uint256"
+      }
+    ],
+    "name": "NewWish",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "genieId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint8",
+        "name": "_rating",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "int8",
+        "name": "diffRating",
+        "type": "int8"
+      }
+    ],
+    "name": "UpdateRating",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "wishId",
+        "type": "uint256"
+      }
+    ],
+    "name": "WishCancelled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "wishId",
+        "type": "uint256"
+      }
+    ],
+    "name": "WishCompleted",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_genieId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_wishId", "type": "uint256" }
+    ],
+    "name": "cancelExecution",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_genieId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_wishId", "type": "uint256" }
+    ],
+    "name": "confirmExecution",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_genieAddress", "type": "address" },
+      { "internalType": "address", "name": "_ownerAddress", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "_ownerTalentLayerId",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "_price", "type": "uint256" },
+      { "internalType": "string", "name": "_schemaCid", "type": "string" },
+      { "internalType": "string", "name": "_serviceCid", "type": "string" },
+      { "internalType": "string", "name": "_proposalCid", "type": "string" }
+    ],
+    "name": "createGenie",
+    "outputs": [
+      { "internalType": "uint256", "name": "newGenieId", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "genies",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "address", "name": "genieAddress", "type": "address" },
+      { "internalType": "address", "name": "ownerAddress", "type": "address" },
+      {
+        "internalType": "uint256",
+        "name": "ownerTalentLayerId",
+        "type": "uint256"
+      },
+      { "internalType": "uint256", "name": "price", "type": "uint256" },
+      { "internalType": "string", "name": "schemaCid", "type": "string" },
+      { "internalType": "string", "name": "serviceCid", "type": "string" },
+      { "internalType": "string", "name": "proposalCid", "type": "string" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_genieId", "type": "uint256" }
+    ],
+    "name": "getGenie",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "id", "type": "uint256" },
+          {
+            "internalType": "address",
+            "name": "genieAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "ownerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "ownerTalentLayerId",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "price", "type": "uint256" },
+          { "internalType": "string", "name": "schemaCid", "type": "string" },
+          { "internalType": "string", "name": "serviceCid", "type": "string" },
+          { "internalType": "string", "name": "proposalCid", "type": "string" }
+        ],
+        "internalType": "struct MagicLamp.Genie",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_userAddress", "type": "address" },
+      { "internalType": "uint256", "name": "_genieId", "type": "uint256" }
+    ],
+    "name": "getHasUsedGenie",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_wishId", "type": "uint256" }
+    ],
+    "name": "getWish",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "uint256", "name": "id", "type": "uint256" },
+          {
+            "internalType": "enum MagicLamp.WishStatus",
+            "name": "status",
+            "type": "uint8"
+          },
+          { "internalType": "uint256", "name": "genieId", "type": "uint256" },
+          { "internalType": "uint256", "name": "userId", "type": "uint256" },
+          { "internalType": "uint256", "name": "serviceId", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "transactionId",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct MagicLamp.Wish",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_userId", "type": "uint256" },
+      { "internalType": "uint256", "name": "_genieId", "type": "uint256" }
+    ],
+    "name": "makeWish",
+    "outputs": [
+      { "internalType": "uint256", "name": "newWishId", "type": "uint256" }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_genieId", "type": "uint256" },
+      { "internalType": "uint8", "name": "_rating", "type": "uint8" }
+    ],
+    "name": "rate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "wishes",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      {
+        "internalType": "enum MagicLamp.WishStatus",
+        "name": "status",
+        "type": "uint8"
+      },
+      { "internalType": "uint256", "name": "genieId", "type": "uint256" },
+      { "internalType": "uint256", "name": "userId", "type": "uint256" },
+      { "internalType": "uint256", "name": "serviceId", "type": "uint256" },
+      { "internalType": "uint256", "name": "transactionId", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
