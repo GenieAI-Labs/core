@@ -247,26 +247,26 @@ task('deploy-full', 'Deploy all the contracts on their first version')
         // Grant escrow role
         const escrowRole = await talentLayerService.ESCROW_ROLE()
         await talentLayerService.grantRole(escrowRole, talentLayerEscrow.address)
-
-        // Deploy MagicLamp contract
-        const MagicLamp = await ethers.getContractFactory('MagicLamp')
-        const magicLampArgs: [string, string, string, string] = [
-          talentLayerService.address,
-          talentLayerID.address,
-          talentLayerEscrow.address,
-          talentLayerPlatformID.address,
-        ]
-
-        const magicLamp = await MagicLamp.deploy(...magicLampArgs)
-
-        console.log('magicLamp address:', magicLamp.address)
-
-        if (verify) {
-          await verifyAddress(magicLamp.address, magicLampArgs)
-        }
-
-        setDeploymentProperty(network.name, DeploymentProperty.MagicLamp, magicLamp.address)
       }
+
+      // Deploy MagicLamp contract
+      const MagicLamp = await ethers.getContractFactory('MagicLamp')
+      const magicLampArgs: [string, string, string, string] = [
+        talentLayerService.address,
+        talentLayerID.address,
+        talentLayerEscrow.address,
+        talentLayerPlatformID.address,
+      ]
+
+      const magicLamp = await MagicLamp.deploy(...magicLampArgs)
+
+      console.log('magicLamp address:', magicLamp.address)
+
+      if (verify) {
+        await verifyAddress(magicLamp.address, magicLampArgs)
+      }
+
+      setDeploymentProperty(network.name, DeploymentProperty.MagicLamp, magicLamp.address)
 
       } catch (e) {
       console.log('------------------------')

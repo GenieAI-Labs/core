@@ -7,6 +7,7 @@ export enum Network {
   POLYGON = 137,
   MUMBAI = 80001,
   GNOSIS = 10200,
+  SCROLL = 534351,
 }
 
 export type NetworkConfig = {

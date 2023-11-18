@@ -84,6 +84,10 @@ function getChainConfig(chain: Network): NetworkUserConfig {
   }
 }
 
+const accounts = {
+  mnemonic,
+  count: 100,
+};
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
   etherscan: {
@@ -94,7 +98,42 @@ const config: HardhatUserConfig = {
       avalancheFujiTestnet: process.env.SNOWTRACE_API_KEY || '',
       polygon: process.env.POLYGONSCAN_API_KEY || '',
       polygonMumbai: process.env.POLYGONSCAN_API_KEY || '',
+      scrollSepolia: process.env.SCROLL_SEPOLIA_API_KEY || '',
     },
+    customChains: [
+      {
+        network: 'mantle-testnet',
+        chainId: 5001,
+        urls: {
+          apiURL: 'https://explorer.testnet.mantle.xyz/api',
+          browserURL: 'https://explorer.testnet.mantle.xyz',
+        },
+      },
+      {
+        network: 'scrollAlpha',
+        chainId: 534353,
+        urls: {
+          apiURL: 'https://blockscout.scroll.io/api',
+          browserURL: 'https://blockscout.scroll.io/',
+        },
+      },
+      {
+        network: 'scrollSepolia',
+        chainId: 534351,
+        urls: {
+          apiURL: 'https://sepolia.scrollscan.dev/apis',
+          browserURL: 'https://sepolia.scrollscan.dev/',
+        },
+      },
+      {
+        network: 'base-goerli',
+        chainId: 84531,
+        urls: {
+          apiURL: 'https://goerli.basescan.org/api',
+          browserURL: 'https://goerli.basescan.org/',
+        },
+      },
+    ],
   },
   gasReporter: {
     currency: 'USD',
@@ -116,10 +155,7 @@ const config: HardhatUserConfig = {
   },
   networks: {
     hardhat: {
-      accounts: {
-        mnemonic,
-        count: 100,
-      },
+      accounts,
       chainId: Network.LOCAL,
     },
     avalanche: getChainConfig(Network.AVALANCHE),
@@ -127,6 +163,29 @@ const config: HardhatUserConfig = {
     polygon: getChainConfig(Network.POLYGON),
     mumbai: getChainConfig(Network.MUMBAI),
     gnosis: getChainConfig(Network.GNOSIS),
+      zkSyncTestnet: {
+        url: 'https://testnet.era.zksync.dev',
+        ethNetwork: 'goerli', // Can also be the RPC URL of the network (e.g. `https://goerli.infura.io/v3/<API_KEY>`)
+        zksync: true,
+        // verifyURL: 'https://zksync2-testnet-explorer.zksync.dev/contract_verification',
+        accounts,
+      },
+      'mantle-testnet': {
+        url: 'https://rpc.testnet.mantle.xyz/',
+        accounts,
+      },
+      scrollAlpha: {
+        url: 'https://alpha-rpc.scroll.io/l2',
+        accounts,
+      },
+      scrollSepolia: {
+        url: 'https://sepolia-rpc.scroll.io',
+        accounts,
+      },
+      'base-goerli': {
+        url: 'https://goerli.base.org',
+        accounts,
+      },
   },
   paths: {
     artifacts: './artifacts',
