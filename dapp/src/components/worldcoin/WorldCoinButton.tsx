@@ -58,7 +58,7 @@ export default function WorldCoinButton({
           minHeight: '2vh',
         }}>
         <div className='flex flex-col '>
-          <div className='ml-3 mb-4 block text-blue-600 bg-black hover:bg-redpraha hover:text-black rounded-xl px-5 py-2.5 text-center'>
+          <div className='ml-3 mb-4 block text-blue-600 bg-black hover:bg-redpraha rounded-xl px-5 py-2.5 text-center'>
             <IDKitWidget
               action={process.env.NEXT_PUBLIC_WLD_ACTION_NAME?.toString() ?? ''}
               onSuccess={onSuccess}
@@ -66,7 +66,7 @@ export default function WorldCoinButton({
               app_id={process.env.NEXT_PUBLIC_WLD_APP_ID?.toString() ?? ''}
               credential_types={[CredentialType.Orb, CredentialType.Phone]}>
               {({ open }) => (
-                <button className='text-white font-medium' onClick={open}>
+                <button className='text-white hover:text-black  font-medium' onClick={open}>
                   Verify with World ID
                 </button>
               )}
