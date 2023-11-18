@@ -1,11 +1,10 @@
 import { useWeb3Modal } from '@web3modal/react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useContext, useState } from 'react';
-import { usePublicClient, useWalletClient } from 'wagmi';
+import {useAccount, usePublicClient, useWalletClient} from 'wagmi';
 import * as Yup from 'yup';
 import TalentLayerContext from '../../context/talentLayer';
 import { showErrorTransactionToast } from '../../utils/toast';
-import SubmitButton from './SubmitButton';
 import { useChainId } from '../../hooks/useChainId';
 import FileDropper from '../FileDropper';
 import MagicLamp from '../../contracts/ABI/MagicLamp.json';
@@ -14,19 +13,20 @@ import { getConfig } from '../../config';
 import useGenieById from '../../hooks/useGenieById';
 import useFees from '../../hooks/useFees';
 import { calculateFees } from '../../utils/fees';
+import {IExecDataProtector} from "@iexec/dataprotector";
 
 interface IFormValues {
-  genieName: string;
+  country: string;
   file: File | null;
 }
 
 const validationSchema = Yup.object({
-  genieName: Yup.string().required('Please provide a Genie Name'),
+  country: Yup.string().required('Please provide a country'),
   file: Yup.mixed().required('Please provide a file'),
 });
 
 const initialValues: IFormValues = {
-  genieName: '',
+  country: '',
   file: null,
 };
 
@@ -35,6 +35,7 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
   const chainId = useChainId();
   const config = getConfig(chainId);
   const { open: openConnectModal } = useWeb3Modal();
+  const account = useAccount();
   const { user } = useContext(TalentLayerContext);
   const publicClient = usePublicClient({ chainId });
   const { data: walletClient } = useWalletClient({ chainId });
@@ -56,7 +57,45 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
       try {
         setSubmitting(true);
         const isDelegate = user.delegates?.includes(MAGIC_LAMP_ADDRESS.toLowerCase());
-        //TODO DataProtector here
+
+        const provider = await account.connector?.getProvider();
+        const dataProtector = new IExecDataProtector(provider);
+
+        //TODO filecoin
+        const encryptedFileHash = 'enc';
+
+        const protectedData = await dataProtector.protectData({
+            data: {
+                encryptionKey: '0xtoto',
+                country: values.country,
+                file: encryptedFileHash,
+            },
+        });
+        const listGrantedAccess = await dataProtector.fetchGrantedAccess({
+            protectedData: protectedData.address,
+            authorizedApp: process.env
+                .NEXT_PUBLIC_IEXEC_APP_ADDRESS as string,
+            authorizedUser: process.env
+                .NEXT_PUBLIC_IEXEC_APP_PLATFORM_PUBLIC_KEY as string,
+            });
+
+        if (listGrantedAccess.length == 0) {
+          const grantedAccess = await dataProtector.grantAccess({
+            protectedData: protectedData.address,
+            authorizedApp: process.env
+                .NEXT_PUBLIC_IEXEC_APP_ADDRESS as string,
+            authorizedUser: process.env
+                .NEXT_PUBLIC_IEXEC_APP_PLATFORM_PUBLIC_KEY as string,
+            numberOfAccess: 99999999999,
+          });
+          console.log({ grantedAccess });
+          }
+
+
+        // const result = await axios.get(
+        //     `/api/hello?name=${values.name}&protectedData=${protectedData.address}`
+        // );
+
         if (!isDelegate) {
           await walletClient.writeContract({
             address: config.contracts.talentLayerId,
@@ -73,7 +112,7 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
           originServiceFeeRate,
           protocolEscrowFeeRate,
         );
-        console.log(price);
+
         await walletClient.writeContract({
           address: MAGIC_LAMP_ADDRESS,
           abi: MagicLamp.abi,
@@ -110,14 +149,14 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
               <span className='text-sm text-gray-500 font-bold text-center'>Country</span>
               <Field
                 as='textarea'
-                id='genieName'
-                name='genieName'
+                id='country'
+                name='country'
                 className='mt-1 mb-2 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
                 rows={1}
               />
               <span className='text-red-500'>
-                <ErrorMessage name='genieName' />
+                <ErrorMessage name='country' />
               </span>
             </label>
             <label className='items-center mt-2'>
