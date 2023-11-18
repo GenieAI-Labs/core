@@ -24,6 +24,10 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setMessages([]);
+  }, [selectedGenie.id]);
+
+  useEffect(() => {
     const fetchMessages = async () => {
       const existingThreadId = localStorage.getItem(`threadId-${selectedGenie.id}`);
 
