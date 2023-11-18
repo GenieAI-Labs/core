@@ -66,7 +66,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
       <div></div>
       <div className='flex-1'>
         <div className='bg-gray-100'>
-          <button onClick={onBack} className='m-4 lg:hidden'>
+          <button onClick={onBack} className='m-4 md:hidden'>
             <FiArrowLeft size={24} />
           </button>
 
@@ -80,7 +80,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
         </div>
 
         <div className='mt-4'>
-          <div className='p-4 overflow-auto h-[calc(100vh-370px)] sm:h-[calc(100vh-400px)] md:h-[calc(100vh-380px)] lg:h-[calc(100vh-270px)]'>
+          <div className='p-8 overflow-auto h-[calc(100vh-370px)] sm:h-[calc(100vh-400px)] md:h-[calc(100vh-270px)] lg:h-[calc(100vh-270px)]'>
             {conversation.map((msg, index) => (
               <div key={index} className={`message ${msg.role === 'user' ? 'text-right' : ''}`}>
                 {msg.content.map((content, index) => (

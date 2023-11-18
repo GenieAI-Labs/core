@@ -19,7 +19,7 @@ function Dapp() {
   }
 
   return (
-    <div className='flex h-screen max-w-7xl mx-auto text-black sm:px-4 lg:px-0'>
+    <div className='flex max-w-7xl mx-auto text-black sm:px-4 lg:px-0'>
       <GenieSideBar handleSelectGenie={handleSelectGenie} />
 
       {/* <div className='flex-1 p-4 text-black'>

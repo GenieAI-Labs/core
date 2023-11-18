@@ -39,7 +39,7 @@ function Layout({ children, className }: ContainerProps) {
   if (router.asPath.includes('dapp') || router.asPath.includes('admin')) {
     return (
       <>
-        <div className={className + ' dapp pb-[110px]'}>
+        <div className={className + ' dapp'}>
           <Transition.Root show={sidebarOpen} as={Fragment}>
             <Dialog as='div' className='relative z-40 md:hidden' onClose={setSidebarOpen}>
               <Transition.Child
