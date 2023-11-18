@@ -9,6 +9,7 @@
     "@iexec/web3mail": "0.5.1",
     "@leap-ai/sdk": "^0.0.119",
     "@genieai/tl-client": "^0.1.11",
+    "@pushprotocol/restapi": "^1.4.38",
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
     "@worldcoin/idkit": "^0.5.1",
