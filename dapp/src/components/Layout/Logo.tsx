@@ -7,8 +7,8 @@ function Logo({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
       <Link href='/' className='flex items-center'>
         <Image
           src={'/logo-text-white.png'}
-          width={180}
-          height={36}
+          width={50}
+          height={15}
           alt='GenieAi logo'
           className='-ml-2 sm:ml-0'
         />
