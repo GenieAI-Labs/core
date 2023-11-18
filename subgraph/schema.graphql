@@ -353,3 +353,15 @@ type Rating @entity {
   userAddress: Bytes! # address
   rating: BigInt! # uint8
 }
+
+type EpnsNotificationCounter @entity {
+  id: ID!
+  totalCount: BigInt!
+}
+
+type EpnsPushNotification @entity {
+  id: ID!
+  notificationNumber: BigInt!
+  recipient: String!
+  notification: String!
+}
