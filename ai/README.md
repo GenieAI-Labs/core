@@ -15,3 +15,9 @@ It use under the wood Intel® SGX, it's a technology that enables Trusted Comput
     - get the protectedData from step1
     - fetch an orderbook for a debug workerpool
     - complete the deal setup ask for compute
+
+## Deployments
+
+- Docker image: https://hub.docker.com/r/romaintalentlayer/genie-ai/tags
+- iExec app address:  https://explorer.iex.ec/bellecour/app/0xf8274803093ba087cf0efe7132392d37ad4f9d71
+
