@@ -136,6 +136,14 @@ const config: HardhatUserConfig = {
         },
       },
       {
+        network: 'base-sepolia',
+        chainId: 84532,
+        urls: {
+          apiURL: 'https://goerli.basescan.org/api',
+          browserURL: 'https://goerli.basescan.org/',
+        },
+      },
+      {
         network: 'gnosisChiado',
         chainId: 10200,
         urls: {
@@ -206,6 +214,10 @@ const config: HardhatUserConfig = {
       },
       'base-goerli': {
         url: 'https://goerli.base.org',
+        accounts,
+      },
+      'base-sepolia': {
+        url: 'https://sepolia.base.org',
         accounts,
       },
       'gnosisChiado': {

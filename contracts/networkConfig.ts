@@ -7,9 +7,9 @@ export enum Network {
   POLYGON = 137,
   MUMBAI = 80001,
   GNOSIS = 100,
-  GNOSIS_CHIADO = 10200,
-  SCROLL = 534351,
-  CELO = 44787,
+  // GNOSIS_CHIADO = 10200,
+  // SCROLL = 534351,
+  // CELO = 44787,
 }
 
 export type NetworkConfig = {
@@ -166,6 +166,31 @@ const mantleTestnet: NetworkConfig = {
 }
 
 const celoTestnet: NetworkConfig = {
+  multisigAddressList: {
+    fee: '0x33B424f8aFF0d2a406f1E7386f1ff64aCacC62fe',
+    admin: '0x0CFF3F17b62704A0fc76539dED9223a44CAf4825',
+  },
+  allowedTokenList: {
+    MATIC: {
+      address: ethers.constants.AddressZero,
+      minTransactionAmount: '10',
+      decimals: 18,
+    },
+    USDC: {
+      address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+      minTransactionAmount: '10',
+      decimals: 6,
+    },
+    WETH: {
+      address: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
+      minTransactionAmount: '0.005',
+      decimals: 18,
+    },
+  },
+  platformList: {      geniehub: '0xFB751afF8BaA238db477CBBe11E7cc4924819D0B',},
+}
+
+const baseTestnet: NetworkConfig = {
   multisigAddressList: {
     fee: '0x33B424f8aFF0d2a406f1E7386f1ff64aCacC62fe',
     admin: '0x0CFF3F17b62704A0fc76539dED9223a44CAf4825',
