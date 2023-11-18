@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { FiArrowLeft, FiLoader, FiSend } from 'react-icons/fi';
 import { Genie } from '../../types';
 import DropDataGenieModal from '../Modal/DropDataGenieModal';
@@ -18,23 +18,72 @@ interface GenieContentProps {
 export default function GenieContent({ selectedGenie, onBack }: GenieContentProps) {
   const [userInput, setUserInput] = useState('');
 
-  const [conversation, setConversation] = useState<ThreadMessage[]>([]);
+  const [messages, setMessages] = useState<ThreadMessage[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const [assistant, setAssistant] = useState<any>(null);
+  useEffect(() => {
+    const fetchMessages = async () => {
+      const existingThreadId = localStorage.getItem(`threadId-${selectedGenie.id}`);
+
+      if (existingThreadId) {
+        const response = await fetch(`/api/ai/fetch-messages?threadId=${existingThreadId}`, {
+          method: 'GET',
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const { messages } = await response.json();
+        console.log('response', { messages });
+
+        if (messages) {
+          setMessages(messages.reverse());
+        }
+      }
+    };
+    fetchMessages();
+  }, [selectedGenie.id]);
 
   async function postMessage(e) {
     e.preventDefault();
     setLoading(true);
-    // Add user message to the conversation
-    // setConversation(prevConvo => [...prevConvo, { sender: 'user', text: userInput }]);
+    // Add user message to the messages
 
-    const existingThreadId = localStorage.getItem('threadId');
+    const pendingMessage: ThreadMessage = {
+      id: 'msg_pending',
+      object: 'thread.message',
+      created_at: 1700303994,
+      thread_id: 'thread',
+      role: 'user',
+      content: [
+        {
+          type: 'text',
+          text: {
+            value: userInput,
+            annotations: [],
+          },
+        },
+      ],
+      file_ids: [],
+      assistant_id: null,
+      run_id: null,
+      metadata: {},
+    };
+
+    setMessages([...messages, pendingMessage]);
+    setUserInput('');
+
+    const existingThreadId = localStorage.getItem(`threadId-${selectedGenie.id}`);
 
     try {
       const response = await fetch('/api/ai/create-message', {
         method: 'POST',
-        body: JSON.stringify({ content: userInput, threadId: existingThreadId }),
+        body: JSON.stringify({
+          content: userInput,
+          asssitantId: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
+          threadId: existingThreadId,
+        }),
       });
 
       if (!response.ok) {
@@ -44,13 +93,12 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
       const { threadId, messages } = await response.json();
       console.log('response', { threadId, messages });
 
-      // Assuming your API returns the assistant's response
       if (messages) {
-        setConversation(messages.reverse());
+        setMessages(messages.reverse());
       }
 
       if (threadId) {
-        localStorage.setItem('threadId', threadId);
+        localStorage.setItem(`threadId-${selectedGenie.id}`, threadId);
         console.log('Thread ID saved to local storage:', threadId);
       }
     } catch (error) {
@@ -58,7 +106,6 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
     } finally {
       setLoading(false);
       // Reset the input field
-      setUserInput('');
     }
   }
 
@@ -81,16 +128,34 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
         </div>
 
         <div className='mt-4'>
-          <div className='p-8 overflow-auto h-[calc(100vh-370px)] sm:h-[calc(100vh-400px)] md:h-[calc(100vh-270px)] lg:h-[calc(100vh-270px)]'>
-            {conversation.map((msg, index) => (
+          <div className='p-4 pb-2 overflow-auto h-[calc(100vh-370px)] sm:h-[calc(100vh-400px)] md:h-[calc(100vh-270px)] lg:h-[calc(100vh-270px)]'>
+            {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`message text-sm p-2 text-gray-900 ${
-                  msg.role === 'user' ? 'text-right' : ''
+                className={`message p-2 text-gray-900 flex transition-opacity ${
+                  msg.role === 'user' ? '' : ''
                 }`}>
-                {msg.content.map((content, index) => (
-                  <p key={index}>{content.text?.value}</p>
-                ))}
+                <div className='max-w-[30px] w-full mr-2'>
+                  <img
+                    className='overflow-hidden rounded-full'
+                    src={
+                      msg.role === 'user' ? `/images/default-avatar-1.jpg` : selectedGenie.picture
+                    }
+                    alt=''
+                    height={40}
+                    width={40}
+                  />
+                </div>
+                <div className=''>
+                  <p className='font-bold text-md'>
+                    {msg.role === 'user' ? 'you' : selectedGenie.name}
+                  </p>
+                  {msg.content.map((content, index) => (
+                    <p className='text-sm ' key={index}>
+                      {content.text?.value}
+                    </p>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -105,7 +170,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
               />
               <button
                 type='submit'
-                className='bg-blue-500 text-white p-2 rounded-full absolute right-0 top-0 mr-[12px] mt-[5px]'>
+                className='bg-endnight text-white p-2 rounded-full absolute right-0 top-0 mr-[12px] mt-[5px]'>
                 {loading ? <FiLoader className='animate-spin' /> : <FiSend />}
               </button>
             </form>

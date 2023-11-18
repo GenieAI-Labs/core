@@ -24,16 +24,11 @@ function GenieComponent() {
   return (
     <>
       <div className='flex max-w-7xl mx-auto'>
-        {/* Sidebar - hidden on small screens when content is active */}
         <div className={`hidden md:block`}>
           <GenieSideBar handleSelectGenie={handleSelectGenie} activeGenieId={id as string} />
         </div>
 
-        <GenieContent
-          selectedGenie={selectedGenie}
-          onBack={handleBackToSidebar}
-          // className={`${showSidebar ? 'hidden lg:flex' : 'flex'}`}
-        />
+        <GenieContent selectedGenie={selectedGenie} onBack={handleBackToSidebar} />
       </div>
     </>
   );

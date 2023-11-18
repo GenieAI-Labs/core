@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { FiLock } from 'react-icons/fi';
 import GenieFormCreation from '../Form/GenieFormCreation';
-import { FiPaperclip } from 'react-icons/fi';
 
 function DropDataGenieModal({ showPopup }: any) {
   const [show, setShow] = useState(showPopup);
@@ -9,10 +9,10 @@ function DropDataGenieModal({ showPopup }: any) {
     <>
       <button
         onClick={() => setShow(true)}
-        className='rounded-full bg-blue-500 text-white p-2 hover:bg-endnight'
+        className='rounded-full bg-endnight text-white p-2 hover:bg-endnight'
         type='button'
         data-modal-toggle='defaultModal'>
-        <FiPaperclip size={15} />
+        <FiLock size={15} />
       </button>
 
       <div

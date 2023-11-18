@@ -55,7 +55,7 @@ const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId
           <p className='text-xl font-medium text-black'>Choose your genie</p>
           <a
             href='/dapp/dev/create'
-            className='rounded-full bg-blue-500 text-white p-2 hover:bg-endnight'
+            className='rounded-full bg-endnight text-white p-2 hover:bg-endnight'
             type='button'
             data-modal-toggle='defaultModal'>
             <IoIosAddCircleOutline size={15} />

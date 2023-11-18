@@ -24,7 +24,7 @@ function UserDetail({ user }: { user: IUser }) {
               src={
                 user?.description?.image_url
                   ? user?.description?.image_url
-                  : `/images/default-avatar-${Number(user?.id ? user.id : '1') % 9}.jpeg`
+                  : `/images/default-avatar-1.jpg`
               }
               className='w-10 mr-4 rounded-full'
               width={50}
