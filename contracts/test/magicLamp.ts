@@ -10,7 +10,7 @@ import {
     TalentLayerService
 } from "../typechain-types";
 import {expect} from "chai";
-
+//TODO Ajouter test fonction update metadata
 
 const platformId = 1
 const aliceTlId = 1

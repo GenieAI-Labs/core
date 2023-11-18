@@ -1,0 +1,38 @@
+{
+  "description": "GenieAI custom module",
+  "license": "MIT",
+  "author": "?",
+  "social": {
+    "website": "?",
+    "github": "?"
+  },
+  "logo": "logo.png",
+  "buyConf": {},
+  "app": {
+    "owner": "0xa6AaeF385217f77b8c69306c139d9cE742f9AFcE",
+    "name": "genie-ai",
+    "type": "DOCKER",
+    "multiaddr": "romaintalentlayer/genie-ai:1.0.7",
+    "checksum": "0xe1a3e45e5dc9dcd3f3b0875f815ebec4076cdd17c06f7fc877a0d77815f2a15a"
+  },
+  "order": {
+    "apporder": {
+      "app": "0x81bcfe0bba3f4d0d83e9cb2de3ce1a9f7dc1530a",
+      "appprice": "0",
+      "volume": "1000000",
+      "tag": [],
+      "datasetrestrict": "0x0000000000000000000000000000000000000000",
+      "workerpoolrestrict": "0x0000000000000000000000000000000000000000",
+      "requesterrestrict": "0x0000000000000000000000000000000000000000"
+    },
+    "datasetorder": {
+      "dataset": "0x0000000000000000000000000000000000000000",
+      "datasetprice": "0",
+      "volume": "1000000",
+      "tag": [],
+      "apprestrict": "0x0000000000000000000000000000000000000000",
+      "workerpoolrestrict": "0x0000000000000000000000000000000000000000",
+      "requesterrestrict": "0x0000000000000000000000000000000000000000"
+    }
+  }
+}
