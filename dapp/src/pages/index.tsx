@@ -17,7 +17,7 @@ function Home() {
           <div className='flex items-center justify-between'>
             <div className='block py-4 lg:py-0'>
               <a href='index.html' className='block max-w-[145px] sm:max-w-[180px]'>
-                <Image src='/logo.png' alt='logo' width={125} height={15} />
+                <Image src='/logo.png' alt='logo' width={80} height={10} />
               </a>
             </div>
             <button

@@ -1,5 +1,5 @@
-const title = 'StarterKit';
-const description = 'Start Fast with XMTP & TalentLayer';
+const title = 'GenieAi';
+const description = 'Ask everything to your personnalGenie';
 const url = 'https://www.yourdomain.com';
 
 export default {
@@ -9,7 +9,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    site_name: 'StarterKit',
+    site_name: 'GenieAi',
     title,
     description,
   },
