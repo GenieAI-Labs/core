@@ -18,6 +18,7 @@ type Error = {
 export const createPrivateTask = async (
   model: string,
   protectedData: string,
+  secrets: string[],
 ): Promise<Result | Error> => {
   let result;
   try {
@@ -47,10 +48,8 @@ export const createPrivateTask = async (
         protectedData: protectedData as string,
         app: appAddress,
         maxPrice: 0,
-        args: 'Genie',
-        secrets: {
-          1: model,
-        },
+        args: model,
+        secrets: secrets,
       };
       taskId = await dataProtector.processProtectedData(args);
     } else {
@@ -61,10 +60,8 @@ export const createPrivateTask = async (
         protectedData: protectedData as string,
         app: appAddress,
         maxPrice: 0,
-        args: 'Genie',
-        secrets: {
-          1: model,
-        },
+        args: model,
+        secrets: secrets,
       };
       taskId = await processProtectedData(args);
     }

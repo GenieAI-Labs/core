@@ -1,12 +1,12 @@
 import OpenAI from 'openai';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import {
+  analyze_contract_mistake,
+  analyze_financial_statement,
+  analyze_medical_symptom,
+} from '../../../utils/openAI/functions';
 
 const openApiKey = process.env.NEXT_PRIVATE_OPENAI_API_KEY;
-
-export const get_diploma_info = (question: string): string => {
-  console.log('get_diploma_info call', { question });
-  return '5 years';
-};
 
 export const sleep = (seconds: number) =>
   new Promise<void>(resolve => {
@@ -69,17 +69,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         run.required_action.submit_tool_outputs.tool_calls[0].function.arguments,
       );
 
-      if (functionToCall === 'get_diploma_info') {
-        const result = get_diploma_info(arugments.question as string);
+      let result;
+      if (functionToCall === 'analyze_contract_mistake') {
+        result = analyze_contract_mistake(
+          arugments.protectedData as string,
+          arugments.country as string,
+        );
+      } else if (functionToCall === 'analyze_financial_statement') {
+        result = analyze_financial_statement(
+          arugments.protectedData as string,
+          arugments.country as string,
+        );
+      } else if (functionToCall === 'analyze_medical_symptom') {
+        result = analyze_medical_symptom(
+          arugments.protectedData as string,
+          arugments.age as string,
+        );
+      }
 
-        console.log('debu', threadId, run.id, {
-          tool_outputs: [
-            {
-              tool_call_id: run.required_action.submit_tool_outputs.tool_calls[0].id,
-              output: result,
-            },
-          ],
-        });
+      if (result) {
         openai.beta.threads.runs.submitToolOutputs(threadId, run.id, {
           tool_outputs: [
             {
