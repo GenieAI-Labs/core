@@ -1,10 +1,21 @@
 import { processRequest } from '../utils/graphql';
 
-export const getAllGenies = (chainId: number): Promise<any> => {
+export const getAllGeniesQuerie = (chainId: number): Promise<any> => {
   const query = `
     {
     genies {
         id
+        ownerAddress
+        ownerTalentLayerId
+        price
+        schemaCid
+        serviceCid
+        totalRate
+        address
+        cid
+        averageRate
+        numberOfRatings
+        proposalCid
         }
     }
     `;
