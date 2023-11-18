@@ -66,7 +66,7 @@ function getChainConfig(chain: Network): NetworkUserConfig {
       // jsonRpcUrl = process.env.MUMBAI_RPC || 'https://rpc-mumbai.maticvigil.com/'
       break
     case Network.GNOSIS:
-      jsonRpcUrl = 'https://1rpc.io/gnosis/'
+      jsonRpcUrl = 'https://gnosis.drpc.org'
       break
     default:
       jsonRpcUrl = 'https://mainnet.infura.io/v3/' + infuraApiKey
@@ -99,6 +99,8 @@ const config: HardhatUserConfig = {
       polygon: process.env.POLYGONSCAN_API_KEY || '',
       polygonMumbai: process.env.POLYGONSCAN_API_KEY || '',
       scrollSepolia: process.env.SCROLL_SEPOLIA_API_KEY || '',
+      gnosis: process.env.GNOSIS_API_KEY || '',
+      mantleTestnet: process.env.MANTLE_API_KEY || '',
     },
     customChains: [
       {
@@ -131,6 +133,30 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: 'https://goerli.basescan.org/api',
           browserURL: 'https://goerli.basescan.org/',
+        },
+      },
+      {
+        network: 'gnosisChiado',
+        chainId: 10200,
+        urls: {
+          apiURL: 'https://rpc.chiadochain.net/api',
+          browserURL: 'https://rpc.chiadochain.net',
+        },
+      },
+      {
+        network: 'mantleTestnet',
+        chainId: 5001,
+        urls: {
+          apiURL: 'https://explorer.testnet.mantle.xyz/api',
+          browserURL: 'https://explorer.testnet.mantle.xyz',
+        },
+      },
+      {
+        network: 'celoTestnet',
+        chainId: 44787 ,
+        urls: {
+          apiURL: 'https://alfajores.celoscan.io/api',
+          browserURL: 'https://alfajores.celoscan.io',
         },
       },
     ],
@@ -170,10 +196,6 @@ const config: HardhatUserConfig = {
         // verifyURL: 'https://zksync2-testnet-explorer.zksync.dev/contract_verification',
         accounts,
       },
-      'mantle-testnet': {
-        url: 'https://rpc.testnet.mantle.xyz/',
-        accounts,
-      },
       scrollAlpha: {
         url: 'https://alpha-rpc.scroll.io/l2',
         accounts,
@@ -184,6 +206,18 @@ const config: HardhatUserConfig = {
       },
       'base-goerli': {
         url: 'https://goerli.base.org',
+        accounts,
+      },
+      'gnosisChiado': {
+        url: 'https://rpc.chiadochain.net',
+        accounts,
+      },
+      'mantleTestnet': {
+        url: 'https://rpc.testnet.mantle.xyz',
+        accounts,
+      },
+      'celoTestnet': {
+        url: 'https://alfajores-forno.celo-testnet.org',
         accounts,
       },
   },

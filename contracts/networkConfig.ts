@@ -6,8 +6,10 @@ export enum Network {
   FUJI = 43113,
   POLYGON = 137,
   MUMBAI = 80001,
-  GNOSIS = 10200,
+  GNOSIS = 100,
+  GNOSIS_CHIADO = 10200,
   SCROLL = 534351,
+  CELO = 44787,
 }
 
 export type NetworkConfig = {
@@ -91,7 +93,28 @@ const mumbai: NetworkConfig = {
 }
 
 const avalanche = {} as NetworkConfig
-const gnosis = {} as NetworkConfig
+const gnosis = {
+  multisigAddressList: {
+    fee: '0x4B3380d3A8C1AF85e47dBC1Fc6C3f4e0c8F78fEa',
+    admin: '0x4B3380d3A8C1AF85e47dBC1Fc6C3f4e0c8F78fEa',
+  },
+  allowedTokenList: {
+    MATIC: {
+      address: ethers.constants.AddressZero,
+      minTransactionAmount: '10',
+      decimals: 18,
+    },
+    SERC20: {
+      address: '0x3527eE6CB246401768937D35eD07B3B780aD4BE3',
+      minTransactionAmount: '10',
+      decimals: 6,
+    },
+  },
+  platformList: {
+      geniehub: '0xFB751afF8BaA238db477CBBe11E7cc4924819D0B',
+  },
+} as NetworkConfig
+
 const polygon: NetworkConfig = {
   multisigAddressList: {
     fee: '0x33B424f8aFF0d2a406f1E7386f1ff64aCacC62fe',
@@ -114,7 +137,57 @@ const polygon: NetworkConfig = {
       decimals: 18,
     },
   },
-  platformList: {},
+  platformList: {      geniehub: '0xFB751afF8BaA238db477CBBe11E7cc4924819D0B',},
+}
+
+const mantleTestnet: NetworkConfig = {
+  multisigAddressList: {
+    fee: '0x33B424f8aFF0d2a406f1E7386f1ff64aCacC62fe',
+    admin: '0x0CFF3F17b62704A0fc76539dED9223a44CAf4825',
+  },
+  allowedTokenList: {
+    MATIC: {
+      address: ethers.constants.AddressZero,
+      minTransactionAmount: '10',
+      decimals: 18,
+    },
+    USDC: {
+      address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+      minTransactionAmount: '10',
+      decimals: 6,
+    },
+    WETH: {
+      address: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
+      minTransactionAmount: '0.005',
+      decimals: 18,
+    },
+  },
+  platformList: {      geniehub: '0xFB751afF8BaA238db477CBBe11E7cc4924819D0B',},
+}
+
+const celoTestnet: NetworkConfig = {
+  multisigAddressList: {
+    fee: '0x33B424f8aFF0d2a406f1E7386f1ff64aCacC62fe',
+    admin: '0x0CFF3F17b62704A0fc76539dED9223a44CAf4825',
+  },
+  allowedTokenList: {
+    MATIC: {
+      address: ethers.constants.AddressZero,
+      minTransactionAmount: '10',
+      decimals: 18,
+    },
+    USDC: {
+      address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
+      minTransactionAmount: '10',
+      decimals: 6,
+    },
+    WETH: {
+      address: '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619',
+      minTransactionAmount: '0.005',
+      decimals: 18,
+    },
+  },
+  platformList: {      geniehub: '0xFB751afF8BaA238db477CBBe11E7cc4924819D0B',},
 }
 
 export const configs: { [networkId in Network]: NetworkConfig } = {
@@ -124,6 +197,7 @@ export const configs: { [networkId in Network]: NetworkConfig } = {
   [Network.POLYGON]: polygon,
   [Network.MUMBAI]: mumbai,
   [Network.GNOSIS]: gnosis,
+  // [Network.SCROLL]: scroll,
 }
 
 export const getConfig = (networkId: Network): NetworkConfig => {
