@@ -16,6 +16,8 @@ const platformId = 1
 const aliceTlId = 1
 const bobTlId = 2
 const carolPlatformId = 1
+const serviceId = 1
+const proposalId = 1
 const transactionId = 1
 const accountantGenieId = 1;
 const doctorGenieId = 2;
@@ -209,7 +211,7 @@ describe('Creation & Execution of Genies', function () {
             expect(wish.genieId).to.equal(accountantGenieId);
             expect(wish.status).to.equal(0);
             expect(wish.transactionId).to.equal(transactionId);
-            await expect(tx).to.emit(magicLamp, 'NewWish').withArgs(wish.id, bobTlId, accountantGenieId);
+            await expect(tx).to.emit(magicLamp, 'NewWish').withArgs(wish.id, bobTlId, accountantGenieId, serviceId, proposalId,transactionId);
 
             await expect(tx).to.changeEtherBalances(
                 [bob.address, talentLayerEscrow.address],
