@@ -3,6 +3,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 const openApiKey = process.env.NEXT_PRIVATE_OPENAI_API_KEY;
 
+export const get_diploma_info = (question: string): string => {
+  console.log('get_diploma_info call', { question });
+  return '5 years';
+};
+
 export const sleep = (seconds: number) =>
   new Promise<void>(resolve => {
     setTimeout(() => resolve(), seconds * 1000);
@@ -46,10 +51,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     let run = await openai.beta.threads.runs.create(threadId, {
       assistant_id: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
-      model: 'gpt-4-1106-preview',
-      instructions: 'additional instructions',
-      tools: [{ type: 'code_interpreter' }, { type: 'retrieval' }],
+      // model: 'gpt-4-1106-preview',
+      // instructions: 'additional instructions',
+      // tools: [{ type: 'code_interpreter' }, { type: 'retrieval' }],
     });
+
+    console.log('run created', { run });
 
     while (run.status === 'queued' || run.status === 'in_progress') {
       await sleep(0.5);
@@ -57,6 +64,35 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.log(run.started_at, run.status);
     }
     console.log('run finished:', run.status, JSON.stringify(run, null, 2));
+
+    if (run.status === 'requires_action' && run.required_action) {
+      console.log('required action:', run.required_action);
+      const functionToCall = run.required_action.submit_tool_outputs.tool_calls[0].function.name;
+      const arugments = JSON.parse(
+        run.required_action.submit_tool_outputs.tool_calls[0].function.arguments,
+      );
+
+      if (functionToCall === 'get_diploma_info') {
+        const result = get_diploma_info(arugments.question as string);
+
+        console.log('debu', threadId, run.id, {
+          tool_outputs: [
+            {
+              tool_call_id: run.required_action.submit_tool_outputs.tool_calls[0].id,
+              output: result,
+            },
+          ],
+        });
+        openai.beta.threads.runs.submitToolOutputs(threadId, run.id, {
+          tool_outputs: [
+            {
+              tool_call_id: run.required_action.submit_tool_outputs.tool_calls[0].id,
+              output: result,
+            },
+          ],
+        });
+      }
+    }
 
     const messages = await openai.beta.threads.messages.list(threadId);
     console.log(JSON.stringify(messages.data, null, 2));
