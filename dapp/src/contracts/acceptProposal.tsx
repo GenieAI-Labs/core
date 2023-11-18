@@ -3,7 +3,7 @@ import TransactionToast from '../components/TransactionToast';
 import { showErrorTransactionToast } from '../utils/toast';
 import { Address, PublicClient } from 'viem';
 import { ZERO_ADDRESS } from '../utils/constant';
-import { TalentLayerClient } from '@talentlayer/client';
+import { TalentLayerClient } from '@genieai/tl-client';
 
 // TODO: need to generate this json duynamically and post it to IPFS to be use for dispute resolution
 export const metaEvidenceCid = 'QmQ2hcACF6r2Gf8PDxG4NcBdurzRUopwcaYQHNhSah6a8v';

@@ -5,7 +5,7 @@ import { getUserByAddress } from '../queries/users';
 import { IAccount, IUser } from '../types';
 import { toast } from 'react-toastify';
 import { chains, defaultChain } from '../pages/_app';
-import { TalentLayerClient } from '@talentlayer/client';
+import { TalentLayerClient } from '@genieai/tl-client';
 
 const TalentLayerContext = createContext<{
   user?: IUser;

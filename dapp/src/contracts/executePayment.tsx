@@ -3,7 +3,7 @@ import TransactionToast from '../components/TransactionToast';
 import { showErrorTransactionToast } from '../utils/toast';
 import { delegateReleaseOrReimburse } from '../components/request';
 import { Address, PublicClient } from 'viem';
-import { TalentLayerClient } from '@talentlayer/client';
+import { TalentLayerClient } from '@genieai/tl-client';
 
 export const executePayment = async (
   chainId: number,
