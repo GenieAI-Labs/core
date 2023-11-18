@@ -1083,11 +1083,34 @@ function Home() {
 
                     {/*</div>*/}
                     <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
-                      WAKU
+                      WorldCoin
                     </h3>
                     <p className='text-base text-body'>
-                      A family of robust, censorship-resistant communication protocols designed to
-                      enable privacy-focused messaging for web3 apps.
+                      Worldcoin is designed to become the world's largest digital identity and
+                      financial network, giving ownership to everyone.
+                    </p>
+                  </div>
+                </div>
+                <div className='w-full px-4 md:w-1/2 lg:w-1/3'>
+                  <div
+                    className='wow fadeInUp space-y-8 group mx-auto mb-[60px] max-w-[310px] text-center'
+                    data-wow-delay='.4s'>
+                    <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
+                      <Image
+                        src='/images/home/logos/worldcoin.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={90}
+                        height={90}
+                      />
+                    </figure>
+
+                    <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
+                      The Graph
+                    </h3>
+                    <p className='text-base text-body'>
+                      The Graph is an indexing protocol for organizing blockchain data and making it
+                      easily accessible with GraphQL
                     </p>
                   </div>
                 </div>
@@ -1096,48 +1119,23 @@ function Home() {
                   <div
                     className='wow fadeInUp space-y-8 group mx-auto mb-[60px] max-w-[310px] text-center'
                     data-wow-delay='.3s'>
-                    {/*<div className="mx-auto mb-8 flex h-[90px] w-[90px] items-center justify-center rounded-3xl bg-yellow-gradient-color bg-opacity-20 text-yellow-400 duration-300 group-hover:bg-yellow-gradient-color group-hover:text-white   ">*/}
-                    {/*<Image*/}
-                    {/*    src="/bounties/sismo.png"*/}
-                    {/*    alt="author"*/}
-                    {/*    className="h-full w-full object-contain"*/}
-                    {/*    width={90}*/}
-                    {/*    height={90}*/}
-                    {/*/>*/}
                     <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
-                      <svg
-                        className='h-12 w-auto'
-                        width='39'
-                        height='50'
-                        viewBox='0 0 39 50'
-                        fill='none'
-                        xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                          d='M31.5098 2.87116L26.248 11.9652L29.5526 13.9139L34.8143 4.81982L31.5098 2.87116Z'
-                          fill='currentColor'></path>
-                        <path d='M21.1685 0H17.3415V10.6139H21.1685V0Z' fill='currentColor'></path>
-                        <path
-                          d='M7.00496 2.87238L3.67579 4.77778L8.83415 13.9635L12.1633 12.0581L7.00496 2.87238Z'
-                          fill='currentColor'></path>
-                        <path
-                          d='M17.3465 39.4183L17.3318 49.9946L21.1588 50L21.1734 39.4237L17.3465 39.4183Z'
-                          fill='currentColor'></path>
-                        <path
-                          d='M38.5135 28.1246H34.6866C34.6866 19.5356 27.7645 12.5475 19.2568 12.5475C10.749 12.5475 3.82696 19.5356 3.82696 28.1246H0C0 17.4046 8.63818 8.68399 19.2568 8.68399C29.8753 8.68399 38.5135 17.4046 38.5135 28.1246Z'
-                          fill='currentColor'></path>
-                        <path
-                          d='M19.2567 41.3505C12.0127 41.3505 6.12068 35.4022 6.12068 28.0891C6.12068 20.776 12.0127 14.8277 19.2567 14.8277C26.5006 14.8277 32.3927 20.776 32.3927 28.0891C32.3927 35.4022 26.5006 41.3505 19.2567 41.3505ZM19.2567 18.6912C14.1236 18.6912 9.94763 22.907 9.94763 28.0891C9.94763 33.2712 14.1236 37.487 19.2567 37.487C24.3898 37.487 28.5657 33.2712 28.5657 28.0891C28.5657 22.907 24.3898 18.6912 19.2567 18.6912Z'
-                          fill='currentColor'></path>
-                      </svg>
+                      <Image
+                        src='/images/home/logos/push.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
                     </figure>
 
                     {/*</div>*/}
                     <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
-                      SISMO
+                      PUSH
                     </h3>
                     <p className='text-base text-body'>
-                      Sismo Connect is a single sign-on (SSO) enabling applications to request any
-                      data aggregated in a user’s Data Vault
+                      Push is the missing piece of Web3 | Push Protocol is a web3 communication
+                      network, enabling cross-chain notifications and messaging for dapps.
                     </p>
                   </div>
                 </div>
@@ -1156,56 +1154,55 @@ function Home() {
                     {/*/>*/}
 
                     <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
-                      <svg
-                        className='w-auto h-10'
-                        width='39'
-                        height='40'
-                        viewBox='0 0 39 40'
-                        fill='none'
-                        xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                          d='M36.8008 11.1999C36.8008 7.89985 35.3008 4.79985 32.8008 2.69985C30.7008 0.899853 28.1008 0.0998535 24.7008 0.0998535H9.10078V4.99985H0.300781V11.3999H24.9008V5.49985C26.4008 5.39985 27.8008 5.89985 29.0008 6.69985C30.4008 7.79985 31.1008 9.49985 31.0008 11.1999C31.0008 14.5999 28.8008 17.4999 24.2008 17.4999H9.10078V39.9999H15.1008V22.9999H22.8008L31.0008 39.9999H38.2008L29.0008 22.1999C33.8008 20.6999 36.9008 16.1999 36.8008 11.1999Z'
-                          fill='#070100'
-                        />
-                      </svg>
+                      <Image
+                        src='/images/home/logos/unicef.svg'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
                     </figure>
 
                     {/*</div>*/}
                     <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
-                      Railgun
+                      Unicef
                     </h3>
                     <p className='text-base text-body'>
-                      A community project for peer-to-peer privacy in DeFi.
+                      UNICEF Office of Innovation has been working with blockchains since 2015
                     </p>
                   </div>
                 </div>
+
                 <div className='w-full px-4 md:w-1/2 lg:w-1/3'>
                   <div
                     className='wow fadeInUp space-y-8 group mx-auto mb-[60px] max-w-[310px] text-center'
                     data-wow-delay='.4s'>
+                    {/*<div className="mx-auto mb-8 flex h-[90px] w-[90px] items-center justify-center rounded-3xl bg-yellow-gradient-color bg-opacity-20 text-yellow-400 duration-300 group-hover:bg-yellow-gradient-color group-hover:text-white   ">*/}
+                    {/*    <Image*/}
+                    {/*        src="/bounties/peanuts.ico"*/}
+                    {/*        alt="author"*/}
+                    {/*        className="h-full w-full object-contain"*/}
+                    {/*        width={90}*/}
+                    {/*        height={90}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
+
                     <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
-                      <svg
-                        className='w-auto h-10'
-                        width='22'
-                        height='28'
-                        viewBox='0 0 22 28'
-                        fill='none'
-                        xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                          fill-rule='evenodd'
-                          clip-rule='evenodd'
-                          d='M9.33331 15.5555C5.89695 15.5555 3.1111 12.7698 3.1111 9.3333C3.1111 5.89676 5.89695 3.1111 9.33331 3.1111C12.7698 3.1111 15.5555 5.89676 15.5555 9.3333C15.5555 12.7698 12.7698 15.5555 9.33331 15.5555ZM9.33331 0C14.4879 0 18.6666 4.17868 18.6666 9.3333C18.6666 14.4879 14.4879 18.6666 9.33331 18.6666C4.17868 18.6666 0 14.4879 0 9.3333C0 4.17868 4.17868 0 9.33331 0ZM18.2111 19.1221C18.8186 19.7297 18.8186 20.7145 18.2111 21.322L11.9887 27.5444C11.3812 28.1519 10.3964 28.1519 9.78884 27.5444C9.18133 26.9369 9.18133 25.952 9.78884 25.3445L16.0112 19.1221C16.6187 18.5146 17.6035 18.5146 18.2111 19.1221ZM21.7777 1.55555C21.7777 2.41478 21.0814 3.1111 20.2223 3.1111C19.3631 3.1111 18.6668 2.41478 18.6668 1.55555C18.6668 0.69632 19.3631 0 20.2223 0C21.0814 0 21.7777 0.69632 21.7777 1.55555Z'
-                          fill='currentColor'
-                        />
-                      </svg>
+                      <Image
+                        src='/images/home/logos/ens.svg'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
                     </figure>
 
                     <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
-                      The Graph
+                      ENS
                     </h3>
                     <p className='text-base text-body'>
-                      The Graph is an indexing protocol for organizing blockchain data and making it
-                      easily accessible with GraphQL
+                      The native name suffix for ENS is .ETH, which has the full security benefits
+                      of being blockchain-native
                     </p>
                   </div>
                 </div>
@@ -1224,73 +1221,243 @@ function Home() {
                     {/*</div>*/}
 
                     <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
-                      <svg
-                        className='w-auto h-10'
-                        width='400'
-                        height='400'
-                        viewBox='0 0 400 400'
-                        fill='none'
-                        xmlns='http://www.w3.org/2000/svg'>
-                        <g clip-path='url(#clip0_206_3718)'>
-                          <path
-                            d='M265.57 170.591C245.78 166.939 223.026 139.869 220.983 117.561C218.569 90.7662 211.392 62.6624 192.202 39.8434C151.858 -8.20281 103.764 8.71717 61.8995 45.6957C23.2445 79.7227 19.7249 127.553 60.178 175.688C79.3683 198.507 103.36 212.476 127.044 216.824C146.834 220.475 169.588 247.545 171.632 269.854C174.046 296.648 184.991 324.255 204.281 347.064C244.624 395.11 306.162 403.725 341.556 366.421C376.951 329.117 372.979 259.752 332.536 211.716C313.246 188.907 289.255 174.939 265.57 170.591Z'
-                            fill='#F1F333'
-                            stroke='black'
-                            stroke-width='12'
-                            stroke-miterlimit='10'
-                          />
-                          <path
-                            d='M346.625 350.549L345.002 352.328C341.144 356.756 334.37 357.367 329.943 353.509L305.518 332.547C301.101 328.788 300.578 321.905 304.337 317.488L305.85 315.62C309.709 311.192 316.482 310.581 320.909 314.439L345.334 335.401C349.961 339.238 350.483 346.121 346.625 350.549Z'
-                            fill='#FFC900'
-                          />
-                          <path
-                            d='M347.996 301.436L346.462 303.106C342.792 307.413 336.108 307.914 331.811 304.344L308.155 284.005C303.848 280.335 303.357 273.751 307.027 269.443L308.551 267.674C312.22 263.367 318.905 262.866 323.201 266.436L346.857 286.775C351.175 290.544 351.676 297.228 347.996 301.436Z'
-                            fill='#FFC900'
-                          />
-                          <path
-                            d='M339.5 250.244L337.966 251.914C334.296 256.221 327.612 256.722 323.315 253.152L299.659 232.813C295.352 229.143 294.861 222.558 298.531 218.251L300.054 216.482C303.724 212.175 310.409 211.674 314.705 215.244L338.361 235.583C342.679 239.352 343.169 245.937 339.5 250.244Z'
-                            fill='#FFC900'
-                          />
-                          <path
-                            d='M293.222 349.525L291.6 351.304C287.741 355.732 280.968 356.343 276.54 352.485L252.116 331.523C247.698 327.764 247.176 320.881 250.935 316.464L252.448 314.596C256.306 310.168 263.08 309.557 267.507 313.415L291.932 334.377C296.558 338.214 297.081 345.097 293.222 349.525Z'
-                            fill='#FFC900'
-                          />
-                          <path
-                            d='M293.765 301.103L292.143 302.882C288.284 307.31 281.511 307.921 277.083 304.063L252.659 283.101C248.241 279.342 247.719 272.459 251.478 268.042L252.991 266.174C256.849 261.746 263.622 261.135 268.05 264.993L292.475 285.955C297.002 289.803 297.514 296.587 293.765 301.103Z'
-                            fill='#FFC900'
-                          />
-                          <path
-                            d='M284.98 248.131L283.357 249.911C279.499 254.338 272.726 254.949 268.298 251.091L243.873 230.129C239.456 226.37 238.934 219.487 242.693 215.07L244.206 213.202C248.064 208.774 254.837 208.163 259.265 212.021L283.69 232.983C288.316 236.82 288.839 243.704 284.98 248.131Z'
-                            fill='#FFC900'
-                          />
-                          <path
-                            d='M147.948 162.18C157.888 163.951 167.996 161.582 175.424 154.768C182.852 147.954 186.047 138.166 185.19 128.101'
-                            stroke='black'
-                            stroke-width='12'
-                            strokeLinecap='round'
-                            stroke-linejoin='round'
-                          />
-                          <path
-                            d='M121.049 156.666C124.451 160.33 124.151 166.093 120.477 169.395C116.812 172.797 111.049 172.498 107.648 168.833C104.246 165.169 104.545 159.406 108.22 156.104C111.984 152.692 117.747 152.991 121.049 156.666Z'
-                            fill='black'
-                          />
-                          <path
-                            d='M191.607 93.2429C195.009 96.9074 194.709 102.67 191.035 105.973C187.37 109.374 181.607 109.075 178.205 105.41C174.804 101.746 175.103 95.9831 178.778 92.6809C182.453 89.3786 188.205 89.5784 191.607 93.2429Z'
-                            fill='black'
-                          />
-                        </g>
-                        <defs>
-                          <clipPath id='clip0_206_3718'>
-                            <rect width='400' height='400' fill='white' />
-                          </clipPath>
-                        </defs>
-                      </svg>
+                      {/* <Image
+                        src='/bounties/brian_logo.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={90}
+                        height={90}
+                      /> */}
                     </figure>
 
                     <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
-                      Peanuts Protocol
+                      ????
                     </h3>
-                    <p className='text-base text-body'>Send tokens with a trustless payment link</p>
+                    <p className='text-base text-body'>You ?</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className='absolute -top-28 left-0 -z-10 hidden md:block'>
+            <svg
+              width='632'
+              height='1179'
+              viewBox='0 0 632 1179'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'>
+              <g opacity='0.25' filter='url(#filter0_f_38_24)'>
+                <circle cx='42.5' cy='589.5' r='329.5' fill='url(#paint0_linear_38_24)' />
+              </g>
+              <defs>
+                <filter
+                  id='filter0_f_38_24'
+                  x='-547'
+                  y='0'
+                  width='1179'
+                  height='1179'
+                  filterUnits='userSpaceOnUse'
+                  colorInterpolationFilters='sRGB'>
+                  <feFlood floodOpacity='0' result='BackgroundImageFix' />
+                  <feBlend
+                    mode='normal'
+                    in='SourceGraphic'
+                    in2='BackgroundImageFix'
+                    result='shape'
+                  />
+                  <feGaussianBlur stdDeviation='130' result='effect1_foregroundBlur_38_24' />
+                </filter>
+                <linearGradient
+                  id='paint0_linear_38_24'
+                  x1='-366.218'
+                  y1='919'
+                  x2='451.176'
+                  y2='349.901'
+                  gradientUnits='userSpaceOnUse'>
+                  <stop stopColor='#8EA5FE' />
+                  <stop offset='0.541667' stopColor='#BEB3FD' />
+                  <stop offset='1' stopColor='#90D1FF' />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <div className='absolute right-0 top-20 -z-10'>
+            <svg
+              width='637'
+              height='1277'
+              viewBox='0 0 637 1277'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'>
+              <g opacity='0.2' filter='url(#filter0_f_38_23)'>
+                <circle cx='638.5' cy='638.5' r='388.5' fill='url(#paint0_linear_38_23)' />
+              </g>
+              <defs>
+                <filter
+                  id='filter0_f_38_23'
+                  x='0'
+                  y='0'
+                  width='1277'
+                  height='1277'
+                  filterUnits='userSpaceOnUse'
+                  colorInterpolationFilters='sRGB'>
+                  <feFlood floodOpacity='0' result='BackgroundImageFix' />
+                  <feBlend
+                    mode='normal'
+                    in='SourceGraphic'
+                    in2='BackgroundImageFix'
+                    result='shape'
+                  />
+                  <feGaussianBlur stdDeviation='125' result='effect1_foregroundBlur_38_23' />
+                </filter>
+                <linearGradient
+                  id='paint0_linear_38_23'
+                  x1='250'
+                  y1='250'
+                  x2='1168.59'
+                  y2='782.957'
+                  gradientUnits='userSpaceOnUse'>
+                  <stop stopColor='#FF8FE8' />
+                  <stop offset='1' stopColor='#FFC960' />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </section>
+
+        <section id='partners' className='relative z-10 pt-[110px]'>
+          <div className='container'>
+            <div
+              className='wow fadeInUp mx-auto mb-14 max-w-[690px] text-center lg:mb-[70px]'
+              data-wow-delay='.2s'>
+              <h2 className='mb-4 text-3xl font-bold text-black  sm:text-4xl md:text-[44px] md:leading-tight'>
+                We are deployed on the best chain
+              </h2>
+            </div>
+          </div>
+
+          <div className='container max-w-[1390px]'>
+            <div className='rounded-2xl bg-white px-5 pt-14 pb-14 shadow-md md:pb-1 lg:pt-20 lg:pb-5 xl:px-10'>
+              <div className='-mx-4 flex flex-wrap justify-center'>
+                <div className='w-full px-4 md:w-1/4 lg:w-1/4'>
+                  <div
+                    className='wow fadeInUp group space-y-8 mx-auto mb-[60px] max-w-[310px] text-center'
+                    data-wow-delay='.2s'>
+                    <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
+                      <Image
+                        src='/images/home/logos/scroll.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
+                    </figure>
+
+                    {/*</div>*/}
+                    <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
+                      Scroll
+                    </h3>
+                  </div>
+                </div>
+                <div className='w-full px-4 md:w-1/4 lg:w-1/4'>
+                  <div
+                    className='wow fadeInUp space-y-8 group mx-auto mb-[60px] max-w-[310px] text-center'
+                    data-wow-delay='.4s'>
+                    <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
+                      <Image
+                        src='/images/home/logos/polygon-chain.svg'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={90}
+                        height={90}
+                      />
+                    </figure>
+
+                    <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
+                      Polygon
+                    </h3>
+                  </div>
+                </div>
+
+                <div className='w-full px-4 md:w-1/4 lg:w-1/4'>
+                  <div
+                    className='wow fadeInUp space-y-8 group mx-auto mb-[60px] max-w-[310px] text-center'
+                    data-wow-delay='.3s'>
+                    <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
+                      <Image
+                        src='/images/home/logos/gnosis.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
+                    </figure>
+
+                    {/*</div>*/}
+                    <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
+                      Gnosis
+                    </h3>
+                  </div>
+                </div>
+
+                <div className='w-full px-4 md:w-1/4 lg:w-1/4'>
+                  <div
+                    className='wow fadeInUp group space-y-8 mx-auto mb-[60px] max-w-[310px] text-center'
+                    data-wow-delay='.4s'>
+                    {/*<div className="mx-auto mb-8 flex h-[90px] w-[90px] items-center justify-center rounded-3xl bg-yellow-gradient-color bg-opacity-20 text-yellow-400 duration-300 group-hover:bg-yellow-gradient-color group-hover:text-white   ">*/}
+                    {/*<Image*/}
+                    {/*    src="/bounties/railgun.png"*/}
+                    {/*    alt="author"*/}
+                    {/*    className="h-full w-full object-contain"*/}
+                    {/*    width={90}*/}
+                    {/*    height={90}*/}
+                    {/*/>*/}
+
+                    <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
+                      <Image
+                        src='/images/home/logos/mantle.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
+                    </figure>
+
+                    {/*</div>*/}
+                    <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
+                      Mantle
+                    </h3>
+                  </div>
+                </div>
+
+                <div className='w-full px-4 md:w-1/2 lg:w-1/3'>
+                  <div
+                    className='wow fadeInUp space-y-8 group mx-auto mb-[60px] max-w-[310px] text-center'
+                    data-wow-delay='.4s'>
+                    {/*<div className="mx-auto mb-8 flex h-[90px] w-[90px] items-center justify-center rounded-3xl bg-yellow-gradient-color bg-opacity-20 text-yellow-400 duration-300 group-hover:bg-yellow-gradient-color group-hover:text-white   ">*/}
+                    {/*    <Image*/}
+                    {/*        src="/bounties/peanuts.ico"*/}
+                    {/*        alt="author"*/}
+                    {/*        className="h-full w-full object-contain"*/}
+                    {/*        width={90}*/}
+                    {/*        height={90}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
+
+                    <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
+                      <Image
+                        src='/images/home/logos/celo.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
+                    </figure>
+
+                    <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
+                      Celo
+                    </h3>
                   </div>
                 </div>
                 <div className='w-full px-4 md:w-1/2 lg:w-1/3'>
@@ -1309,18 +1476,46 @@ function Home() {
 
                     <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
                       <Image
-                        src='/bounties/brian_logo.png'
+                        src='/images/home/logos/sepolia.png'
                         alt='author'
                         className='h-full w-full object-contain'
-                        width={90}
-                        height={90}
+                        width={120}
+                        height={120}
                       />
                     </figure>
 
                     <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
-                      Brian - IA
+                      Sepolia
                     </h3>
-                    <p className='text-base text-body'>Use AI to provide info in the Dao Chat</p>
+                  </div>
+                </div>
+                <div className='w-full px-4 md:w-1/2 lg:w-1/3'>
+                  <div
+                    className='wow fadeInUp space-y-8 group mx-auto mb-[60px] max-w-[310px] text-center'
+                    data-wow-delay='.4s'>
+                    {/*<div className="mx-auto mb-8 flex h-[90px] w-[90px] items-center justify-center rounded-3xl bg-yellow-gradient-color bg-opacity-20 text-yellow-400 duration-300 group-hover:bg-yellow-gradient-color group-hover:text-white   ">*/}
+                    {/*    <Image*/}
+                    {/*        src="/bounties/peanuts.ico"*/}
+                    {/*        alt="author"*/}
+                    {/*        className="h-full w-full object-contain"*/}
+                    {/*        width={90}*/}
+                    {/*        height={90}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
+
+                    <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
+                      <Image
+                        src='/images/home/logos/goerli.png'
+                        alt='author'
+                        className='h-full w-full object-contain'
+                        width={120}
+                        height={120}
+                      />
+                    </figure>
+
+                    <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
+                      Goerli
+                    </h3>
                   </div>
                 </div>
               </div>
