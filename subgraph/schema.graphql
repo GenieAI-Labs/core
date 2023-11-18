@@ -11,6 +11,12 @@ enum PaymentType {
   Reimburse
 }
 
+enum WishStatus {
+  Pending,
+  Confirmed,
+  Cancelled
+}
+
 type Service @entity {
   id: ID! # service id
   createdAt: BigInt! # timestamp of block creation
@@ -315,3 +321,34 @@ type _Schema_
     algorithm: proximityRank
     include: [{ entity: "ServiceDescription", fields: [{ name: "title" }, { name: "keywords_raw" }] }]
   )
+
+type Genie @entity {
+  id: ID!
+  address: Bytes! # address
+  ownerAddress: Bytes! # address
+  ownerTalentLayerId: BigInt! # uint256
+  price: BigInt! # uint256
+  schemaCid: String! # string
+  serviceCid: String! # string
+  proposalCid: String! # string
+  numberOfRatings: BigInt!
+  totalRate: BigInt!
+  averageRate: BigInt!
+}
+
+type Wish @entity {
+  id: ID!
+  status: WishStatus!
+  userId: BigInt! # uint256
+  genieId: BigInt! # uint256
+  serviceId: BigInt! # uint256
+  proposalId: BigInt! # uint256
+  transactionId: BigInt! # uint256
+}
+
+type Rating @entity {
+  id: ID! # GenieId + UserAddress
+  genieId: BigInt! # uint256
+  userAddress: Bytes! # address
+  rating: BigInt! # uint8
+}

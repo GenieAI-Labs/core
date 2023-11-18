@@ -15,10 +15,11 @@ import {
   Transaction,
   Evidence,
   Keyword,
-  UserStats,
+  UserStats, Genie, Wish, Rating,
 } from '../generated/schema'
-import { PROTOCOL_ID, ZERO, ZERO_ADDRESS, ZERO_BIGDEC, ZERO_TOKEN_ADDRESS } from './constants'
+import {ONE, PROTOCOL_ID, ZERO, ZERO_ADDRESS, ZERO_BIGDEC, ZERO_TOKEN_ADDRESS} from './constants'
 import { ERC20 } from '../generated/TalentLayerEscrow/ERC20'
+import {generateIdFromTwoElements} from "./mappings/utils";
 
 export function getOrCreateService(id: BigInt): Service {
   let service = Service.load(id.toString())
@@ -276,6 +277,7 @@ export function getOrCreateProtocol(): Protocol {
     protocol.minArbitrationFeeTimeout = ZERO
     protocol.shortHandlesMaxPrice = ZERO
     protocol.minServiceCompletionPercentage = ZERO
+    protocol.save()
   }
   return protocol
 }
@@ -287,8 +289,53 @@ export function getOrCreateEvidence(evidenceId: string, transactionId: BigInt): 
     evidence.createdAt = ZERO
     evidence.cid = ''
     evidence.transaction = getOrCreateTransaction(transactionId).id
+    evidence.save()
   }
   return evidence
+}
+
+export function getOrCreateGenie(id: string): Genie {
+  let genie = Genie.load(id)
+  if (!genie) {
+    genie = new Genie(id)
+    genie.address = ZERO_ADDRESS
+    genie.ownerAddress = ZERO_ADDRESS
+    genie.ownerTalentLayerId = ZERO
+    genie.price = ZERO
+    genie.schemaCid = ""
+    genie.serviceCid = ""
+    genie.proposalCid = ""
+    genie.numberOfRatings = ZERO
+    genie.totalRate = ZERO
+    genie.averageRate = ONE
+    genie.save()
+  }
+  return genie
+}
+
+export function getOrCreateWish(id: string): Wish {
+  let wish = Wish.load(id)
+  if (!wish) {
+    wish = new Wish(id)
+    wish.status = 'Pending'
+    wish.userId = ZERO
+    wish.genieId = ZERO
+    wish.serviceId = ZERO
+    wish.transactionId = ZERO
+  }
+  return wish
+}
+
+export function getOrCreateRating(genieId: string, address: string): Rating {
+  const ratingId = generateIdFromTwoElements(genieId, address);
+  let rating = Rating.load(ratingId)
+  if (!rating) {
+    rating = new Rating(ratingId)
+    rating.genieId = ZERO
+    rating.userAddress = ZERO_ADDRESS
+    rating.rating = ZERO
+  }
+  return rating
 }
 
 export function getOrCreateKeyword(id: string): Keyword {
