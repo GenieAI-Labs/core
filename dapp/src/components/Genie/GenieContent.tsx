@@ -23,12 +23,32 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
   console.log({ assistant });
 
   async function threadCreation() {
-    const response = await fetch('/api/ai/create-thread', {
-      method: 'POST',
-      body: JSON.stringify({ content: userInput }),
-    });
-    const thread = await response.json();
-    console.log('thread', thread);
+    const existingThreadId = localStorage.getItem('threadId');
+    if (existingThreadId) {
+      console.log('Thread ID already exists:', existingThreadId);
+
+      return existingThreadId;
+    }
+    try {
+      const response = await fetch('/api/ai/create-thread', {
+        method: 'POST',
+        body: JSON.stringify({ content: userInput }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const thread = await response.json();
+      console.log('thread', thread);
+
+      if (thread && thread.id) {
+        localStorage.setItem('threadId', thread.id);
+        console.log('Thread ID saved to local storage:', thread.id);
+      }
+    } catch (error) {
+      console.error('Error creating the thread:', error);
+    }
   }
 
   useEffect(() => {
