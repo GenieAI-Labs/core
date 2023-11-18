@@ -4,7 +4,11 @@ import type { ISuccessResult } from '@worldcoin/idkit';
 
 import { useState } from 'react';
 
-export default function WorldCoin() {
+export default function WorldCoinButton({
+  onAuthenticated,
+}: {
+  onAuthenticated: (authenticated: boolean) => void;
+}) {
   const { address } = useAccount();
   const [privateState, setPrivateState] = useState(false);
   function setPrivate() {
@@ -13,15 +17,10 @@ export default function WorldCoin() {
     setPrivateState(!privateState);
   }
 
-  const { data: isVerified, isLoading } = useQuery<boolean>(['is-verified', address], async () => {
-    const res = await fetch(`/api/is-verified?address=${address}`);
-    const data = await res.json();
-    return data.verified;
-  });
-
   const onSuccess = (result: ISuccessResult) => {
     console.log('Result ', result);
-    // This is where you should perform frontend actions once a user has been verified, such as redirecting to a new page
+    // Update authentication state
+    onAuthenticated(true);
   };
 
   const handleProof = async (result: ISuccessResult) => {
@@ -48,10 +47,6 @@ export default function WorldCoin() {
       }
     });
   };
-
-  if (isVerified) {
-    return <div>Verified</div>;
-  }
 
   return (
     <div>
