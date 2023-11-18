@@ -12,6 +12,7 @@ function Logo({ theme = 'dark' }: { theme?: 'dark' | 'light' }) {
           alt='GenieAi logo'
           className='-ml-2 sm:ml-0'
         />
+        <span className='font-bold text-md ml-2 block text-endnight sm:text-white'>GenieAi</span>
       </Link>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import GenieSideBar from '../../../components/Genie/GenieSideBar';
+import GenieSideBar, { genies } from '../../../components/Genie/GenieSideBar';
 import { useState } from 'react';
 import { Genie } from '../../../types';
 import GenieContent from '../../../components/Genie/GenieContent';
@@ -7,34 +7,33 @@ import GenieContent from '../../../components/Genie/GenieContent';
 function GenieComponent() {
   const router = useRouter();
   const { id } = router.query;
-  const [selectedGenie, setSelectedGenie] = useState<Genie>();
-  const [showSidebar, setShowSidebar] = useState(true);
+  const selectedGenie = genies.find(genie => genie.id === id);
+
+  if (!selectedGenie) {
+    return <p>Genie not found</p>;
+  }
 
   const handleSelectGenie = (genie: Genie) => {
-    setSelectedGenie(genie);
-    setShowSidebar(false);
     router.push(`/dapp/genie/${genie.id}`);
   };
 
   const handleBackToSidebar = () => {
-    setShowSidebar(true);
+    router.push(`/dapp`);
   };
 
   return (
     <>
-      <div className='flex h-screen max-w-7xl mx-auto'>
+      <div className='flex max-w-7xl mx-auto'>
         {/* Sidebar - hidden on small screens when content is active */}
-        <div className={`lg:flex  ${!showSidebar ? 'hidden' : ''}`}>
+        <div className={`hidden md:block`}>
           <GenieSideBar handleSelectGenie={handleSelectGenie} activeGenieId={id as string} />
         </div>
 
-        {selectedGenie && (
-          <GenieContent
-            selectedGenie={selectedGenie}
-            onBack={handleBackToSidebar}
-            className={`${showSidebar ? 'hidden lg:flex' : 'flex'}`}
-          />
-        )}
+        <GenieContent
+          selectedGenie={selectedGenie}
+          onBack={handleBackToSidebar}
+          // className={`${showSidebar ? 'hidden lg:flex' : 'flex'}`}
+        />
       </div>
     </>
   );

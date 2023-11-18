@@ -39,7 +39,7 @@ function Layout({ children, className }: ContainerProps) {
   if (router.asPath.includes('dapp') || router.asPath.includes('admin')) {
     return (
       <>
-        <div className={className + ' dapp pb-[110px]'}>
+        <div className={className + ' dapp'}>
           <Transition.Root show={sidebarOpen} as={Fragment}>
             <Dialog as='div' className='relative z-40 md:hidden' onClose={setSidebarOpen}>
               <Transition.Child
@@ -98,7 +98,7 @@ function Layout({ children, className }: ContainerProps) {
 
           <div className='hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col border-r'>
             <div className='flex flex-grow flex-col overflow-y-auto bg-endnight pt-5'>
-              <div className='flex flex-shrink-0 items-center px-6'>
+              <div className='flex flex-shrink-0 items-center px-4'>
                 <Logo />
               </div>
               <div className='mt-8 flex flex-1 flex-col justify-between'>
@@ -118,7 +118,7 @@ function Layout({ children, className }: ContainerProps) {
               <UserAccount />
             </div>
 
-            <main className='border-t-2 ml-0'>
+            <main className='border-t ml-0'>
               <div>{children}</div>
             </main>
           </div>
