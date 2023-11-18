@@ -15,24 +15,21 @@ interface GenieContentProps {
   className?: string;
 }
 
-async function threadCreatiion() {
-  const thread = await openai.beta.threads.create({
-    messages: [
-      {
-        role: 'user',
-        content: 'Create 3 data visualizations based on the trends in this file.',
-        file_ids: [file.id],
-      },
-    ],
-  });
-}
-
 export default function GenieContent({ selectedGenie, onBack }: GenieContentProps) {
   const [userInput, setUserInput] = useState('');
   const [conversation, setConversation] = useState<IMessage[]>([]);
   const [assistant, setAssistant] = useState<any>(null);
 
   console.log({ assistant });
+
+  async function threadCreation() {
+    const response = await fetch('/api/ai/create-thread', {
+      method: 'POST',
+      body: JSON.stringify({ content: userInput }),
+    });
+    const thread = await response.json();
+    console.log('thread', thread);
+  }
 
   useEffect(() => {
     const fetchAssistant = async () => {
@@ -74,7 +71,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
               className='border p-2 flex-grow'
               placeholder='Type your message here'
             />
-            <button className='ml-2 bg-blue-500 text-white p-2'>
+            <button onClick={threadCreation} className='ml-2 bg-blue-500 text-white p-2'>
               <FiSend />
             </button>
           </div>
