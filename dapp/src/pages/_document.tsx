@@ -19,16 +19,13 @@ export default function Document() {
         <meta name='msapplication-tap-highlight' content='no' />
         <meta name='theme-color' content='#11112a' />
 
-        <link rel='apple-touch-icon' href='/images/touch-icon-iphone.png' />
-        <link rel='apple-touch-icon' sizes='152x152' href='/images/touch-icon-ipad.png' />
-        <link rel='apple-touch-icon' sizes='180x180' href='/images/touch-icon-iphone-retina.png' />
-        <link rel='apple-touch-icon' sizes='167x167' href='/images/touch-icon-ipad-retina.png' />
-
+        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
         <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
         <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
-        <link rel='manifest' href='/manifest.json' />
-        <link rel='mask-icon' href='/images/safari-pinned-tab.svg' color='#000000' />
-        <link rel='shortcut icon' href='/favicon.ico' />
+        <link rel='manifest' href='/site.webmanifest' />
+        <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#5bbad5' />
+        <meta name='msapplication-TileColor' content='#da532c' />
+        <meta name='theme-color' content='#230c0c' />
       </Head>
       <body className='text-black bg-midnight'>
         <Main />

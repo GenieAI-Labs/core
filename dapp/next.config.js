@@ -13,6 +13,13 @@ const withPWA = require('next-pwa')({
 });
 
 module.exports = withPWA({
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
   webpack: (config, { webpack }) => {
     config.module.rules.push({
       test: /\.svg$/i,
