@@ -321,6 +321,7 @@ export function getOrCreateWish(id: string): Wish {
     wish.userId = ZERO
     wish.genieId = ZERO
     wish.serviceId = ZERO
+    wish.proposalId = ZERO
     wish.transactionId = ZERO
   }
   return wish

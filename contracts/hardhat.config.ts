@@ -6,6 +6,30 @@ dotenvConfig({ path: resolve(__dirname, './.env') })
 import { HardhatUserConfig } from 'hardhat/config'
 import { NetworkUserConfig } from 'hardhat/types'
 import './scripts/tasks/deploy/deploy-full'
+import './scripts/tasks/deploy/upgrade-proxy'
+import './scripts/tasks/deploy/prepare-upgrade'
+import './scripts/tasks/deploy/initial-setups'
+import './scripts/utils/wallet'
+import './scripts/tasks/protocol/mint-platform-id'
+import './scripts/tasks/protocol/whitelist-platform-address'
+import './scripts/tasks/protocol/update-platform-whitelist-status'
+import './scripts/tasks/protocol/mint-talentlayer-id'
+import './scripts/tasks/protocol/add-arbitrator'
+import './scripts/tasks/protocol/remove-arbitrator'
+import './scripts/tasks/protocol/update-min-arbitration-fee-timeout'
+import './scripts/tasks/protocol/transfer-ownership'
+import './scripts/tasks/protocol/grant-role'
+import './scripts/tasks/user/create-service'
+import './scripts/tasks/protocol/update-token-address-to-whitelist'
+import './scripts/tasks/protocol/add-trusted-forwarder'
+import './scripts/tasks/protocol/remove-trusted-forwarder'
+import './scripts/tasks/protocol/set-profile-whitelist'
+import './scripts/tasks/protocol/update-profile-minting-status'
+import './scripts/tasks/protocol/update-short-handles-price'
+import './scripts/tasks/protocol/update-min-service-completion-percentage'
+import './scripts/tasks/protocol/set-is-service-contract'
+import './scripts/tasks/platform/update-signer'
+import './scripts/tasks/platform/mint-for-address'
 import 'solidity-coverage'
 import '@nomicfoundation/hardhat-toolbox'
 import '@openzeppelin/hardhat-upgrades'
@@ -56,6 +80,7 @@ function getChainConfig(chain: Network): NetworkUserConfig {
     },
     chainId: chain,
     url: jsonRpcUrl,
+    gasMultiplier: 3,
   }
 }
 
