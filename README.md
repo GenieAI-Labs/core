@@ -13,22 +13,18 @@ GenieAI offers a private and really affordable expert AI genie service, prioriti
 
 **Romain M**  
 Discord:romain5882
-
 TG: @Romain_TL
 
 **Quentin C** 
 Discord: quent043 
-
 TG: @quentin043
 
 **Martin L**  
 Discord: akuma9640 
-
 TG: @akugone  
 
 **Dercio**  
 Discord: spanish_vanish 
-
 TG: @Der_CEO  
 
 
