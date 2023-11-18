@@ -2,7 +2,7 @@ import { formatEther } from 'ethers/lib/utils'
 import { task } from 'hardhat/config'
 import { getConfig, Network, NetworkConfig } from '../../../networkConfig'
 import { verifyAddress } from './utils'
-import {DeploymentProperty, setDeploymentProperty} from "../../../../.deployment/deploymentManager";
+import {DeploymentProperty, setDeploymentProperty} from "../../../.deployment/deploymentManager";
 
 /**
  * @notice Task created only for test purposes of the upgradable process

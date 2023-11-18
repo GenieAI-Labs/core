@@ -29,7 +29,6 @@ export function handleNewGenie(event: NewGenieEvent): void {
   genie.save()
 }
 
-
 export function handleNewWish(event: NewWishEvent): void {
   let wish = getOrCreateWish(event.params.wishId.toString())
   wish.userId = event.params.userId
@@ -44,7 +43,7 @@ export function handleNewWish(event: NewWishEvent): void {
 
 export function handleWishCompleted(event: WishCompletedEvent): void {
   let wish = getOrCreateWish(event.params.wishId.toString())
-  wish.status = 'Completed'
+  wish.status = 'Confirmed'
 
   wish.save()
 }
@@ -70,6 +69,8 @@ export function handleNewRating(event: NewRatingEvent): void {
   genie.averageRate = genie.totalRate.div(genie.numberOfRatings);
 
   genie.save()
+}
+export function handleOwnershipTransferred(event: OwnershipTransferredEvent): void {
 }
 
 export function handleUpdateRating(event: UpdateRatingEvent): void {

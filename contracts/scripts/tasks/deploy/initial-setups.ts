@@ -1,7 +1,7 @@
 import { formatEther } from 'ethers/lib/utils'
 import { subtask, task } from 'hardhat/config'
-import { DeploymentProperty, getDeploymentProperty } from '../../../.deployment/deploymentManager'
 import { getConfig, Network, NetworkConfig } from '../../../networkConfig'
+import {DeploymentProperty, getDeploymentProperty} from "../../../.deployment/deploymentManager";
 
 /**
  * @notice Setup the contracts deployed based on the networkConfig.ts for the defined network
@@ -23,22 +23,22 @@ task(
 
     await run('print', { message: 'Hello, World!' })
 
-    // we set up the whitelist status to whitelist only
-    const mintstatus = '1'
-    await run('update-platform-whitelist-status', { mintstatus })
-
-    console.log('------------------------')
-    console.log('Whitelist address in PlatformID contract')
-    await run('whitelist-platform-address', { address: deployer.address })
-    for (const [name, address] of Object.entries(networkConfig.platformList)) {
-      await run('whitelist-platform-address', { address })
-    }
-    console.log('------------------------')
+    // // we set up the whitelist status to whitelist only
+    // const mintstatus = '1'
+    // await run('update-platform-whitelist-status', { mintstatus })
+    //
+    // console.log('------------------------')
+    // console.log('Whitelist address in PlatformID contract')
+    // await run('whitelist-platform-address', { address: deployer.address })
+    // for (const [name, address] of Object.entries(networkConfig.platformList)) {
+    //   await run('whitelist-platform-address', { address })
+    // }
+    // console.log('------------------------')
 
     console.log('------------------------')
     console.log('Mint Platform IDs')
     for (const [name, address] of Object.entries(networkConfig.platformList)) {
-      await run('mint-platform-id', { name, address })
+      // await run('mint-platform-id', { name, address })
     }
     console.log('------------------------')
 
