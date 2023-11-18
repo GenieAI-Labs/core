@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import GenieSideBar, { genies } from '../../../components/Genie/GenieSideBar';
+import GenieSideBar, { geniesMetadata } from '../../../components/Genie/GenieSideBar';
 import { useState } from 'react';
 import { Genie } from '../../../types';
 import GenieContent from '../../../components/Genie/GenieContent';
@@ -7,7 +7,7 @@ import GenieContent from '../../../components/Genie/GenieContent';
 function GenieComponent() {
   const router = useRouter();
   const { id } = router.query;
-  const selectedGenie = genies.find(genie => genie.id === id);
+  const selectedGenie = geniesMetadata[id];
 
   if (!selectedGenie) {
     return <p>Genie not found</p>;
