@@ -12,21 +12,24 @@ type SidebarProps = {
 
 export const geniesMetadata = {
   '1': {
-    id: 'genie1',
+    id: '1',
     name: 'Legal Advisor',
     pics: 'https://i.pravatar.cc/300?img=1',
+    price: 101,
     headline: 'Provides advice on legal matters.',
   },
   '2': {
-    id: 'genie2',
+    id: '2',
     name: 'Doctor',
     pics: 'https://i.pravatar.cc/300?img=2',
+    price: 202,
     headline: 'Offers health and wellness tips.',
   },
   '3': {
-    id: 'genie3',
+    id: '3',
     name: 'Accountant',
     pics: 'https://i.pravatar.cc/300?img=3',
+    price: 2020,
     headline: 'Assists with financial accounting.',
   },
 };
@@ -52,7 +55,7 @@ const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId
       <div className='mb-4'>
         <div className='flex justify-between'>
           <p className='text-xl font-medium text-black'>Choose your genie</p>
-          <GenieCreationModal showPopup={showPopup} />
+          <GenieCreationModal showPopup={showPopup} activeGenieId={activeGenieId} />
         </div>
       </div>
       <div className='chat-list space-y-2'>

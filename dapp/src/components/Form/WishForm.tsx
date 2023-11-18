@@ -8,6 +8,9 @@ import { showErrorTransactionToast } from '../../utils/toast';
 import SubmitButton from './SubmitButton';
 import { useChainId } from '../../hooks/useChainId';
 import FileDropper from "../FileDropper";
+import MagicLamp from '../../contracts/ABI/MagicLamp.json';
+import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
+import {getConfig} from "../../config";
 
 interface IFormValues {
   genieName: string;
@@ -24,8 +27,10 @@ const initialValues: IFormValues = {
   file: null,
 };
 
-function GenieFormCreation() {
+function WishForm({activeGenieId}: {activeGenieId: string}) {
+  const MAGIC_LAMP_ADDRESS = '0x810cFb99716a29Ada26d02e7440D7952FB8f9835';
   const chainId = useChainId();
+  const config = getConfig(chainId);
   const { open: openConnectModal } = useWeb3Modal();
   const { user } = useContext(TalentLayerContext);
   const publicClient = usePublicClient({ chainId });
@@ -39,10 +44,29 @@ function GenieFormCreation() {
       resetForm,
     }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void },
   ) => {
-    if (user && publicClient && walletClient) {
+    if (user && publicClient && walletClient && user.address) {
       try {
         setSubmitting(true);
+        const isDelegate = user.delegates?.includes(MAGIC_LAMP_ADDRESS.toLowerCase());
         //TODO DataProtector here
+        if(!isDelegate) {
+            await walletClient.writeContract({
+                address: config.contracts.talentLayerId,
+                abi: TalentLayerID.abi,
+                functionName: 'addDelegate',
+                account: user.address as `0x${string}` ,
+                args: [user.id, MAGIC_LAMP_ADDRESS],
+            })
+        }
+
+        await walletClient.writeContract({
+          address: MAGIC_LAMP_ADDRESS,
+          abi: MagicLamp.abi,
+          functionName: 'makeWish',
+          account: user.address as `0x${string}` ,
+          args: [user.id, activeGenieId],
+          value: BigInt(101),
+        })
         resetForm();
         setFileSelected(undefined);
       } catch (error) {
@@ -98,4 +122,4 @@ function GenieFormCreation() {
   );
 }
 
-export default GenieFormCreation;
+export default WishForm;
