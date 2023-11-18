@@ -2,6 +2,7 @@ import TalentLayerContext from '../../context/talentLayer';
 import SideLink from './SideLink';
 import { navigation, navigationAdmin } from './navigation';
 import { useContext } from 'react';
+import {createPushToast} from "../push/utils/toast";
 
 function SideMenu() {
   const { user } = useContext(TalentLayerContext);
@@ -28,6 +29,10 @@ function SideMenu() {
           </nav>
         </div>
       )}
+        <div className="fixed cursor-pointer bottom-2 text-sm flex items-center mb-2 ml-2" onClick={()=>{createPushToast()}}>
+            <img src={'/images/Bell.png'} className="w-6 h-6" />
+            <span className="ml-2">Activate Push</span>
+        </div>
     </nav>
   );
 }

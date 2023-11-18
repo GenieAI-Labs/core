@@ -24,9 +24,10 @@ function PushChannelSubscriptionToast() {
       setIsLoading(true);
       const pushUser = await PushAPI.initialize(walletClient, { env: CONSTANTS.ENV.STAGING });
       const result = await pushUser.notification.subscribe(
-          `eip155:11155111:${PUSH_CHANNEL_ADDRESS}`, // channel address in CAIP format
+          `eip155:80001:${PUSH_CHANNEL_ADDRESS}`, // channel address in CAIP format
       );
       setResult(result);
+      console.log('result',result)
       setIsLoading(false);
     }
   }
