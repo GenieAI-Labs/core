@@ -14,6 +14,7 @@ import useGenieById from '../../hooks/useGenieById';
 import useFees from '../../hooks/useFees';
 import { calculateFees } from '../../utils/fees';
 import {IExecDataProtector} from "@iexec/dataprotector";
+import {uploadDataFilecoin} from "../request";
 import {uploadFile} from "../../utils/fileCoin";
 import {AnyLink} from "@web3-storage/upload-client/dist/src/types";
 
@@ -65,7 +66,10 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
 
         //TODO encrypt file before
 
-        const fileHash: AnyLink = await uploadFile(values.file as File);
+        const filecoinEmail = process.env.NEXT_PUBLIC_FILECOIN_EMAIL;
+        const filecoinSpaceKey = process.env.NEXT_PUBLIC_FILECOIN_SPACE_KEY;
+        const fileHash: AnyLink = await uploadFile(filecoinEmail as `${string}@${string}`, filecoinSpaceKey as `did:${string}:${string}`, values.file as File);
+        // const fileHash = uploadDataFilecoin('erhbgearihaerf');
         console.log('fileHash',fileHash.toString());
 
         const protectedData = await dataProtector.protectData({

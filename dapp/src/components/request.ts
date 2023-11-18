@@ -160,3 +160,14 @@ export const fetchMyContacts = async (): Promise<any> => {
     throw err;
   }
 };
+
+export const uploadDataFilecoin = async (fileHash: string): Promise<any> => {
+  try {
+    return await axios.post('/api/filecoin/upload-file',{
+      file: fileHash,
+    });
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
