@@ -45,7 +45,7 @@ function Layout({ children, className }: ContainerProps) {
                         <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-12 w-12 rounded-full mr-4'>
                           <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300 rounded-full'>
                             <Image
-                              src={`/images/default-avatar-${Number(user?.id) % 9}.jpeg`}
+                              src={`/images/default-avatar-1.jpg`}
                               className='max-h-full max-w-full object-cover shadow-sm border-transparent h-12 w-12'
                               width={48}
                               height={48}

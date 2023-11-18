@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { FiLock } from 'react-icons/fi';
 import WishForm from '../Form/WishForm';
-import { FiPaperclip } from 'react-icons/fi';
 
 function DropDataGenieModal({ showPopup, activeGenieId }: any) {
   const [show, setShow] = useState(showPopup);
@@ -9,10 +9,10 @@ function DropDataGenieModal({ showPopup, activeGenieId }: any) {
     <>
       <button
         onClick={() => setShow(true)}
-        className='rounded-full bg-blue-500 text-white p-2 hover:bg-endnight'
+        className='rounded-full bg-endnight text-white p-2 hover:bg-endnight'
         type='button'
         data-modal-toggle='defaultModal'>
-        <FiPaperclip size={15} />
+        <FiLock size={15} />
       </button>
 
       <div
@@ -22,7 +22,7 @@ function DropDataGenieModal({ showPopup, activeGenieId }: any) {
         <div className='relative p-4 w-full max-w-2xl h-auto'>
           <div className='relative bg-endnight rounded-xl shadow '>
             <div className='flex justify-between items-start p-4 rounded-t border-b border-gray-600'>
-              <h3 className='text-xl font-semibold text-white '>Drop your data</h3>
+              <h3 className='text-xl font-semibold text-white '>Protected data</h3>
               <button
                 onClick={() => setShow(false)}
                 type='button'

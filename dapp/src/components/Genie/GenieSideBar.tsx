@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import GeniesList from '../../components/Genie/GeniesList';
-import { Genie } from '../../types';
+import { IGenie } from '../../types';
 import { getAllGenies } from '../../pages/api/ai/request';
 import { useChainId } from '../../hooks/useChainId';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
 type SidebarProps = {
-  handleSelectGenie: (genie: Genie) => void;
+  handleSelectGenie: (genie: IGenie) => void;
   activeGenieId?: string;
 };
 
@@ -17,6 +17,7 @@ export const geniesMetadata = {
     pics: '/images/genies/legal.png',
     price: 101,
     headline: 'Provides advice on legal matters.',
+    assistantId: 'asst_LrCCMyw26Z4jUY5tlPNX9Z6U',
   },
   '2': {
     id: '2',
@@ -24,6 +25,7 @@ export const geniesMetadata = {
     pics: '/images/genies/doctor.png',
     price: 101,
     headline: 'Offers health and wellness tips.',
+    assistantId: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
   },
   '3': {
     id: '3',
@@ -31,12 +33,13 @@ export const geniesMetadata = {
     pics: '/images/genies/artist.png',
     price: 101,
     headline: 'Assists with financial accounting.',
+    assistantId: 'asst_O4KpSlfMNE0pFPT8kWtuZIuI',
   },
 };
 
 const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId }) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [genies, setGenies] = useState<Genie[]>([]);
+  const [genies, setGenies] = useState<IGenie[]>([]);
   const chainId = useChainId();
 
   useEffect(() => {
@@ -57,7 +60,7 @@ const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId
           <p className='text-xl font-medium text-black'>Choose your genie</p>
           <a
             href='/dapp/dev/create'
-            className='rounded-full bg-blue-500 text-white p-2 hover:bg-endnight'
+            className='rounded-full bg-endnight text-white p-2 hover:bg-endnight'
             type='button'
             data-modal-toggle='defaultModal'>
             <IoIosAddCircleOutline size={15} />

@@ -47,10 +47,10 @@ const FileDropper = ({
   };
 
   return !fileSelected ? (
-    <div className='flex-col justify-center items-center'>
-      <span className='text-sm text-gray-500 font-bold text-center'>Required Data</span>
+    <div className='flex-col justify-center items-center w-full'>
+      <span className='text-sm text-gray-500 font-bold text-center'>Drop file</span>
       <div
-        className={`flex flex-col w-48 h-48 p-50 cursor-pointer mt-1 mb-1 items-center justify-center text-24 text-gray-600 border-2 border-dashed border-gray-300 rounded-lg`}
+        className={`flex flex-col h-48 p-50 cursor-pointer mt-1 mb-2 items-center justify-center text-24 text-gray-600 border-2 border-dashed border-gray-300 rounded-lg`}
         onDrop={(e: React.DragEvent<HTMLDivElement>) => handleDrop(e)}
         onDragOver={(e: React.DragEvent<HTMLDivElement>) => handleDragOver(e)}
         onDragEnter={(e: React.DragEvent<HTMLDivElement>) => handleDragEnter(e)}
@@ -68,9 +68,12 @@ const FileDropper = ({
       </div>
     </div>
   ) : (
-    <>
-      <p className='text-sm text-gray-500 font-bold text-center'>Your file</p>
-      <div className={'w-48 h-48 flex flex-col items-center justify-center'}>
+    <div className=''>
+      <span className='text-sm text-gray-500 font-bold text-center'>Your file</span>
+      <div
+        className={
+          ' h-48 flex flex-col items-center justify-center bg-gray-200 mt-1 mb-2  text-green-600 border-2 border-dashed border-green-300 rounded-lg'
+        }>
         <div className='flex flex-row items-center justify-center place-content-end'>
           <div className={`mt-1 flex flex-col text-24 text-gray-600 items-center`}>
             {fileSelected.name}
@@ -93,7 +96,7 @@ const FileDropper = ({
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

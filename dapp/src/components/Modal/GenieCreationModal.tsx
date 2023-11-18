@@ -9,7 +9,7 @@ function GenieCreationModal({ showPopup, activeGenieId }: any) {
     <>
       <button
         onClick={() => setShow(true)}
-        className='rounded-full bg-blue-500 text-white p-2 hover:bg-endnight'
+        className='rounded-full bg-endnight text-white p-2 hover:bg-endnight'
         type='button'
         data-modal-toggle='defaultModal'>
         <IoIosAddCircleOutline size={15} />

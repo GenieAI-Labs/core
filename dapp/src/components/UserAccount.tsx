@@ -32,7 +32,7 @@ function UserAccount() {
                     src={
                       user?.description?.image_url
                         ? user?.description?.image_url
-                        : `/images/default-avatar-${Number(user?.id ? user.id : '1') % 9}.jpeg`
+                        : `/images/default-avatar-1.jpg`
                     }
                     width={50}
                     height={50}

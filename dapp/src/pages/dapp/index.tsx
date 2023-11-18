@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useRouter } from 'next/router'; // Import useRouter
 import Steps from '../../components/Steps';
 import TalentLayerContext from '../../context/talentLayer';
-import { Genie } from '../../types';
+import { IGenie } from '../../types';
 import GenieSideBar from '../../components/Genie/GenieSideBar';
 
 function Dapp() {
@@ -10,7 +10,7 @@ function Dapp() {
   const { user } = useContext(TalentLayerContext);
 
   // Function to navigate to the genie's page
-  const handleSelectGenie = (genie: Genie) => {
+  const handleSelectGenie = (genie: IGenie) => {
     router.push(`/dapp/genie/${genie.id}`);
   };
 
