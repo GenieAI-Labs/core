@@ -43,7 +43,7 @@ function NetworkSwitch() {
         leave='transition ease-in duration-75'
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'>
-        <Menu.Items className='absolute right-0 top-[60px] z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-gray-700 bg-endnight'>
+        <Menu.Items className='absolute right-0 top-[60px] z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-xl shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-gray-200 bg-endnight'>
           <div className='py-1 '>
             {chains.map(chain => (
               <Menu.Item key={chain.id}>

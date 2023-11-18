@@ -18,7 +18,7 @@ function SideMenu() {
         ))}
         {user?.isAdmin && (
           <div className='pt-4'>
-            <div className='border-gray-700 my-3 h-px border-t mx-3'></div>
+            <div className='border-gray-200 my-3 h-px border-t mx-3'></div>
             <h2 className='text-black ml-3 mt-6'>My platform</h2>
             <nav className='space-y-1 mt-6'>
               {navigationAdmin.map(item => (

@@ -16,7 +16,7 @@ function UserDetail({ user }: { user: IUser }) {
   }
 
   return (
-    <div className='rounded-xl p-4 border border-amber-900 bg-white'>
+    <div className='rounded-xl p-4 border border-gray-200 bg-white'>
       <div className='w-full'>
         <div className='flex flex-col justify-start items-start gap-4'>
           <div className='flex items-center justify-start mb-4'>
@@ -39,7 +39,7 @@ function UserDetail({ user }: { user: IUser }) {
         </div>
         <Stars rating={Number(user.rating)} numReviews={user.userStats.numReceivedReviews} />
       </div>
-      <div className=' border-t border-gray-700 pt-2 w-full'>
+      <div className=' border-t border-gray-200 pt-2 w-full'>
         {userDescription?.name && (
           <p className='text-sm text-black mt-4'>
             <strong>Name:</strong> {userDescription?.name}
