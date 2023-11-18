@@ -1,1 +1,1 @@
-# GenieAI dapp
+GenieAI dapp
