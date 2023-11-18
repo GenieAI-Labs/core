@@ -15,19 +15,19 @@ export const geniesMetadata = {
   '1': {
     id: 'genie1',
     name: 'Legal Advisor',
-    pics: 'https://i.pravatar.cc/300?img=1',
+    pics: '/images/genies/legal.png',
     headline: 'Provides advice on legal matters.',
   },
   '2': {
     id: 'genie2',
     name: 'Doctor',
-    pics: 'https://i.pravatar.cc/300?img=2',
+    pics: '/images/genies/doctor.png',
     headline: 'Offers health and wellness tips.',
   },
   '3': {
     id: 'genie3',
     name: 'Accountant',
-    pics: 'https://i.pravatar.cc/300?img=3',
+    pics: '/images/genies/artist.png',
     headline: 'Assists with financial accounting.',
   },
 };
