@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { FiArrowLeft, FiSend } from 'react-icons/fi';
 import { Genie } from '../../types';
 import DropDataGenieModal from '../Modal/DropDataGenieModal';
-import OpenAI from 'openai';
 
 interface IMessage {
   sender: 'user' | 'assistant';
@@ -17,22 +16,27 @@ interface GenieContentProps {
 
 export default function GenieContent({ selectedGenie, onBack }: GenieContentProps) {
   const [userInput, setUserInput] = useState('');
+
   const [conversation, setConversation] = useState<IMessage[]>([]);
+  const [threadId, setThreadId] = useState<string | null>(null);
+
   const [assistant, setAssistant] = useState<any>(null);
 
-  console.log({ assistant });
-
   async function threadCreation() {
+    // Add user message to the conversation
+    setConversation(prevConvo => [...prevConvo, { sender: 'user', text: userInput }]);
+
     const existingThreadId = localStorage.getItem('threadId');
+
     if (existingThreadId) {
       console.log('Thread ID already exists:', existingThreadId);
-
-      return existingThreadId;
+      setThreadId(existingThreadId);
     }
+
     try {
-      const response = await fetch('/api/ai/create-thread', {
+      const response = await fetch('/api/ai/create-message', {
         method: 'POST',
-        body: JSON.stringify({ content: userInput }),
+        body: JSON.stringify({ content: userInput, threadId: existingThreadId }),
       });
 
       if (!response.ok) {
@@ -42,6 +46,14 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
       const thread = await response.json();
       console.log('thread', thread);
 
+      // Assuming your API returns the assistant's response
+      if (thread && thread.assistantResponse) {
+        setConversation(prevConvo => [
+          ...prevConvo,
+          { sender: 'assistant', text: thread.assistantResponse },
+        ]);
+      }
+
       if (thread && thread.id) {
         localStorage.setItem('threadId', thread.id);
         console.log('Thread ID saved to local storage:', thread.id);
@@ -49,16 +61,10 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
     } catch (error) {
       console.error('Error creating the thread:', error);
     }
-  }
 
-  useEffect(() => {
-    const fetchAssistant = async () => {
-      const response = await fetch('/api/ai/retreive-assistant');
-      const assistant = await response.json();
-      console.log('assistant', assistant);
-    };
-    fetchAssistant();
-  }, []);
+    // Reset the input field
+    setUserInput('');
+  }
 
   return (
     <>
