@@ -118,7 +118,7 @@ function Layout({ children, className }: ContainerProps) {
               <UserAccount />
             </div>
 
-            <main className='border-t-2 ml-0'>
+            <main className='border-t ml-0'>
               <div>{children}</div>
             </main>
           </div>

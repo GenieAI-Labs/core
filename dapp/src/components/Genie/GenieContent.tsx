@@ -65,7 +65,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
     <>
       <div></div>
       <div className='flex-1'>
-        <div className='bg-gray-100'>
+        <div className='border-b border-gray-200'>
           <button onClick={onBack} className='m-4 md:hidden'>
             <FiArrowLeft size={24} />
           </button>
