@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import GeniesList from '../../components/Genie/GeniesList';
 import { Genie } from '../../types';
-import GenieCreationModal from '../../components/Modal/GenieCreationModal';
 import { getAllGenies } from '../../pages/api/ai/request';
 import { useChainId } from '../../hooks/useChainId';
 import { IoIosAddCircleOutline } from 'react-icons/io';
@@ -13,21 +12,24 @@ type SidebarProps = {
 
 export const geniesMetadata = {
   '1': {
-    id: 'genie1',
+    id: '1',
     name: 'Legal Advisor',
     pics: '/images/genies/legal.png',
+    price: 101,
     headline: 'Provides advice on legal matters.',
   },
   '2': {
-    id: 'genie2',
+    id: '2',
     name: 'Doctor',
     pics: '/images/genies/doctor.png',
+    price: 101,
     headline: 'Offers health and wellness tips.',
   },
   '3': {
-    id: 'genie3',
+    id: '3',
     name: 'Accountant',
     pics: '/images/genies/artist.png',
+    price: 101,
     headline: 'Assists with financial accounting.',
   },
 };

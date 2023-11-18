@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import GenieFormCreation from '../Form/GenieFormCreation';
+import WishForm from '../Form/WishForm';
 import { FiPaperclip } from 'react-icons/fi';
 
-function DropDataGenieModal({ showPopup }: any) {
+function DropDataGenieModal({ showPopup, activeGenieId }: any) {
   const [show, setShow] = useState(showPopup);
 
   return (
@@ -41,7 +41,7 @@ function DropDataGenieModal({ showPopup }: any) {
                 <span className='sr-only'>Close modal</span>
               </button>
             </div>
-            <GenieFormCreation />
+            <WishForm activeGenieId={activeGenieId} />
           </div>
         </div>
       </div>

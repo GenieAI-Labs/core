@@ -76,7 +76,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
               <h2 className='text-2xl font-bold'>{selectedGenie.name} Genie</h2>
               <p>{selectedGenie.headline}</p>
             </div>
-            <DropDataGenieModal showPopup={false} />
+            <DropDataGenieModal showPopup={false} activeGenieId={selectedGenie.id} />
           </div>
         </div>
 
