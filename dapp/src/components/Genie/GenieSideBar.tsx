@@ -4,6 +4,7 @@ import { Genie } from '../../types';
 import GenieCreationModal from '../../components/Modal/GenieCreationModal';
 import { getAllGenies } from '../../pages/api/ai/request';
 import { useChainId } from '../../hooks/useChainId';
+import { IoIosAddCircleOutline } from 'react-icons/io';
 
 type SidebarProps = {
   handleSelectGenie: (genie: Genie) => void;
@@ -52,7 +53,13 @@ const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId
       <div className='mb-4'>
         <div className='flex justify-between'>
           <p className='text-xl font-medium text-black'>Choose your genie</p>
-          <GenieCreationModal showPopup={showPopup} />
+          <a
+            href='/dapp/dev/create'
+            className='rounded-full bg-blue-500 text-white p-2 hover:bg-endnight'
+            type='button'
+            data-modal-toggle='defaultModal'>
+            <IoIosAddCircleOutline size={15} />
+          </a>
         </div>
       </div>
       <div className='chat-list space-y-2'>
