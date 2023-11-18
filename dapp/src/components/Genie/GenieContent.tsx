@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FiArrowLeft, FiSend } from 'react-icons/fi';
 import { Genie } from '../../types';
 import DropDataGenieModal from '../Modal/DropDataGenieModal';
+import OpenAI from 'openai';
 
 interface IMessage {
   sender: 'user' | 'assistant';
@@ -20,6 +21,35 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
   const [assistant, setAssistant] = useState<any>(null);
 
   console.log({ assistant });
+
+  async function threadCreation() {
+    const existingThreadId = localStorage.getItem('threadId');
+    if (existingThreadId) {
+      console.log('Thread ID already exists:', existingThreadId);
+
+      return existingThreadId;
+    }
+    try {
+      const response = await fetch('/api/ai/create-thread', {
+        method: 'POST',
+        body: JSON.stringify({ content: userInput }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const thread = await response.json();
+      console.log('thread', thread);
+
+      if (thread && thread.id) {
+        localStorage.setItem('threadId', thread.id);
+        console.log('Thread ID saved to local storage:', thread.id);
+      }
+    } catch (error) {
+      console.error('Error creating the thread:', error);
+    }
+  }
 
   useEffect(() => {
     const fetchAssistant = async () => {
@@ -61,7 +91,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
               className='border p-2 flex-grow'
               placeholder='Type your message here'
             />
-            <button className='ml-2 bg-blue-500 text-white p-2'>
+            <button onClick={threadCreation} className='ml-2 bg-blue-500 text-white p-2'>
               <FiSend />
             </button>
           </div>

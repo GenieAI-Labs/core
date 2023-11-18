@@ -21,9 +21,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     });
 
     // Send the assistant as a response
+
     res.status(200).json(assistant);
   } catch (error) {
     console.error('Error creating the assistant:', error);
-    res.status(500).json({ error: 'Error creating the assistant' });
+    res.status(500).json({ error: 'Error retreiving the assistant' });
   }
 }

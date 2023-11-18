@@ -4,7 +4,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 const openApiKey = process.env.NEXT_PRIVATE_OPENAI_API_KEY;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const firstMessage = req.body;
   // Check if API key is available
   if (!openApiKey) {
     return res.status(500).json({ error: 'API key is missing' });
@@ -12,25 +11,23 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const openai = new OpenAI({ apiKey: openApiKey });
+    console.log('openai', openai);
 
-    openai.beta.threads.create({
+    const thread = await openai.beta.threads.create({
       messages: [
         {
           role: 'user',
-          content:
-            'This user has requested help with their resume. Here is their message and resume:',
-        },
-        {
-          role: 'user',
-          content: firstMessage.content,
-          //   file_ids: [file.id],
+          content: 'Give me a summary of the legal situation in Istambul.',
         },
       ],
-    }),
-      // Send the assistant as a response
-      res.status(200).json(assistant);
+    });
+
+    console.log('thread', thread);
+
+    // return the thread as a response
+    res.status(200).json(thread);
   } catch (error) {
-    console.error('Error creating the assistant:', error);
-    res.status(500).json({ error: 'Error creating the assistant' });
+    console.error('Error creating the thread:', error);
+    res.status(500).json({ error: 'Error creating the thread' });
   }
 }
