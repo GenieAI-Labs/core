@@ -76,7 +76,7 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
             data: {
                 encryptionKey: '0xtoto',
                 country: values.country,
-                file: fileHash,
+                file: fileHash.toString(),
             },
         });
         const listGrantedAccess = await dataProtector.fetchGrantedAccess({
