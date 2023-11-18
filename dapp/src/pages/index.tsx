@@ -96,21 +96,11 @@ function Home() {
             <div className='-mx-4 flex flex-wrap items-center'>
               <div className='w-full px-4 lg:w-7/12'>
                 <div className='wow fadeInUp mb-12 lg:mb-0 lg:max-w-[570px]' data-wow-delay='.2s'>
-                  <span className='mb-5 block text-lg font-medium leading-tight text-black  sm:text-[22px] xl:text-[22px]'>
-                    Your Private Data, Entrusted to Genies
-                  </span>
                   <h1 className='mb-6 text-3xl font-bold leading-tight text-black  sm:text-[40px] md:text-[50px] lg:text-[42px] xl:text-[50px]'>
                     <span className='inline bg-yellow-gradient-color bg-clip-text text-transparent mx-2'>
-                      Ask
+                      GenieAi
                     </span>{' '}
-                    everything to{' '}
-                    <span className='inline bg-yellow-gradient-color bg-clip-text text-transparent mx-2'>
-                      your
-                    </span>{' '}
-                    personnal
-                    <span className='inline bg-yellow-gradient-color bg-clip-text text-transparent mx-2'>
-                      Genie
-                    </span>
+                    Private genie team at your service
                   </h1>
                   <p className='mb-10 max-w-[475px] text-base leading-relaxed text-body'>
                     Summon Your Domain-Specific AI Genie for Expert Assistance Where Your Secrets
