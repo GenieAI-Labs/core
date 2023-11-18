@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FiArrowLeft, FiSend } from 'react-icons/fi';
 import { Genie } from '../../types';
 import DropDataGenieModal from '../Modal/DropDataGenieModal';
+import OpenAI from 'openai';
 
 interface IMessage {
   sender: 'user' | 'assistant';
@@ -12,6 +13,18 @@ interface GenieContentProps {
   selectedGenie: Genie;
   onBack: () => void;
   className?: string;
+}
+
+async function threadCreatiion() {
+  const thread = await openai.beta.threads.create({
+    messages: [
+      {
+        role: 'user',
+        content: 'Create 3 data visualizations based on the trends in this file.',
+        file_ids: [file.id],
+      },
+    ],
+  });
 }
 
 export default function GenieContent({ selectedGenie, onBack }: GenieContentProps) {

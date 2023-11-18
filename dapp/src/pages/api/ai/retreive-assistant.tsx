@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
 const openApiKey = process.env.NEXT_PRIVATE_OPENAI_API_KEY;
 
@@ -15,9 +16,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const assistant = await openai.beta.assistants.retrieve('asst_MzDSgPrndkcyYkScrkaEXbSa');
 
     // Send the assistant as a response
-    res.status(200).json(assistant);
+    return NextResponse.json(assistant, { status: 200 });
   } catch (error) {
     console.error('Error retrieving the assistant:', error);
-    res.status(500).json({ error: 'Error retrieving the assistant' });
+    return NextResponse.json('Error retrieving the assistant', { status: 500 });
   }
 }

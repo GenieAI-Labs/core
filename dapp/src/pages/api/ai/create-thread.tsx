@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from 'next/server';
 
 const openApiKey = process.env.NEXT_PRIVATE_OPENAI_API_KEY;
 
@@ -13,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const openai = new OpenAI({ apiKey: openApiKey });
 
-    openai.beta.threads.create({
+    const thread = openai.beta.threads.create({
       messages: [
         {
           role: 'user',
@@ -26,11 +27,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           //   file_ids: [file.id],
         },
       ],
-    }),
-      // Send the assistant as a response
-      res.status(200).json(assistant);
+    });
+    // return the thread as a response
+    return NextResponse.json(thread, { status: 200 });
   } catch (error) {
-    console.error('Error creating the assistant:', error);
-    res.status(500).json({ error: 'Error creating the assistant' });
+    console.error('Error creating the thread:', error);
+    return NextResponse.json('Error creating the thread', { status: 500 });
   }
 }
