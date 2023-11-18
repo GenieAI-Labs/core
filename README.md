@@ -11,21 +11,21 @@ GenieAI offers a private and really affordable expert AI genie service, prioriti
 ## DISCORD AND TELEGRAM USER NAME
 (team contact to share the judging details) After submission if needed.
 
-**Romain M**
-Discord:romain5882
+**Romain M**:
+Discord:romain5882 /
 TG: @Romain_TL
 
-**Quentin C**
-Discord: quent043 
+**Quentin C**:
+Discord: quent043 /
 TG: @quentin043
 
-**Martin L**
-Discord: akuma9640 
-TG: @akugone  
+**Martin L**:
+Discord: akuma9640 /
+TG: @akugone 
 
-**Dercio**
-Discord: spanish_vanish 
-TG: @Der_CEO  
+**Dercio**:
+Discord: spanish_vanish /
+TG: @Der_CEO
 
 
 ---
