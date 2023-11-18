@@ -328,6 +328,7 @@ type Genie @entity {
   ownerAddress: Bytes! # address
   ownerTalentLayerId: BigInt! # uint256
   price: BigInt! # uint256
+  cid: String # string
   schemaCid: String! # string
   serviceCid: String! # string
   proposalCid: String! # string

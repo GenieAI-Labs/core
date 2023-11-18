@@ -207,6 +207,7 @@ contract MagicLamp is Ownable {
 
     // =========================== Public & External Functions ==============================
 
+    //TODO require: genie already exists
     /**
      * @notice Creates a new Genie
      * @param _genieAddress Address of the Genie

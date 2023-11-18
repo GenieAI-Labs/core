@@ -5,13 +5,9 @@ import {
   OwnershipTransferred as OwnershipTransferredEvent,
   UpdateRating as UpdateRatingEvent,
   WishCancelled as WishCancelledEvent,
-  WishCompleted as WishCompletedEvent
+  WishCompleted as WishCompletedEvent,
+  GenieMetadataUpdated as GenieMetadataUpdatedEvent
 } from "../../generated/MagicLamp/MagicLamp"
-import {
-  Genie,
-  Rating,
-  Wish
-} from "../../generated/schema"
 import {getOrCreateGenie, getOrCreateRating, getOrCreateWish} from "../getters";
 import {ONE} from "../constants";
 import {BigInt} from "@graphprotocol/graph-ts";
@@ -25,6 +21,12 @@ export function handleNewGenie(event: NewGenieEvent): void {
   genie.schemaCid = event.params.schemaCid
   genie.serviceCid = event.params.serviceCid
   genie.proposalCid = event.params.proposalCid
+
+  genie.save()
+}
+export function handleGenieMetadataUpdated(event: GenieMetadataUpdatedEvent): void {
+  let genie = getOrCreateGenie(event.params.genieId.toString())
+  genie.cid = event.params.cid
 
   genie.save()
 }
