@@ -342,7 +342,7 @@ export interface IMessage {
 export interface Genie {
   id: string;
   name: string;
-  info: string;
+  headline: string;
   pics: string;
 }
 

@@ -23,7 +23,8 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
 
   const [assistant, setAssistant] = useState<any>(null);
 
-  async function postMessage() {
+  async function postMessage(e) {
+    e.preventDefault();
     setLoading(true);
     // Add user message to the conversation
     // setConversation(prevConvo => [...prevConvo, { sender: 'user', text: userInput }]);
@@ -64,40 +65,50 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
   return (
     <>
       <div></div>
-      <div className='flex-1 p-4'>
-        <button onClick={onBack} className='mb-4 lg:hidden'>
-          <FiArrowLeft size={24} />
-        </button>
+      <div className='flex-1'>
+        <div className='border-b border-gray-200'>
+          <button onClick={onBack} className='m-4 md:hidden'>
+            <FiArrowLeft size={24} />
+          </button>
 
-        <div className='flex justify-between items-center'>
-          <div>
-            <h2 className='text-2xl font-bold'>{selectedGenie.name} Genie</h2>
-            <p>{selectedGenie.info}</p>
+          <div className='flex justify-between items-center p-6 pt-0 sm:pt-6 border-l border-white'>
+            <div>
+              <h2 className='text-2xl font-bold'>{selectedGenie.name} Genie</h2>
+              <p>{selectedGenie.headline}</p>
+            </div>
+            <DropDataGenieModal showPopup={false} />
           </div>
-          <DropDataGenieModal showPopup={false} />
         </div>
 
         <div className='mt-4'>
-          <div className='border p-2 h-64 overflow-auto'>
+          <div className='p-8 overflow-auto h-[calc(100vh-370px)] sm:h-[calc(100vh-400px)] md:h-[calc(100vh-270px)] lg:h-[calc(100vh-270px)]'>
             {conversation.map((msg, index) => (
-              <div key={index} className={`message ${msg.role === 'user' ? 'text-right' : ''}`}>
+              <div
+                key={index}
+                className={`message text-sm p-2 text-gray-900 ${
+                  msg.role === 'user' ? 'text-right' : ''
+                }`}>
                 {msg.content.map((content, index) => (
                   <p key={index}>{content.text?.value}</p>
                 ))}
               </div>
             ))}
           </div>
-          <div className='flex mt-2'>
-            <input
-              type='text'
-              value={userInput}
-              onChange={e => setUserInput(e.target.value)}
-              className='border p-2 flex-grow'
-              placeholder='Type your message here'
-            />
-            <button onClick={postMessage} className='ml-2 bg-blue-500 text-white p-2'>
-              {loading ? <FiLoader className='animate-spin' /> : <FiSend />}
-            </button>
+          <div className='flex mt-2 p-4 '>
+            <form onSubmit={postMessage} className='w-full relative'>
+              <input
+                type='text'
+                value={userInput}
+                onChange={e => setUserInput(e.target.value)}
+                className='border border-gray-200 rounded-xl p-2 w-full'
+                placeholder='Type your message here'
+              />
+              <button
+                type='submit'
+                className='bg-blue-500 text-white p-2 rounded-full absolute right-0 top-0 mr-[12px] mt-[5px]'>
+                {loading ? <FiLoader className='animate-spin' /> : <FiSend />}
+              </button>
+            </form>
           </div>
         </div>
       </div>

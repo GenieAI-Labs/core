@@ -8,24 +8,24 @@ type SidebarProps = {
   activeGenieId?: string;
 };
 
-const genies = [
+export const genies = [
   {
     id: 'genie1',
-    name: 'Legal',
+    name: 'Legal Advisor',
     pics: 'https://i.pravatar.cc/300?img=1',
-    info: 'Provides advice on legal matters.',
+    headline: 'Provides advice on legal matters.',
   },
   {
     id: 'genie2',
-    name: 'Health',
+    name: 'Doctor',
     pics: 'https://i.pravatar.cc/300?img=2',
-    info: 'Offers health and wellness tips.',
+    headline: 'Offers health and wellness tips.',
   },
   {
     id: 'genie3',
     name: 'Accountant',
     pics: 'https://i.pravatar.cc/300?img=3',
-    info: 'Assists with financial accounting.',
+    headline: 'Assists with financial accounting.',
   },
 ];
 
@@ -46,9 +46,14 @@ const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId
             key={genie.id}
             onClick={() => handleSelectGenie(genie)}
             className={`flex items-center group px-3 py-2 text-base rounded-xl text-black cursor-pointer ${
-              genie.id === activeGenieId ? 'bg-redpraha ' : ' hover:bg-midnight '
+              genie.id === activeGenieId ? 'bg-white ' : ' hover:bg-midnight '
             }`}>
-            <GeniesList id={genie.id} name={genie.name} pics={genie.pics} />
+            <GeniesList
+              id={genie.id}
+              name={genie.name}
+              pics={genie.pics}
+              headline={genie.headline}
+            />
           </a>
         ))}
       </div>
