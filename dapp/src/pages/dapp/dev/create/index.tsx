@@ -8,6 +8,7 @@ import { useChainId } from '../../../../hooks/useChainId';
 import { useWalletClient } from 'wagmi';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import SubmitButton from '../../../../components/Form/SubmitButton';
+import Image from 'next/image';
 
 interface IFormValues {
   content: string;
@@ -52,9 +53,10 @@ export default function Dev() {
   return (
     <>
       <div className='flex flex-col items-center '>
-        <h1 className='font-semibold p-5 text-4xl'>Genie creation Form</h1>
-        <div className='w-1/2 mx-auto'>
-          {isAuthenticated ? (
+        <h1 className='font-semibold p-5 text-4xl my-5'>Genie creation Form</h1>
+
+        {isAuthenticated ? (
+          <div className='w-1/2 mx-auto'>
             <Formik
               initialValues={initialValues}
               enableReinitialize={true}
@@ -126,13 +128,31 @@ export default function Dev() {
                 </Form>
               )}
             </Formik>
-          ) : (
-            <div className='flex flex-col items-center font-medium mt-20 p-10 bg-gray-400'>
-              <h1 className='mb-10'>Please login with WorldCoin to submit a new Genie</h1>
-              <WorldCoinButton onAuthenticated={setAuthenticated} />
+          </div>
+        ) : (
+          <div className='w-full mx-auto'>
+            <div className='flex flex-col md:flex-row items-center md:justify-around '>
+              <Image
+                src='/images/home/about/fee.png'
+                alt='WorldCoin'
+                width={200}
+                height={200}
+                className='rounded-md m-5'
+              />
+              <div className='flex flex-col items-center font-medium p-10 bg-gray-200 rounded-xl'>
+                <h1 className='mb-10'>Please login with WorldCoin to submit a new Genie</h1>
+                <WorldCoinButton onAuthenticated={setAuthenticated} />
+              </div>
+              <Image
+                src='/images/home/about/sport.png'
+                alt='WorldCoin'
+                width={200}
+                height={200}
+                className='rounded-md m-5'
+              />
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
