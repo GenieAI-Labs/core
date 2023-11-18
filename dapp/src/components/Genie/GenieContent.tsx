@@ -18,6 +18,8 @@ interface GenieContentProps {
 export default function GenieContent({ selectedGenie, onBack }: GenieContentProps) {
   const [userInput, setUserInput] = useState('');
 
+  console.log({ selectedGenie });
+
   const [messages, setMessages] = useState<ThreadMessage[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -81,7 +83,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
         method: 'POST',
         body: JSON.stringify({
           content: userInput,
-          asssitantId: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
+          assistantId: selectedGenie.assistantId,
           threadId: existingThreadId,
         }),
       });
@@ -138,9 +140,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
                 <div className='max-w-[30px] w-full mr-2'>
                   <img
                     className='overflow-hidden rounded-full'
-                    src={
-                      msg.role === 'user' ? `/images/default-avatar-1.jpg` : selectedGenie.picture
-                    }
+                    src={msg.role === 'user' ? `/images/default-avatar-1.jpg` : selectedGenie.pics}
                     alt=''
                     height={40}
                     width={40}

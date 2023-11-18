@@ -355,10 +355,10 @@ export interface IGenie {
   averageRate: string;
   numberOfRatings: string;
   proposalCid: string;
+  assistantId: string;
 }
 
 export interface GenieContentProps {
   selectedGenie: IGenie;
   onBack: () => void;
 }
-

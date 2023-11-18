@@ -17,6 +17,7 @@ export const geniesMetadata = {
     pics: '/images/genies/legal.png',
     price: 101,
     headline: 'Provides advice on legal matters.',
+    assistantId: 'asst_LrCCMyw26Z4jUY5tlPNX9Z6U',
   },
   '2': {
     id: '2',
@@ -24,6 +25,7 @@ export const geniesMetadata = {
     pics: '/images/genies/doctor.png',
     price: 101,
     headline: 'Offers health and wellness tips.',
+    assistantId: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
   },
   '3': {
     id: '3',
@@ -31,6 +33,7 @@ export const geniesMetadata = {
     pics: '/images/genies/artist.png',
     price: 101,
     headline: 'Assists with financial accounting.',
+    assistantId: 'asst_O4KpSlfMNE0pFPT8kWtuZIuI',
   },
 };
 
