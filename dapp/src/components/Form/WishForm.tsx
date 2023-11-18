@@ -7,13 +7,13 @@ import TalentLayerContext from '../../context/talentLayer';
 import { showErrorTransactionToast } from '../../utils/toast';
 import SubmitButton from './SubmitButton';
 import { useChainId } from '../../hooks/useChainId';
-import FileDropper from "../FileDropper";
+import FileDropper from '../FileDropper';
 import MagicLamp from '../../contracts/ABI/MagicLamp.json';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
-import {getConfig} from "../../config";
-import useGenieById from "../../hooks/useGenieById";
-import useFees from "../../hooks/useFees";
-import {calculateFees} from "../../utils/fees";
+import { getConfig } from '../../config';
+import useGenieById from '../../hooks/useGenieById';
+import useFees from '../../hooks/useFees';
+import { calculateFees } from '../../utils/fees';
 
 interface IFormValues {
   genieName: string;
@@ -30,7 +30,7 @@ const initialValues: IFormValues = {
   file: null,
 };
 
-function WishForm({activeGenieId}: {activeGenieId: string}) {
+function WishForm({ activeGenieId }: { activeGenieId: string }) {
   const MAGIC_LAMP_ADDRESS = '0x810cFb99716a29Ada26d02e7440D7952FB8f9835';
   const chainId = useChainId();
   const config = getConfig(chainId);
@@ -40,7 +40,10 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
   const { data: walletClient } = useWalletClient({ chainId });
   const [fileSelected, setFileSelected] = useState<File>();
   const genie = useGenieById(activeGenieId);
-  const { originValidatedProposalFeeRate, originServiceFeeRate, protocolEscrowFeeRate } = useFees('1','1');
+  const { originValidatedProposalFeeRate, originServiceFeeRate, protocolEscrowFeeRate } = useFees(
+    '1',
+    '1',
+  );
 
   const onSubmit = async (
     values: IFormValues,
@@ -54,26 +57,31 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
         setSubmitting(true);
         const isDelegate = user.delegates?.includes(MAGIC_LAMP_ADDRESS.toLowerCase());
         //TODO DataProtector here
-        if(!isDelegate) {
-            await walletClient.writeContract({
-                address: config.contracts.talentLayerId,
-                abi: TalentLayerID.abi,
-                functionName: 'addDelegate',
-                account: user.address as `0x${string}` ,
-                args: [user.id, MAGIC_LAMP_ADDRESS],
-            })
+        if (!isDelegate) {
+          await walletClient.writeContract({
+            address: config.contracts.talentLayerId,
+            abi: TalentLayerID.abi,
+            functionName: 'addDelegate',
+            account: user.address as `0x${string}`,
+            args: [user.id, MAGIC_LAMP_ADDRESS],
+          });
         }
 
-        const price = calculateFees(Number(genie.price), originValidatedProposalFeeRate, originServiceFeeRate, protocolEscrowFeeRate);
-        console.log(price)
+        const price = calculateFees(
+          Number(genie.price),
+          originValidatedProposalFeeRate,
+          originServiceFeeRate,
+          protocolEscrowFeeRate,
+        );
+        console.log(price);
         await walletClient.writeContract({
           address: MAGIC_LAMP_ADDRESS,
           abi: MagicLamp.abi,
           functionName: 'makeWish',
-          account: user.address as `0x${string}` ,
+          account: user.address as `0x${string}`,
           args: [user.id, activeGenieId],
           value: price,
-        })
+        });
         resetForm();
         setFileSelected(undefined);
       } catch (error) {
@@ -97,22 +105,22 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
           {/* {Object.keys(errors).map(errorKey => (
             <div key={errorKey}>{errors[errorKey]}</div>
           ))} */}
-          <div className='flex flex-col justify-center items-center border border-gray-200 rounded-xl p-6 bg-white'>
+          <div className='items-center border border-gray-200 rounded-xl p-6 bg-white'>
             <label className='block'>
-              <span className='text-black'>Genie Name</span>
+              <span className='text-sm text-gray-500 font-bold text-center'>Country</span>
               <Field
-                  as='textarea'
-                  id="genieName"
-                  name='genieName'
-                  className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
-                  placeholder=''
-                  rows={1}
+                as='textarea'
+                id='genieName'
+                name='genieName'
+                className='mt-1 mb-2 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
+                placeholder=''
+                rows={1}
               />
               <span className='text-red-500'>
                 <ErrorMessage name='genieName' />
               </span>
             </label>
-            <label className='flex flex-col justify-center items-center'>
+            <label className='items-center mt-2'>
               <FileDropper setFileSelected={setFileSelected} fileSelected={fileSelected} />
               <Field type='hidden' id='file' name='file' />
               <span className='text-red-500'>
@@ -120,9 +128,12 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
               </span>
             </label>
 
-            <SubmitButton isSubmitting={isSubmitting} label='Create my genie' />
+            <button
+              type='submit'
+              className='w-full mt-2 px-5 py-2 rounded-xl bg-redpraha text-black'>
+              {isSubmitting ? 'Submitting...' : 'Encrypt and send'}
+            </button>
           </div>
-
         </Form>
       )}
     </Formik>
