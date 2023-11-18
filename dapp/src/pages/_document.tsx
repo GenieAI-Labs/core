@@ -7,11 +7,11 @@ export default function Document() {
         <meta
           name='viewport'
           content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no'></meta>
-        <meta name='application-name' content='StarterKit' />
+        <meta name='application-name' content='GenieAi' />
         <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
-        <meta name='apple-mobile-web-app-title' content='StarterKit' />
-        <meta name='description' content='Best StarterKit in the world' />
+        <meta name='apple-mobile-web-app-title' content='GenieAi' />
+        <meta name='description' content='Best GenieAi in the world' />
         <meta name='format-detection' content='telephone=no' />
         <meta name='mobile-web-app-capable' content='yes' />
         <meta name='msapplication-config' content='/images/browserconfig.xml' />
