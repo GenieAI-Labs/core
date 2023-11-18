@@ -1332,7 +1332,7 @@ function Home() {
               className='wow fadeInUp mx-auto mb-14 max-w-[690px] text-center lg:mb-[70px]'
               data-wow-delay='.2s'>
               <h2 className='mb-4 text-3xl font-bold text-black  sm:text-4xl md:text-[44px] md:leading-tight'>
-                We are deployed on the best chain
+                We are deployed on the best chains
               </h2>
             </div>
           </div>
