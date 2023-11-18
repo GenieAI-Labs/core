@@ -8,11 +8,9 @@ import GenieSideBar from '../../components/Genie/GenieSideBar';
 function Dapp() {
   const router = useRouter(); // Initialize the router
   const { user } = useContext(TalentLayerContext);
-  const [selectedGenie, setSelectedGenie] = useState<Genie>();
 
   // Function to navigate to the genie's page
   const handleSelectGenie = (genie: Genie) => {
-    setSelectedGenie(genie);
     router.push(`/dapp/genie/${genie.id}`);
   };
 
@@ -24,14 +22,14 @@ function Dapp() {
     <div className='flex h-screen max-w-7xl mx-auto text-black sm:px-4 lg:px-0'>
       <GenieSideBar handleSelectGenie={handleSelectGenie} />
 
-      <div className='flex-1 p-4 text-black'>
+      {/* <div className='flex-1 p-4 text-black'>
         {selectedGenie && (
           <div>
             <h2 className='text-2xl font-bold'>{selectedGenie.name} Genie</h2>
-            <p className='mt-4'>{selectedGenie.info}</p>
+            <p className='mt-4'>{selectedGenie.headline}</p>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }

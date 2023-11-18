@@ -74,7 +74,7 @@ function DelegateModal() {
               <button
                 onClick={() => setShow(false)}
                 type='button'
-                className='text-black bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-xl text-sm p-1.5 ml-auto inline-flex items-center '
+                className='text-white bg-transparent hover:opacity-70 rounded-xl text-sm p-1.5 ml-auto inline-flex items-center '
                 data-modal-toggle='defaultModal'>
                 <svg
                   className='w-5 h-5'

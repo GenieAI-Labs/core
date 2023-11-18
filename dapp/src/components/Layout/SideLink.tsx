@@ -5,13 +5,13 @@ function SideLink({ children, href }: { children: React.ReactNode; href: string 
   const isDashboard = href == '/dapp';
   let className = isDashboard
     ? router.asPath === href
-      ? 'bg-redpraha text-amber-950'
-      : 'text-amber-950 hover:bg-midnight'
+      ? 'text-white'
+      : 'text-[#ac95d7]'
     : router.asPath.includes(href)
-    ? 'bg-redpraha text-amber-950'
-    : 'text-amber-950 hover:bg-midnight';
+    ? 'text-white'
+    : 'text-[#ac95d7]';
 
-  className += ' group flex items-center px-3 py-2 text-base rounded-xl';
+  className += ' group flex items-center px-3 py-2 text-base rounded-xl hover:text-white';
 
   const handleClick = (e: any) => {
     e.preventDefault();

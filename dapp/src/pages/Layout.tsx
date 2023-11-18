@@ -98,7 +98,7 @@ function Layout({ children, className }: ContainerProps) {
 
           <div className='hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col border-r'>
             <div className='flex flex-grow flex-col overflow-y-auto bg-endnight pt-5'>
-              <div className='flex flex-shrink-0 items-center px-6'>
+              <div className='flex flex-shrink-0 items-center px-4'>
                 <Logo />
               </div>
               <div className='mt-8 flex flex-1 flex-col justify-between'>
