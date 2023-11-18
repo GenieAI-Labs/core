@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getAllGenies } from '../../../queries/genies';
+import { getAllGeniesQuerie } from '../../../queries/genies';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const query = req.query;
@@ -7,9 +7,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const chainId = Number(query.chainId);
 
   try {
-    let response = await getAllGenies(chainId);
+    let response = await getAllGeniesQuerie(chainId);
 
-    const genies = response?.data?.data?.services;
+    const genies = response?.data?.data.genies;
 
     res.status(200).json({ genies: genies });
   } catch (error) {

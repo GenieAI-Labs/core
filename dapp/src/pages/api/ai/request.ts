@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getAllGenies = async (chainId?: number): Promise<any> => {
   try {
-    return await axios.get('/api/get-all-genies', {
+    return await axios.get('/api/ai/get-all-genies', {
       params: {
         chainId,
       },
