@@ -48,7 +48,7 @@ const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId
   }, [chainId]);
 
   return (
-    <div className='md:w-64 w-full h-full bg-gray-100 p-4 overflow-y-auto fixed sm:relative'>
+    <div className='md:w-64 w-full bg-gray-100 p-4 overflow-y-auto fixed sm:relative h-[calc(100vh-68px)]'>
       <div className='mb-4'>
         <div className='flex justify-between'>
           <p className='text-xl font-medium text-black'>Choose your genie</p>
