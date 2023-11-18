@@ -11,6 +11,9 @@ import FileDropper from "../FileDropper";
 import MagicLamp from '../../contracts/ABI/MagicLamp.json';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
 import {getConfig} from "../../config";
+import useGenieById from "../../hooks/useGenieById";
+import useFees from "../../hooks/useFees";
+import {calculateFees} from "../../utils/fees";
 
 interface IFormValues {
   genieName: string;
@@ -36,6 +39,8 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
   const publicClient = usePublicClient({ chainId });
   const { data: walletClient } = useWalletClient({ chainId });
   const [fileSelected, setFileSelected] = useState<File>();
+  const genie = useGenieById(activeGenieId);
+  const { originValidatedProposalFeeRate, originServiceFeeRate, protocolEscrowFeeRate } = useFees('1','1');
 
   const onSubmit = async (
     values: IFormValues,
@@ -44,7 +49,7 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
       resetForm,
     }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void },
   ) => {
-    if (user && publicClient && walletClient && user.address) {
+    if (user && publicClient && walletClient && user.address && genie) {
       try {
         setSubmitting(true);
         const isDelegate = user.delegates?.includes(MAGIC_LAMP_ADDRESS.toLowerCase());
@@ -59,13 +64,15 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
             })
         }
 
+        const price = calculateFees(Number(genie.price), originValidatedProposalFeeRate, originServiceFeeRate, protocolEscrowFeeRate);
+        console.log(price)
         await walletClient.writeContract({
           address: MAGIC_LAMP_ADDRESS,
           abi: MagicLamp.abi,
           functionName: 'makeWish',
           account: user.address as `0x${string}` ,
           args: [user.id, activeGenieId],
-          value: BigInt(101),
+          value: price,
         })
         resetForm();
         setFileSelected(undefined);

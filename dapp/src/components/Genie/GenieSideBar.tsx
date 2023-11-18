@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import GeniesList from '../../components/Genie/GeniesList';
-import { Genie } from '../../types';
+import { IGenie } from '../../types';
 import { getAllGenies } from '../../pages/api/ai/request';
 import { useChainId } from '../../hooks/useChainId';
 import { IoIosAddCircleOutline } from 'react-icons/io';
 
 type SidebarProps = {
-  handleSelectGenie: (genie: Genie) => void;
+  handleSelectGenie: (genie: IGenie) => void;
   activeGenieId?: string;
 };
 
@@ -36,7 +36,7 @@ export const geniesMetadata = {
 
 const GenieSideBar: React.FC<SidebarProps> = ({ handleSelectGenie, activeGenieId }) => {
   const [showPopup, setShowPopup] = useState(false);
-  const [genies, setGenies] = useState<Genie[]>([]);
+  const [genies, setGenies] = useState<IGenie[]>([]);
   const chainId = useChainId();
 
   useEffect(() => {

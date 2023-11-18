@@ -339,14 +339,26 @@ export interface IMessage {
   text: string;
 }
 
-export interface Genie {
+export interface IGenie {
   id: string;
   name: string;
+  price: string;
+  address: string;
+  cid: string;
   headline: string;
   pics: string;
+  ownerAddress: string;
+  ownerTalentLayerId: string;
+  schemaCid: string;
+  serviceCid: string;
+  totalRate: string;
+  averageRate: string;
+  numberOfRatings: string;
+  proposalCid: string;
 }
 
 export interface GenieContentProps {
-  selectedGenie: Genie;
+  selectedGenie: IGenie;
   onBack: () => void;
 }
+
