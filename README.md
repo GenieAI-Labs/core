@@ -12,19 +12,23 @@ GenieAI offers a private and really affordable expert AI genie service, prioriti
 (team contact to share the judging details) After submission if needed.
 
 **Romain M**  
-Discord: romain5882
+Discord:romain5882
+
 TG: @Romain_TL
 
 **Quentin C** 
 Discord: quent043 
+
 TG: @quentin043
 
 **Martin L**  
-Discord: akuma9640  
+Discord: akuma9640 
+
 TG: @akugone  
 
 **Dercio**  
-Discord: spanish_vanish  
+Discord: spanish_vanish 
+
 TG: @Der_CEO  
 
 
