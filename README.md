@@ -61,7 +61,7 @@ Please check the contract [ReadMe](https://github.com/GenieAI-Labs/core/blob/mai
 [Github implementation link](https://github.com/GenieAI-Labs/core/tree/main/dapp/src/components/worldcoin)  
 GenieAI integrates Worldcoin for developer logins, enabling the creation and monetization of Genie services with enhanced security and     privacy. This blockchain-based system simplifies identity verification, allowing developers to maintain their anonymity while participating in the GenieAI ecosystem.
 
-- **The Graph **  
+- **The Graph**  
 [Github implementation link](https://github.com/GenieAI-Labs/core/tree/main/subgraph)  
 GenieAI utilizes The Graph to index data triggered by smart contract functions. When a Genie is created or a user mints an NFT to join the DApp, The Graph efficiently catalogs this information, ensuring that all interactions within the ecosystem are traceable and accessible for enhanced functionality and user experience.
 
