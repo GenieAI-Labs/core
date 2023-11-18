@@ -25,7 +25,7 @@ const mumbai: Config = {
     talentLayerEscrow: '0x2d9Dc3dCcFBB9166Cf00d11172677E6E0B473fb1',
     talentLayerPlatformId: '0x23b8Ec6955b0dEC2Fb6d08291ab745Cdd79a44bf',
     talentLayerArbitrator: '0xA3ea97801EFcD4367AA430De2e096bEfADd3d7Fd',
-    magiclamp: '0xFBf8f29D3c325e01450AE9D63a345687c76fdc21',
+    magiclamp: '0x810cFb99716a29Ada26d02e7440D7952FB8f9835',
   },
   escrowConfig: {
     adminFee: '0',
