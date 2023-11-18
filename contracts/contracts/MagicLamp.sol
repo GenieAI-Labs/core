@@ -148,7 +148,7 @@ contract MagicLamp is Ownable {
 
     event NewGenie(uint256 genieId, address genieAddress, address ownerAddress, uint256 ownerTalentLayerId, uint256 price, string schemaCid, string serviceCid, string proposalCid);
 
-    event NewWish(uint256 wishId, uint256 userId, uint256 genieId);
+    event NewWish(uint256 wishId, uint256 userId, uint256 genieId, uint256 serviceId, uint256 proposalId, uint256 transactionId);
 
     event WishCompleted(uint256 wishId);
 
@@ -280,7 +280,7 @@ contract MagicLamp is Ownable {
         //Create Wish
         wishes[currentWishId] = Wish(currentWishId, WishStatus.Pending, _genieId, _userId, serviceId, transactionId);
 
-        emit NewWish(wishId, _userId, _genieId);
+        emit NewWish(currentWishId, _userId, _genieId, serviceId, proposalId, transactionId);
         ++wishId;
 
         return currentWishId;
