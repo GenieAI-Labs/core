@@ -6,8 +6,8 @@ ENTRYPOINT="node /app/dist/app.js"
 
 # Declare image related variables
 IMG_NAME=tee-scone-genie-ai
-IMG_FROM=romaintalentlayer/genie-ai:1.0.6
-IMG_TO=romaintalentlayer/${IMG_NAME}:1.0.6-test
+IMG_FROM=romaintalentlayer/genie-ai:1.0.0
+IMG_TO=romaintalentlayer/${IMG_NAME}:1.0.0-test
 
 docker pull registry.scontain.com/sconecuratedimages/node:16-alpine3.15
 
@@ -31,4 +31,4 @@ docker run --platform=linux/amd64 -it --rm \
             --command=${ENTRYPOINT} \
             && echo -e "\n------------------\n" \
             && echo "successfully built TEE docker image => ${IMG_TO}" \
-            && echo "application mrenclave.fingerprint is $(docker run --platform=linux/amd64 --rm -e SCONE_HASH=1 ${IMG_TO})"
+            && echo "application mrenclave.fingerprint is $(docker run --rm -e SCONE_HASH=1 ${IMG_TO})"

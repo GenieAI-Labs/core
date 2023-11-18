@@ -5,8 +5,8 @@ ENTRYPOINT="node /app/dist/app.js"
 
 # Declare image related variables
 IMG_NAME=tee-scone-genie-ai
-IMG_FROM=romaintalentlayer/genie-ai:1.0.8
-IMG_TO=romaintalentlayer/${IMG_NAME}:1.0.8-test
+IMG_FROM=romaintalentlayer/genie-ai:1.0.0
+IMG_TO=romaintalentlayer/${IMG_NAME}:1.0.0-test
 
 # Do we need that ? 
 docker pull registry.scontain.com/sconecuratedimages/node:16-alpine3.15
