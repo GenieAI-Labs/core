@@ -204,8 +204,8 @@ dataSources:
     network: mumbai
     source:
       abi: MagicLamp
-      address: "0xBAdaF09400F111145450f0E6036f041051BD862F"
-      startBlock: 42521439
+      address: "0xFBf8f29D3c325e01450AE9D63a345687c76fdc21"
+      startBlock: 42542573
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
