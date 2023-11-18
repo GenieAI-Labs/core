@@ -5,16 +5,14 @@ import {
   OwnershipTransferred as OwnershipTransferredEvent,
   UpdateRating as UpdateRatingEvent,
   WishCancelled as WishCancelledEvent,
-  WishCompleted as WishCompletedEvent
+  WishCompleted as WishCompletedEvent,
+  GenieMetadataUpdated as GenieMetadataUpdatedEvent
 } from "../../generated/MagicLamp/MagicLamp"
-import {
-  Genie,
-  Rating,
-  Wish
-} from "../../generated/schema"
-import {getOrCreateGenie, getOrCreateRating, getOrCreateWish} from "../getters";
+import {getOrCreateGenie, getOrCreateRating, getOrCreateUser, getOrCreateWish} from "../getters";
 import {ONE} from "../constants";
 import {BigInt} from "@graphprotocol/graph-ts";
+import {sendEPNSNotification} from "./EPNSNotification";
+import {buildNotification} from "./utils";
 
 export function handleNewGenie(event: NewGenieEvent): void {
   let genie = getOrCreateGenie(event.params.genieId.toString())
@@ -25,6 +23,12 @@ export function handleNewGenie(event: NewGenieEvent): void {
   genie.schemaCid = event.params.schemaCid
   genie.serviceCid = event.params.serviceCid
   genie.proposalCid = event.params.proposalCid
+
+  genie.save()
+}
+export function handleGenieMetadataUpdated(event: GenieMetadataUpdatedEvent): void {
+  let genie = getOrCreateGenie(event.params.genieId.toString())
+  genie.cid = event.params.cid
 
   genie.save()
 }
@@ -44,6 +48,11 @@ export function handleNewWish(event: NewWishEvent): void {
 export function handleWishCompleted(event: WishCompletedEvent): void {
   let wish = getOrCreateWish(event.params.wishId.toString())
   wish.status = 'Confirmed'
+
+  let recipient = getOrCreateUser(wish.userId);
+
+  const notification = buildNotification("Wish completed !", `Genie ${wish.genieId} completed your wish ${wish.id}`)
+  sendEPNSNotification(recipient.address, notification)
 
   wish.save()
 }

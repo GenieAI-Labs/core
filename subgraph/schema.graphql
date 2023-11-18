@@ -328,6 +328,7 @@ type Genie @entity {
   ownerAddress: Bytes! # address
   ownerTalentLayerId: BigInt! # uint256
   price: BigInt! # uint256
+  cid: String # string
   schemaCid: String! # string
   serviceCid: String! # string
   proposalCid: String! # string
@@ -351,4 +352,16 @@ type Rating @entity {
   genieId: BigInt! # uint256
   userAddress: Bytes! # address
   rating: BigInt! # uint8
+}
+
+type EpnsNotificationCounter @entity {
+  id: ID!
+  totalCount: BigInt!
+}
+
+type EpnsPushNotification @entity {
+  id: ID!
+  notificationNumber: BigInt!
+  recipient: String!
+  notification: String!
 }

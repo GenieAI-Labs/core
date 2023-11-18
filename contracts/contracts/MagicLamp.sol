@@ -41,6 +41,7 @@ contract MagicLamp is Ownable {
      * @param ownerAddress Address of the owner
      * @param ownerTalentLayerId TalentLayer Id of the owner
      * @param price Price of the Genie
+     * @param cid IPFS cid of the genie's metadata
      * @param schemaCid IPFS cid of the data schema required by the genie
      * @param serviceCid IPFS cid of the Genie service description
      * @param proposalCid IPFS cid of the Genie proposal description
@@ -51,6 +52,7 @@ contract MagicLamp is Ownable {
         address ownerAddress;
         uint256 ownerTalentLayerId;
         uint256 price;
+        string cid;
         string schemaCid;
         string serviceCid;
         string proposalCid;
@@ -150,6 +152,8 @@ contract MagicLamp is Ownable {
 
     event NewWish(uint256 wishId, uint256 userId, uint256 genieId, uint256 serviceId, uint256 proposalId, uint256 transactionId);
 
+    event GenieMetadataUpdated(uint256 genieId, string cid);
+
     event WishCompleted(uint256 wishId);
 
     event WishCancelled(uint256 wishId);
@@ -203,6 +207,7 @@ contract MagicLamp is Ownable {
 
     // =========================== Public & External Functions ==============================
 
+    //TODO require: genie already exists
     /**
      * @notice Creates a new Genie
      * @param _genieAddress Address of the Genie
@@ -231,12 +236,45 @@ contract MagicLamp is Ownable {
 
         uint256 currentId = genieId;
 
-        genies[currentId] = Genie(currentId, _genieAddress, _ownerAddress, _ownerTalentLayerId, _price, _schemaCid, _serviceCid, _proposalCid);
+        Genie storage genie = genies[currentId];
+        genie.id = currentId;
+        genie.genieAddress = _genieAddress;
+        genie.ownerAddress = _ownerAddress;
+        genie.ownerTalentLayerId = _ownerTalentLayerId;
+        genie.price = _price;
+        genie.schemaCid = _schemaCid;
+        genie.serviceCid = _serviceCid;
+        genie.proposalCid = _proposalCid;
 
         emit NewGenie(genieId, _genieAddress, _ownerAddress, _ownerTalentLayerId, _price, _schemaCid, _serviceCid, _proposalCid);
         ++genieId;
 
         return currentId;
+
+    }
+// TODO
+//    function updateGenie(uint256 _genieId, string calldata _cid) external {
+//        Genie storage genie = genies[_genieId];
+//        require(genie.ownerTalentLayerId == talentLayerIdContract.ownerOf(msg.sender), "Sender address does not own the genie");
+//
+//        genie.cid = _cid;
+//
+//        emit GenieMetadataUpdated(_genieId, _cid);
+//    }
+
+    /**
+     * @notice Updated a genie's metadata
+     * @param _genieId Genie Id
+     * @param _cid IPFS cid of the genie's metadata
+     * @dev emits GenieMetadataUpdated event
+     */
+    function updateGenieMetadata(uint256 _genieId, string calldata _cid) external {
+        Genie storage genie = genies[_genieId];
+        require(genie.ownerTalentLayerId == talentLayerIdContract.ids(msg.sender), "Sender address does not own the genie");
+
+        genie.cid = _cid;
+
+        emit GenieMetadataUpdated(_genieId, _cid);
     }
 
     /**

@@ -10,7 +10,7 @@ dataSources:
     source:
       abi: TalentLayerID
       address: "0x9e55cBBa8fae952dA2D0Cc30C6b5Bf6D52CeA649"
-      startBlock: 42520696
+      startBlock: 42520686
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -48,7 +48,7 @@ dataSources:
     source:
       abi: TalentLayerReview
       address: "0xa745176a8cd316b9DB0A4741B68c979112579500"
-      startBlock: 42520749
+      startBlock: 42520686
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -74,7 +74,7 @@ dataSources:
     source:
       abi: TalentLayerService
       address: "0x702f80339594B8c77054bb801944B68c83b3112F"
-      startBlock: 42520719
+      startBlock: 42520686
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -108,7 +108,7 @@ dataSources:
     source:
       abi: TalentLayerEscrow
       address: "0x2d9Dc3dCcFBB9166Cf00d11172677E6E0B473fb1"
-      startBlock: 42521223
+      startBlock: 42520686
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -204,8 +204,8 @@ dataSources:
     network: mumbai
     source:
       abi: MagicLamp
-      address: "0xFBf8f29D3c325e01450AE9D63a345687c76fdc21"
-      startBlock: 42542573
+      address: "0x810cFb99716a29Ada26d02e7440D7952FB8f9835"
+      startBlock: 42551403
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -232,6 +232,8 @@ dataSources:
           handler: handleWishCancelled
         - event: WishCompleted(uint256)
           handler: handleWishCompleted
+        - event: GenieMetadataUpdated(uint256,string)
+          handler: handleGenieMetadataUpdated
       file: ./src/mappings/magic-lamp.ts
 templates:
   - name: ServiceData
