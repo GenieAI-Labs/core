@@ -1,6 +1,6 @@
 import React, { use, useEffect, useState } from 'react';
 import { FiArrowLeft, FiLoader, FiSend } from 'react-icons/fi';
-import { Genie } from '../../types';
+import { IGenie } from '../../types';
 import DropDataGenieModal from '../Modal/DropDataGenieModal';
 import { ThreadMessage, ThreadMessagesPage } from 'openai/resources/beta/threads/messages/messages';
 
@@ -10,7 +10,7 @@ interface IMessage {
 }
 
 interface GenieContentProps {
-  selectedGenie: Genie;
+  selectedGenie: IGenie;
   onBack: () => void;
   className?: string;
 }
@@ -123,7 +123,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
               <h2 className='text-2xl font-bold'>{selectedGenie.name} Genie</h2>
               <p>{selectedGenie.headline}</p>
             </div>
-            <DropDataGenieModal showPopup={false} />
+            <DropDataGenieModal showPopup={false} activeGenieId={selectedGenie.id} />
           </div>
         </div>
 

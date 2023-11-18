@@ -112,8 +112,8 @@ When a user submits a request to a Genie AI, some computation can take some time
 Since their profile keeps their identity and contact details anonymous, we needed a way to notify them using their ETH address.
 That is why we used Push notifications. We used graph events to trigger notifications to be sent to the user's ETH address once the decentralized computation has been fulfilled.
 
-![img.png](screenshots/img.pnghots/img.png)
+![img.png](screenshots/img.png)
 
-![img_1.png](screenshots/img_1.pngts/img_1.png)
+![img_1.png](screenshots/img_1.png)
 
-![img_2.png](screenshots/img_2.pngts/img_2.png)
+![img_2.png](screenshots/img_2.png)

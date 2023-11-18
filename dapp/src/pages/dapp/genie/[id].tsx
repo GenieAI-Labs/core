@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import GenieSideBar, { geniesMetadata } from '../../../components/Genie/GenieSideBar';
 import { useState } from 'react';
-import { Genie } from '../../../types';
+import { IGenie } from '../../../types';
 import GenieContent from '../../../components/Genie/GenieContent';
 
 function GenieComponent() {
@@ -13,7 +13,7 @@ function GenieComponent() {
     return <p>Genie not found</p>;
   }
 
-  const handleSelectGenie = (genie: Genie) => {
+  const handleSelectGenie = (genie: IGenie) => {
     router.push(`/dapp/genie/${genie.id}`);
   };
 

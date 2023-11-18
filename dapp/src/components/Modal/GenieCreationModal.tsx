@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { IoIosAddCircleOutline } from 'react-icons/io';
-import GenieFormCreation from '../Form/GenieFormCreation';
+import WishForm from '../Form/WishForm';
 
-function GenieCreationModal({ showPopup }: any) {
+function GenieCreationModal({ showPopup, activeGenieId }: any) {
   const [show, setShow] = useState(showPopup);
 
   return (
@@ -41,7 +41,7 @@ function GenieCreationModal({ showPopup }: any) {
                 <span className='sr-only'>Close modal</span>
               </button>
             </div>
-            <GenieFormCreation />
+            <WishForm activeGenieId={activeGenieId} />
           </div>
         </div>
       </div>

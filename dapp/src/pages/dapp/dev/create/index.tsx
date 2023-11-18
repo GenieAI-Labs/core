@@ -139,7 +139,7 @@ export default function Dev() {
                 height={200}
                 className='rounded-md m-5'
               />
-              <div className='flex flex-col items-center font-medium p-10 bg-gray-200 rounded-xl'>
+              <div className='flex flex-col items-center font-medium p-10 border rounded-xl'>
                 <h1 className='mb-10'>Please login with WorldCoin to submit a new Genie</h1>
                 <WorldCoinButton onAuthenticated={setAuthenticated} />
               </div>
