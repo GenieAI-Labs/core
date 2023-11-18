@@ -1,22 +1,9 @@
-import { use, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FiLock } from 'react-icons/fi';
 import WishForm from '../Form/WishForm';
-import { create } from '@web3-storage/w3up-client';
-import { filesFromPaths } from 'files-from-path';
 
 function DropDataGenieModal({ showPopup, activeGenieId }: any) {
   const [show, setShow] = useState(showPopup);
-  const [filePath, setFilePath] = useState('');
-
-  async function uploadFile() {
-    const files = await filesFromPaths([path]);
-    const client = await create();
-    const directoryCid = await client.storeDirectory(files);
-  }
-
-  useEffect(() => {
-    uploadFile();
-  }, []);
 
   return (
     <>

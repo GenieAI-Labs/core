@@ -14,6 +14,8 @@ import useGenieById from '../../hooks/useGenieById';
 import useFees from '../../hooks/useFees';
 import { calculateFees } from '../../utils/fees';
 import {IExecDataProtector} from "@iexec/dataprotector";
+import {uploadFile} from "../../utils/fileCoin";
+import {AnyLink} from "@web3-storage/upload-client/dist/src/types";
 
 interface IFormValues {
   country: string;
@@ -61,14 +63,16 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
         const provider = await account.connector?.getProvider();
         const dataProtector = new IExecDataProtector(provider);
 
-        //TODO filecoin
-        const encryptedFileHash = 'enc';
+        //TODO encrypt file before
+
+        const fileHash: AnyLink = await uploadFile(values.file as File);
+        console.log('fileHash',fileHash.toString());
 
         const protectedData = await dataProtector.protectData({
             data: {
                 encryptionKey: '0xtoto',
                 country: values.country,
-                file: encryptedFileHash,
+                file: fileHash,
             },
         });
         const listGrantedAccess = await dataProtector.fetchGrantedAccess({
