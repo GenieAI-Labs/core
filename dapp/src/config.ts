@@ -17,14 +17,14 @@ export const FEE_RATE_DIVIDER = 10_000;
 
 const mumbai: Config = {
   networkId: NetworkEnum.MUMBAI,
-  subgraphUrl: 'https://api.thegraph.com/subgraphs/name/talentlayer/talent-layer-mumbai',
+  subgraphUrl: 'https://api.studio.thegraph.com/query/58767/genie-ai/version/latest',
   contracts: {
-    talentLayerId: '0x3F87289e6Ec2D05C32d8A74CCfb30773fF549306',
-    serviceRegistry: '0x27ED516dC1df64b4c1517A64aa2Bb72a434a5A6D',
-    talentLayerReview: '0x050F59E1871d3B7ca97e6fb9DCE64b3818b14B18',
+    talentLayerId: '0x9e55cBBa8fae952dA2D0Cc30C6b5Bf6D52CeA649',
+    serviceRegistry: '0x702f80339594B8c77054bb801944B68c83b3112F',
+    talentLayerReview: '0xa745176a8cd316b9DB0A4741B68c979112579500',
     talentLayerEscrow: '0x4bE920eC3e8552292B2147480111063E0dc36872',
-    talentLayerPlatformId: '0xEFD8dbC421380Ee04BAdB69216a0FD97F64CbFD4',
-    talentLayerArbitrator: '0x2CA01a0058cfB3cc4755a7773881ea88eCfBba7C',
+    talentLayerPlatformId: '0x23b8Ec6955b0dEC2Fb6d08291ab745Cdd79a44bf',
+    talentLayerArbitrator: '0xA3ea97801EFcD4367AA430De2e096bEfADd3d7Fd',
   },
   escrowConfig: {
     adminFee: '0',
