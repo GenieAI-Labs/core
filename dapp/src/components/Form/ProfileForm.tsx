@@ -122,7 +122,7 @@ function ProfileForm({ callback }: { callback?: () => void }) {
                 type='text'
                 id='title'
                 name='title'
-                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
             </label>
@@ -132,7 +132,7 @@ function ProfileForm({ callback }: { callback?: () => void }) {
                 type='text'
                 id='name'
                 name='name'
-                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
             </label>
@@ -142,7 +142,7 @@ function ProfileForm({ callback }: { callback?: () => void }) {
                 as='select'
                 id='role'
                 name='role'
-                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''>
                 <option value=''></option>
                 <option value='buyer'>Freelance</option>
@@ -157,10 +157,10 @@ function ProfileForm({ callback }: { callback?: () => void }) {
                 type='text'
                 id='image_url'
                 name='image_url'
-                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
-              <div className='border-gray-700 bg-gray-800 relative w-full border transition-all duration-300 rounded-xl p-4'>
+              <div className='border-gray-200 bg-gray-800 relative w-full border transition-all duration-300 rounded-xl p-4'>
                 {values.image_url && (
                   <div className='flex items-center justify-center py-3'>
                     <img width='300' height='300' src={values.image_url} alt='' />
@@ -176,7 +176,7 @@ function ProfileForm({ callback }: { callback?: () => void }) {
                 id='about'
                 name='about'
                 rows='4'
-                className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                 placeholder=''
               />
             </label>

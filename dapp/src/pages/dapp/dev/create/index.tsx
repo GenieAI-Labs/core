@@ -62,14 +62,14 @@ export default function Dev() {
               validationSchema={validationSchema}>
               {({ isSubmitting, errors }) => (
                 <Form>
-                  <div className='grid grid-cols-1 gap-6 border border-gray-700 rounded-xl p-6 bg-white'>
+                  <div className='grid grid-cols-1 gap-6 border border-gray-200 rounded-xl p-6 bg-white'>
                     <label className='block'>
                       <span className='text-black'>Genie Name</span>
                       <Field
                         as='textarea'
                         id='Genie Name'
                         name='Genie Name'
-                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                         placeholder=''
                         rows={1}
                       />
@@ -86,7 +86,7 @@ export default function Dev() {
                         name='rating'
                         min={0}
                         max={5}
-                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                       />
                       <span className='text-red-500'>
                         <ErrorMessage name='Address' />
@@ -98,7 +98,7 @@ export default function Dev() {
                         as='textarea'
                         id='Genie Name'
                         name='Genie Name'
-                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                         placeholder=''
                         rows={1}
                       />
@@ -112,7 +112,7 @@ export default function Dev() {
                         as='textarea'
                         id='Genie Name'
                         name='Genie Name'
-                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-700 bg-midnight shadow-sm focus:ring-opacity-50'
+                        className='mt-1 mb-1 block w-full rounded-xl border border-gray-200 bg-midnight shadow-sm focus:ring-opacity-50'
                         placeholder=''
                         rows={1}
                       />
