@@ -16,14 +16,14 @@ export const sleep = (seconds: number) =>
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // json decode the request body
 
-  let { content, threadId } = JSON.parse(req.body);
+  let { content, threadId, assistantId } = JSON.parse(req.body);
 
   // Check if API key is available
   if (!openApiKey) {
     return res.status(500).json({ error: 'API key is missing' });
   }
 
-  console.log({ content, threadId });
+  console.log({ content, threadId, assistantId });
 
   try {
     const openai = new OpenAI({ apiKey: openApiKey });
@@ -42,18 +42,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.log('thread created', { thread });
 
       threadId = thread.id;
+    } else {
+      const threadMessages = await openai.beta.threads.messages.create(threadId, {
+        role: 'user',
+        content: content,
+      });
     }
 
-    const threadMessages = await openai.beta.threads.messages.create(threadId, {
-      role: 'user',
-      content: content,
-    });
-
     let run = await openai.beta.threads.runs.create(threadId, {
-      assistant_id: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
-      // model: 'gpt-4-1106-preview',
-      // instructions: 'additional instructions',
-      // tools: [{ type: 'code_interpreter' }, { type: 'retrieval' }],
+      assistant_id: assistantId,
     });
 
     console.log('run created', { run });
