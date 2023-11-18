@@ -82,7 +82,7 @@ function Home() {
             <div className='mr-[60px] flex items-center justify-end lg:mr-0'>
               <a
                 href='/dapp'
-                className='rounded-md bg-electricblue py-[6px] px-[12px] xl:py-[10px] xl:px-[30px] text-base font-medium text-white hover:bg-opacity-90'>
+                className='rounded-md bg-black py-[6px] px-[12px] xl:py-[10px] xl:px-[30px] text-base font-medium text-white hover:bg-opacity-90'>
                 Dapp
               </a>
             </div>
@@ -91,7 +91,13 @@ function Home() {
       </header>
 
       <main>
-        <section id='home' className='pt-[165px] '>
+        <section
+          id='home'
+          className='pt-[120px] '
+          style={{
+            backgroundImage: 'url(/images/home/hero/bg1.jpg)',
+            backgroundRepeat: 'no-repeat',
+          }}>
           <div className='container lg:max-w-[1305px] lg:px-10'>
             <div className='-mx-4 flex flex-wrap items-center'>
               <div className='w-full px-4 lg:w-7/12'>
@@ -148,7 +154,7 @@ function Home() {
                   <img
                     src='/images/home/hero/hero-doctor.png'
                     alt='hero image'
-                    className='mx-auto max-w-full'
+                    className='mx-auto max-w-full rounded-3xl'
                   />
                 </div>
               </div>

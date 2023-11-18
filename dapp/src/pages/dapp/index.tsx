@@ -19,17 +19,8 @@ function Dapp() {
   }
 
   return (
-    <div className='flex max-w-7xl mx-auto text-black sm:px-4 lg:px-0'>
+    <div className='flex max-w-7xl mx-auto text-black'>
       <GenieSideBar handleSelectGenie={handleSelectGenie} />
-
-      {/* <div className='flex-1 p-4 text-black'>
-        {selectedGenie && (
-          <div>
-            <h2 className='text-2xl font-bold'>{selectedGenie.name} Genie</h2>
-            <p className='mt-4'>{selectedGenie.headline}</p>
-          </div>
-        )}
-      </div> */}
     </div>
   );
 }

@@ -20,14 +20,14 @@ function Layout({ children, className }: ContainerProps) {
 
   return (
     <div className={className}>
-      <div className='max-w-7xl mx-auto text-black sm:px-4 lg:px-0'>
+      <div className='max-w-7xl mx-auto text-black p-6'>
         <div className='-mx-6 -mt-6 sm:mx-0 sm:mt-0'>
           <div className='flex py-2 px-6 sm:px-0 items-center w-full mb-8'>
             <p className='text-2xl font-medium flex-1'>Edit</p>
 
             <Link
               href={`/dapp/profile/${user.id}`}
-              className=' hover:opacity-70 text-white bg-redpraha px-3 py-2 text-sm flex items-center rounded-xl'>
+              className=' hover:opacity-70 text-white bg-endnight px-3 py-2 text-sm flex items-center rounded-xl'>
               <EyeIcon className='w-[18px] h-[18px] text-white mr-2' />
               Public page
             </Link>
@@ -40,7 +40,7 @@ function Layout({ children, className }: ContainerProps) {
               <div className='grid xl:gap-8 xl:grid-cols-12'>
                 <div className='col-span-12 xl:col-span-4 mb-4 xl:mb-0'>
                   <div className='flex w-full items-center gap-2'>
-                    <div className='border-gray-700 bg-white relative w-full border transition-all duration-300 rounded-md flex flex-col p-6'>
+                    <div className='border-gray-200 bg-white relative w-full border transition-all duration-300 rounded-md flex flex-col p-6'>
                       <div className='flex items-center'>
                         <div className='relative inline-flex shrink-0 items-center justify-center outline-none h-12 w-12 rounded-full mr-4'>
                           <div className='flex h-full w-full items-center justify-center overflow-hidden text-center transition-all duration-300 rounded-full'>
@@ -62,15 +62,15 @@ function Layout({ children, className }: ContainerProps) {
                           </p>
                         </div>
                       </div>
-                      <div className='mt-8 border-t-2 border-dashed pt-8 border-gray-700'>
+                      <div className='mt-8 border-t-2 border-dashed pt-8 border-gray-200'>
                         <SideMenu />
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className='col-span-12 xl:col-span-8'>
-                  <div className='pb-16 border-gray-700 relative w-full transition-all duration-300 rounded-md'>
-                    <div className='border border-gray-700 rounded-xl p-6 bg-white'>{children}</div>
+                  <div className='pb-16 border-gray-200 relative w-full transition-all duration-300 rounded-md'>
+                    <div className='border border-gray-200 rounded-xl p-6 bg-white'>{children}</div>
                   </div>
                 </div>
               </div>

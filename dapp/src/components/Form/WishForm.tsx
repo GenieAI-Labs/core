@@ -1,6 +1,6 @@
 import { useWeb3Modal } from '@web3modal/react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import {useContext, useState} from 'react';
+import { useContext, useState } from 'react';
 import { usePublicClient, useWalletClient } from 'wagmi';
 import * as Yup from 'yup';
 import TalentLayerContext from '../../context/talentLayer';
@@ -90,7 +90,7 @@ function WishForm({activeGenieId}: {activeGenieId: string}) {
           {/* {Object.keys(errors).map(errorKey => (
             <div key={errorKey}>{errors[errorKey]}</div>
           ))} */}
-          <div className='flex flex-col justify-center items-center border border-gray-700 rounded-xl p-6 bg-white'>
+          <div className='flex flex-col justify-center items-center border border-gray-200 rounded-xl p-6 bg-white'>
             <label className='block'>
               <span className='text-black'>Genie Name</span>
               <Field

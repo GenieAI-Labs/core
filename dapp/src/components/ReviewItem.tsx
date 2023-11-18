@@ -8,7 +8,7 @@ function ReviewItem({ review }: { review: IReview }) {
   }
 
   return (
-    <div className='flex flex-row gap-2 rounded-xl p-4 border border-amber-900 bg-white  w-full'>
+    <div className='flex flex-row gap-2 rounded-xl p-4 border border-gray-200 bg-white  w-full'>
       <div className='flex flex-col items-top justify-between gap-4'>
         <div className='flex flex-col justify-start items-start gap-4'>
           <div className='flex items-center justify-start w-full  relative'>
@@ -27,7 +27,7 @@ function ReviewItem({ review }: { review: IReview }) {
             </div>
           </div>
 
-          <div className=' border-t border-gray-700 w-full'>
+          <div className=' border-t border-gray-200 w-full'>
             <p className='text-sm text-black mt-4'>
               <strong>Rating:</strong> {review.rating}
             </p>

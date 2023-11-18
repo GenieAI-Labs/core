@@ -65,7 +65,11 @@ export default function WorldCoinButton({
               handleVerify={handleProof}
               app_id={process.env.NEXT_PUBLIC_WLD_APP_ID?.toString() ?? ''}
               credential_types={[CredentialType.Orb, CredentialType.Phone]}>
-              {({ open }) => <button onClick={open}>Verify with World ID</button>}
+              {({ open }) => (
+                <button className='text-black font-medium' onClick={open}>
+                  Verify with World ID
+                </button>
+              )}
             </IDKitWidget>
           </div>
         </div>
