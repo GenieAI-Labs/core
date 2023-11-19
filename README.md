@@ -52,9 +52,8 @@ GeniAI allows creators to generate revenues from models which were not easily mo
 Discord:romain5882 /
 TG: @Romain_TL
 
-**Quentin C**:
-Discord: quent043 /
-TG: @quentin043
+**Kirsten C**:
+Discord: kirstenpomales / TG: @hellokirsten
 
 **Martin L**:
 Discord: akuma9640 /

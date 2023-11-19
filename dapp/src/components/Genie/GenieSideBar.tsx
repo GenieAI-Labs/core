@@ -17,7 +17,7 @@ export const geniesMetadata = {
     pics: '/images/genies/legal.png',
     price: 101,
     headline: 'Analyse your legal documents',
-    assistantId: 'asst_LrCCMyw26Z4jUY5tlPNX9Z6U',
+    assistantId: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
   },
   '2': {
     id: '2',
@@ -33,7 +33,7 @@ export const geniesMetadata = {
     pics: '/images/genies/doctor.png',
     price: 101,
     headline: 'Analyze your medical data',
-    assistantId: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
+    assistantId: 'asst_LrCCMyw26Z4jUY5tlPNX9Z6U',
   },
 };
 

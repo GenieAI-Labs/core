@@ -1,15 +1,24 @@
 import { useState } from 'react';
-import { FiLock } from 'react-icons/fi';
+import { MdOutlineCleaningServices } from 'react-icons/md';
 import WishForm from '../Form/WishForm';
+import { FiLock } from 'react-icons/fi';
 
-function DropDataGenieModal({ showPopup, activeGenieId }: any) {
+function DropDataGenieModal({ showPopup, activeGenieId, clearThread }: any) {
   const [show, setShow] = useState(showPopup);
 
   return (
     <>
       <button
+        onClick={() => clearThread()}
+        className='rounded-full bg-redpraha text-black p-2 hover:opacity-80 mr-2'
+        type='button'
+        data-modal-toggle='defaultModal'>
+        <MdOutlineCleaningServices size={15} />
+      </button>
+
+      <button
         onClick={() => setShow(true)}
-        className='rounded-full bg-endnight text-white p-2 hover:bg-endnight'
+        className='rounded-full bg-endnight text-white p-2 hover:opacity-80'
         type='button'
         data-modal-toggle='defaultModal'>
         <FiLock size={15} />
