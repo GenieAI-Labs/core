@@ -15,9 +15,8 @@ GenieAI offers a private and really affordable expert AI genie service, prioriti
 Discord:romain5882 /
 TG: @Romain_TL
 
-**Quentin C**:
-Discord: quent043 /
-TG: @quentin043
+**Kirsten C**:
+Discord: kirstenpomales / TG: @hellokirsten
 
 **Martin L**:
 Discord: akuma9640 /
@@ -73,8 +72,8 @@ With Push Protocol, you'll get a nudge the second your wish comes true. Quick, e
 [Github implementation link](#)  
 We leverage Web3.Storage from Filecoin to securely store user data submitted to our GenieAI agent. Before dispatching to IPFS, we ensure all data is encrypted, providing an additional layer of privacy and security for our users.
 
-- **UNICEF**  
-We UNICEF ? GenieAI democratizes access to professional expertise, offering AI-driven consultations for those who can't afford traditional doctor or accountant services. Our mission aligns with UNICEF's commitment to empowering underprivileged communities with essential knowledge and support.
+- **UNICEF**
+Why UNICEF ? GenieAI democratizes access to professional expertise, offering AI-driven consultations for those who can't afford traditional doctor or accountant services. Our mission aligns with UNICEF's commitment to empowering underprivileged communities with essential knowledge and support.
 
  
 

@@ -1195,7 +1195,7 @@ function Home() {
 
                     <figure className='mx-auto flex items-center justify-center w-20 h-20 rounded-full p-4 bg-yellow-gradient-color text-black'>
                       <Image
-                        src='/images/home/logos/ens.svg'
+                        src='/images/home/logos/storage.png'
                         alt='author'
                         className='h-full w-full object-contain'
                         width={120}
@@ -1204,11 +1204,11 @@ function Home() {
                     </figure>
 
                     <h3 className='mb-4 text-xl font-semibold text-black  sm:text-[22px] xl:text-[26px]'>
-                      ENS
+                      WEB3-Storage
                     </h3>
                     <p className='text-base text-body'>
-                      The native name suffix for ENS is .ETH, which has the full security benefits
-                      of being blockchain-native
+                      Open. All data is accessible via IPFS and backed by Filecoin storage, with
+                      service authentication using decentralized identity
                     </p>
                   </div>
                 </div>
