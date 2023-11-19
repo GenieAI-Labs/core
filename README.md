@@ -15,9 +15,8 @@ GenieAI offers a private and really affordable expert AI genie service, prioriti
 Discord:romain5882 /
 TG: @Romain_TL
 
-**Quentin C**:
-Discord: quent043 /
-TG: @quentin043
+**Kirsten C**:
+Discord: kirstenpomales / TG: @hellokirsten
 
 **Martin L**:
 Discord: akuma9640 /
