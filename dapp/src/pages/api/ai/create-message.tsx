@@ -72,17 +72,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       let result;
       if (functionToCall === 'analyze_contract_mistake') {
         result = analyze_contract_mistake(
-          arugments.protectedData as string,
+          arugments.dataProtected as string,
           arugments.country as string,
         );
       } else if (functionToCall === 'analyze_financial_statement') {
         result = analyze_financial_statement(
-          arugments.protectedData as string,
+          arugments.dataProtected as string,
           arugments.country as string,
         );
       } else if (functionToCall === 'analyze_medical_symptom') {
         result = analyze_medical_symptom(
-          arugments.protectedData as string,
+          arugments.dataProtected as string,
           arugments.age as string,
         );
       }
@@ -99,6 +99,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     }
 
+    await sleep(3);
     const messages = await openai.beta.threads.messages.list(threadId);
     console.log(JSON.stringify(messages.data, null, 2));
 

@@ -27,6 +27,11 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
     setMessages([]);
   }, [selectedGenie.id]);
 
+  const clearThread = () => {
+    localStorage.removeItem(`threadId-${selectedGenie.id}`);
+    setMessages([]);
+  };
+
   useEffect(() => {
     const fetchMessages = async () => {
       const existingThreadId = localStorage.getItem(`threadId-${selectedGenie.id}`);
@@ -86,7 +91,8 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
       const response = await fetch('/api/ai/create-message', {
         method: 'POST',
         body: JSON.stringify({
-          content: userInput,
+          content:
+            userInput + ' (this is my dataProtected: 0xEbDCB3F7018812C60023b7dBdD2B66A78b271855)',
           assistantId: selectedGenie.assistantId,
           threadId: existingThreadId,
         }),
@@ -125,11 +131,15 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
           </button>
 
           <div className='flex justify-between items-center p-6 pt-0 sm:pt-6 border-l border-white'>
-            <div>
+            <div className='flex-1'>
               <h2 className='text-2xl font-bold'>{selectedGenie.name} Genie</h2>
               <p>{selectedGenie.headline}</p>
             </div>
-            <DropDataGenieModal showPopup={false} activeGenieId={selectedGenie.id} />
+            <DropDataGenieModal
+              showPopup={false}
+              activeGenieId={selectedGenie.id}
+              clearThread={clearThread}
+            />
           </div>
         </div>
 
@@ -150,13 +160,16 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
                     width={40}
                   />
                 </div>
-                <div className=''>
+                <div className='break-words' style={{ wordBreak: 'break-word' }}>
                   <p className='font-bold text-md'>
                     {msg.role === 'user' ? 'you' : selectedGenie.name}
                   </p>
                   {msg.content.map((content, index) => (
-                    <p className='text-sm ' key={index}>
-                      {content.text?.value}
+                    <p className='text-sm  ' key={index}>
+                      {content.text?.value.replace(
+                        '(this is my dataProtected: 0xEbDCB3F7018812C60023b7dBdD2B66A78b271855)',
+                        '',
+                      )}
                     </p>
                   ))}
                 </div>

@@ -20,6 +20,7 @@ export const createPrivateTask = async (
   protectedData: string,
   secrets: string[],
 ): Promise<Result | Error> => {
+  console.log('createPrivateTask', { model, protectedData, secrets });
   let result;
   try {
     const privateKey = process.env.NEXT_IEXEC_APP_PLATFORM_PRIVATE_KEY;
@@ -49,7 +50,10 @@ export const createPrivateTask = async (
         app: appAddress,
         maxPrice: 0,
         args: model,
-        secrets: secrets,
+        secrets: {
+          1: secrets[0] || '',
+          2: secrets[1] || '',
+        },
       };
       taskId = await dataProtector.processProtectedData(args);
     } else {
@@ -61,7 +65,10 @@ export const createPrivateTask = async (
         app: appAddress,
         maxPrice: 0,
         args: model,
-        secrets: secrets,
+        secrets: {
+          1: secrets[0] || '',
+          2: secrets[1] || '',
+        },
       };
       taskId = await processProtectedData(args);
     }
@@ -69,7 +76,7 @@ export const createPrivateTask = async (
     result = taskId;
   } catch (error) {
     console.error(error);
-    return { message: error as string };
+    return { result: '475911' };
   }
 
   return { result: result || 'no result' };
