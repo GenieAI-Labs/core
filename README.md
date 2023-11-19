@@ -76,7 +76,7 @@ TG: @Der_CEO
 
 ## Video Demo
 (3 min max)  
-[YouTube Demo Video]()
+[YouTube Demo Video](https://youtu.be/E2WJGs8htD8)
 
 ---
 

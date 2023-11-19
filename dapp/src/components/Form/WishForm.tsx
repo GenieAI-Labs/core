@@ -66,10 +66,8 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
 
         //TODO encrypt file before
 
-        // const filecoinEmail = process.env.NEXT_PUBLIC_FILECOIN_EMAIL;
-        // const filecoinSpaceKey = process.env.NEXT_PUBLIC_FILECOIN_SPACE_KEY;
-        const filecoinEmail = 'hutgin@protonmail.com';
-        const filecoinSpaceKey = `did:key:z6MkhxZbJRoNogq8YtfC82FxWFR3Y9mspYhJn33CfyfsGydV`;
+        const filecoinEmail = process.env.NEXT_PUBLIC_FILECOIN_EMAIL;
+        const filecoinSpaceKey = process.env.NEXT_PUBLIC_FILECOIN_SPACE_KEY;
 
         const fileHash: AnyLink = await uploadFile(filecoinEmail as `${string}@${string}`, filecoinSpaceKey as `did:${string}:${string}`, values.file as File);
         // const fileHash = uploadDataFilecoin('erhbgearihaerf');
