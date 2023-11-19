@@ -557,10 +557,7 @@ function Home() {
                       Begin by connecting your digital wallet. It's the key to unlocking a world of
                       possibilities. Don't worry, all our code is open source and available for your
                       perusal,{' '}
-                      <a
-                        className='underline'
-                        target='_blank'
-                        href='https://docs.talentlayer.org/get-a-platform-id'>
+                      <a className='underline' target='_blank' href='/dapp'>
                         here
                       </a>
                     </p>
