@@ -71,17 +71,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       let result;
       if (functionToCall === 'analyze_contract_mistake') {
-        result = analyze_contract_mistake(
+        result = await analyze_contract_mistake(
           arugments.dataProtected as string,
           arugments.country as string,
         );
       } else if (functionToCall === 'analyze_financial_statement') {
-        result = analyze_financial_statement(
+        result = await analyze_financial_statement(
           arugments.dataProtected as string,
           arugments.country as string,
         );
       } else if (functionToCall === 'analyze_medical_symptom') {
-        result = analyze_medical_symptom(
+        result = await analyze_medical_symptom(
           arugments.dataProtected as string,
           arugments.age as string,
         );
