@@ -16,11 +16,14 @@ The idea being to provide users with a team of rockstar AIs (Called Genies) at t
 ![team.png](screenshots%2Fteam.png)
 
 ### Techs Used
-We leveraged mainly 2 technologies to build Genie AI:
+We leveraged mainly 5 technologies to build Genie AI:
+ - iexec confidential computing
+ - The Graph
+ - Filecoin Web3 Storage
+ - Push Protocol Notifications
  - The TalentLayer protocol
- - iexec DataProtector
 
-We created a marketplace platform on top of the TalentLayer protocol, on top of which we added another smart contract: "MagicLapm" which handles all the Genies interactions.
+We created a marketplace platform on top of the TalentLayer protocol, on top of which we added another smart contract: "MagicLamp" which handles all the Genies interactions.
 The creator will upload his model in an Enclave, and the input data required for it to work will be encrypted by iexec DataProtector: this will give the possibility to the model to process the data without ever revealing it to the creator. Therefore the inputs and outputs of the model will only be accessible to the user, and never leave the enclave.
 Moreover, since all transactions are made through the TalentLayer protocol, the user remains anonymous and the creator can't know who is using his model.
 
