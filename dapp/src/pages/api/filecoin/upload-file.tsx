@@ -3,10 +3,8 @@ import {uploadFile} from "../../../utils/fileCoin";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse)
 {
-    // const filecoinEmail = process.env.NEXT_PUBLIC_FILECOIN_EMAIL;
-    // const filecoinSpaceKey = process.env.NEXT_PUBLIC_FILECOIN_SPACE_KEY;
-    const filecoinEmail = 'hutgin@protonmail.com';
-    const filecoinSpaceKey = `did:${'key'}:${'z6MkhxZbJRoNogq8YtfC82FxWFR3Y9mspYhJn33CfyfsGydV'}`;
+    const filecoinEmail = process.env.NEXT_PUBLIC_FILECOIN_EMAIL;
+    const filecoinSpaceKey = process.env.NEXT_PUBLIC_FILECOIN_SPACE_KEY;
 
     //check if the file is available
     if (!req.body.file) {
