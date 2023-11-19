@@ -122,7 +122,7 @@ We leverage Web3.Storage from Filecoin to securely store user data submitted to 
 
 
 - **UNICEF**  
-Why UNICEF ? GenieAI provides instant remote access to professional expertise. This offers access to AI-driven consultations for those who can't afford traditional doctor or accountant services for example. All it needs is a funded wallet to pay for these services, which can easily be the result of a UNICEF crowdfunding campaigns. Our mission aligns with UNICEF's commitment to empowering underprivileged communities with essential knowledge and support.
+GenieAI provides instant remote access to professional expertise. This offers access to AI-driven consultations for those who can't afford traditional doctor or accountant services for example. All it needs is a funded wallet to pay for these services, which can easily be the result of a UNICEF crowdfunding campaigns. Our mission aligns with UNICEF's commitment to empowering underprivileged communities with essential knowledge and support.
 
  
 
