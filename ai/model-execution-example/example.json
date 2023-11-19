@@ -1,0 +1,16 @@
+{
+  "data": [
+    {
+      "Actors": "Brad Pitt",
+      "Number of movies": "87"
+    },
+    {
+      "Actors": "Leonardo Di Caprio",
+      "Number of movies": "53"
+    },
+    {
+      "Actors": "George Clooney",
+      "Number of movies": "69"
+    }
+  ]
+}
