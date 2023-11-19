@@ -125,6 +125,7 @@ export const processProtectedData = async ({
     return await iexec.deal.computeTaskId(dealid, 0);
   } catch (error) {
     // @ts-ignore
-    throw new WorkflowError(`${error.message}`, error);
+    console.log('error', error);
+    // throw new WorkflowError(`${error.message}`, error);
   }
 };
