@@ -120,8 +120,8 @@ All the users have to do is to subscribe to our Push channel, either directly or
 ![img.png](screenshots%2Fimg.png)
 
 - **WEB3_Strorage - IPFS**  
-[Github implementation link](#)  
-We leverage Web3.Storage from Filecoin to securely store user data submitted to our GenieAI agent. Before dispatching to IPFS, we ensure all data is encrypted, providing an additional layer of privacy and security for our users.
+[Github implementation link](https://github.com/GenieAI-Labs/core/blob/e36858a6a80bc582416768ca41fe93684b578702/dapp/src/pages/api/filecoin)  
+We leveraged Web3.Storage from Filecoin to securely store user data submitted to our GenieAI agent. Before dispatching to IPFS, we ensure all data is encrypted, providing an additional layer of privacy and security for our users.
 
 
 - **UNICEF**  
