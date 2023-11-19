@@ -116,7 +116,7 @@ function Home() {
                   <div className='flex flex-wrap items-center'>
                     <a
                       target='_blank'
-                      href='https://github.com/orgs/GenieAI-Labs/repositories'
+                      href='https://github.com/GenieAI-Labs/core'
                       className='mr-6 mb-6 inline-flex h-[60px] items-center rounded-lg bg-black py-[14px] px-[30px] text-white hover:bg-opacity-90'>
                       <span className='mr-[18px] border-r border-stroke border-opacity-40 pr-[18px] leading-relaxed '>
                         Github
