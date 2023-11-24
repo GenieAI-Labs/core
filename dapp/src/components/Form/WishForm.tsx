@@ -32,6 +32,11 @@ const initialValues: IFormValues = {
   file: null,
 };
 
+export const sleep = (seconds: number) =>
+  new Promise<void>(resolve => {
+    setTimeout(() => resolve(), seconds * 1000);
+  });
+
 function WishForm({
   activeGenieId,
   closeModal,
@@ -122,6 +127,8 @@ function WishForm({
           originServiceFeeRate,
           protocolEscrowFeeRate,
         );
+
+        sleep(5);
 
         // await walletClient.writeContract({
         //   address: MAGIC_LAMP_ADDRESS,
