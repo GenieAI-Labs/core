@@ -183,10 +183,12 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
                   </p>
                   {msg.content.map((content, index) => (
                     <p className='text-sm  ' key={index}>
-                      {content.text?.value.replace(
-                        '(this is my dataProtected: 0xEbDCB3F7018812C60023b7dBdD2B66A78b271855)',
-                        '',
-                      )}
+                      {content.text?.value == ''
+                        ? 'Your task is being processed, please wait a few minutes to have the result...'
+                        : content.text?.value.replace(
+                            '(this is my dataProtected: 0xEbDCB3F7018812C60023b7dBdD2B66A78b271855)',
+                            '',
+                          )}
                     </p>
                   ))}
                 </div>
