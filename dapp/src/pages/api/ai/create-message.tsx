@@ -8,6 +8,10 @@ import {
 
 const openApiKey = process.env.NEXT_PRIVATE_OPENAI_API_KEY;
 
+export const config = {
+  maxDuration: 300, // 5 minutes.
+};
+
 export const sleep = (seconds: number) =>
   new Promise<void>(resolve => {
     setTimeout(() => resolve(), seconds * 1000);
