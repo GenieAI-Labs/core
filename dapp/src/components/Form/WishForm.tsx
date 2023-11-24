@@ -106,15 +106,15 @@ function WishForm({
         //   console.log({ grantedAccess });
         // }
 
-        if (!isDelegate) {
-          await walletClient.writeContract({
-            address: config.contracts.talentLayerId,
-            abi: TalentLayerID.abi,
-            functionName: 'addDelegate',
-            account: user.address as `0x${string}`,
-            args: [user.id, MAGIC_LAMP_ADDRESS],
-          });
-        }
+        // if (!isDelegate) {
+        //   await walletClient.writeContract({
+        //     address: config.contracts.talentLayerId,
+        //     abi: TalentLayerID.abi,
+        //     functionName: 'addDelegate',
+        //     account: user.address as `0x${string}`,
+        //     args: [user.id, MAGIC_LAMP_ADDRESS],
+        //   });
+        // }
 
         const price = calculateFees(
           BigInt(genie.price),
