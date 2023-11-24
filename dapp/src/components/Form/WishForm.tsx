@@ -123,14 +123,14 @@ function WishForm({
           protocolEscrowFeeRate,
         );
 
-        await walletClient.writeContract({
-          address: MAGIC_LAMP_ADDRESS,
-          abi: MagicLamp.abi,
-          functionName: 'makeWish',
-          account: user.address as `0x${string}`,
-          args: [user.id, activeGenieId],
-          value: price,
-        });
+        // await walletClient.writeContract({
+        //   address: MAGIC_LAMP_ADDRESS,
+        //   abi: MagicLamp.abi,
+        //   functionName: 'makeWish',
+        //   account: user.address as `0x${string}`,
+        //   args: [user.id, activeGenieId],
+        //   value: price,
+        // });
         resetForm();
         setFileSelected(undefined);
         closeModal();
