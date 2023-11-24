@@ -1,22 +1,21 @@
+import { AnyLink } from '@web3-storage/upload-client/dist/src/types';
 import { useWeb3Modal } from '@web3modal/react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useContext, useState } from 'react';
-import {useAccount, usePublicClient, useWalletClient} from 'wagmi';
+import { useAccount, useWalletClient } from 'wagmi';
 import * as Yup from 'yup';
+import { getConfig } from '../../config';
 import TalentLayerContext from '../../context/talentLayer';
-import { showErrorTransactionToast } from '../../utils/toast';
-import { useChainId } from '../../hooks/useChainId';
-import FileDropper from '../FileDropper';
 import MagicLamp from '../../contracts/ABI/MagicLamp.json';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
-import { getConfig } from '../../config';
-import useGenieById from '../../hooks/useGenieById';
+import { useChainId } from '../../hooks/useChainId';
 import useFees from '../../hooks/useFees';
+import useGenieById from '../../hooks/useGenieById';
 import { calculateFees } from '../../utils/fees';
-import {IExecDataProtector} from "@iexec/dataprotector";
-import {uploadDataFilecoin} from "../request";
-import {uploadFile} from "../../utils/fileCoin";
-import {AnyLink} from "@web3-storage/upload-client/dist/src/types";
+import { uploadFile } from '../../utils/fileCoin';
+import { showErrorTransactionToast } from '../../utils/toast';
+import FileDropper from '../FileDropper';
+import { toast } from 'react-toastify';
 
 interface IFormValues {
   country: string;
@@ -33,14 +32,17 @@ const initialValues: IFormValues = {
   file: null,
 };
 
-function WishForm({ activeGenieId }: { activeGenieId: string }) {
+function WishForm({
+  activeGenieId,
+  closeModal,
+}: {
+  activeGenieId: string;
+  closeModal: () => void;
+}) {
   const MAGIC_LAMP_ADDRESS = '0x810cFb99716a29Ada26d02e7440D7952FB8f9835';
   const chainId = useChainId();
   const config = getConfig(chainId);
-  const { open: openConnectModal } = useWeb3Modal();
-  const account = useAccount();
   const { user } = useContext(TalentLayerContext);
-  const publicClient = usePublicClient({ chainId });
   const { data: walletClient } = useWalletClient({ chainId });
   const [fileSelected, setFileSelected] = useState<File>();
   const genie = useGenieById(activeGenieId);
@@ -49,6 +51,8 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
     '1',
   );
 
+  console.log({ user, genie });
+
   const onSubmit = async (
     values: IFormValues,
     {
@@ -56,54 +60,51 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
       resetForm,
     }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void },
   ) => {
-    if (user && publicClient && walletClient && user.address && genie) {
+    if (user && walletClient && user.address && genie) {
       try {
+        console.log('submit');
         setSubmitting(true);
         const isDelegate = user.delegates?.includes(MAGIC_LAMP_ADDRESS.toLowerCase());
+        console.log('isDelegate', isDelegate);
 
-        const provider = await account.connector?.getProvider();
-        const dataProtector = new IExecDataProtector(provider);
+        //TODO: encrypt file before
+        // const filecoinEmail = process.env.NEXT_PUBLIC_FILECOIN_EMAIL;
+        // const filecoinSpaceKey = process.env.NEXT_PUBLIC_FILECOIN_SPACE_KEY;
 
-        //TODO encrypt file before
-
-        const filecoinEmail = process.env.NEXT_PUBLIC_FILECOIN_EMAIL;
-        const filecoinSpaceKey = process.env.NEXT_PUBLIC_FILECOIN_SPACE_KEY;
-
-        const fileHash: AnyLink = await uploadFile(filecoinEmail as `${string}@${string}`, filecoinSpaceKey as `did:${string}:${string}`, values.file as File);
-        // const fileHash = uploadDataFilecoin('erhbgearihaerf');
-        console.log('fileHash',fileHash.toString());
-
-        const protectedData = await dataProtector.protectData({
-            data: {
-                encryptionKey: '0xtoto',
-                country: values.country,
-                file: fileHash.toString(),
-            },
-        });
-        const listGrantedAccess = await dataProtector.fetchGrantedAccess({
-            protectedData: protectedData.address,
-            authorizedApp: process.env
-                .NEXT_PUBLIC_IEXEC_APP_ADDRESS as string,
-            authorizedUser: process.env
-                .NEXT_PUBLIC_IEXEC_APP_PLATFORM_PUBLIC_KEY as string,
-            });
-
-        if (listGrantedAccess.length == 0) {
-          const grantedAccess = await dataProtector.grantAccess({
-            protectedData: protectedData.address,
-            authorizedApp: process.env
-                .NEXT_PUBLIC_IEXEC_APP_ADDRESS as string,
-            authorizedUser: process.env
-                .NEXT_PUBLIC_IEXEC_APP_PLATFORM_PUBLIC_KEY as string,
-            numberOfAccess: 99999999999,
-          });
-          console.log({ grantedAccess });
-          }
-
-
-        // const result = await axios.get(
-        //     `/api/hello?name=${values.name}&protectedData=${protectedData.address}`
+        // console.log('before upload');
+        // const fileHash: AnyLink = await uploadFile(
+        //   filecoinEmail as `${string}@${string}`,
+        //   filecoinSpaceKey as `did:${string}:${string}`,
+        //   values.file as File,
         // );
+        // // const fileHash = uploadDataFilecoin('erhbgearihaerf');
+        // console.log('fileHash', fileHash.toString());
+
+        //TODO: switch to bellecour
+        // const provider = await account.connector?.getProvider();
+        // const dataProtector = new IExecDataProtector(provider);
+        // const protectedData = await dataProtector.protectData({
+        //   data: {
+        //     encryptionKey: '0xtoto',
+        //     country: values.country,
+        //     file: fileHash.toString(),
+        //   },
+        // });
+        // const listGrantedAccess = await dataProtector.fetchGrantedAccess({
+        //   protectedData: protectedData.address,
+        //   authorizedApp: process.env.NEXT_PUBLIC_IEXEC_APP_ADDRESS as string,
+        //   authorizedUser: process.env.NEXT_PUBLIC_IEXEC_APP_PLATFORM_PUBLIC_KEY as string,
+        // });
+
+        // if (listGrantedAccess.length == 0) {
+        //   const grantedAccess = await dataProtector.grantAccess({
+        //     protectedData: protectedData.address,
+        //     authorizedApp: process.env.NEXT_PUBLIC_IEXEC_APP_ADDRESS as string,
+        //     authorizedUser: process.env.NEXT_PUBLIC_IEXEC_APP_PLATFORM_PUBLIC_KEY as string,
+        //     numberOfAccess: 99999999999,
+        //   });
+        //   console.log({ grantedAccess });
+        // }
 
         if (!isDelegate) {
           await walletClient.writeContract({
@@ -116,7 +117,7 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
         }
 
         const price = calculateFees(
-          Number(genie.price),
+          BigInt(genie.price),
           originValidatedProposalFeeRate,
           originServiceFeeRate,
           protocolEscrowFeeRate,
@@ -132,13 +133,27 @@ function WishForm({ activeGenieId }: { activeGenieId: string }) {
         });
         resetForm();
         setFileSelected(undefined);
+        closeModal();
+        toast.success(
+          `Your data has been protected, you can now ask your Genie to analyse your document.`,
+          {
+            position: 'bottom-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+          },
+        );
       } catch (error) {
         showErrorTransactionToast(error);
       } finally {
         setSubmitting(false);
       }
     } else {
-      openConnectModal();
+      console.error('error missing user or walletClient');
     }
   };
 

@@ -88,7 +88,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       if (result) {
-        openai.beta.threads.runs.submitToolOutputs(threadId, run.id, {
+        console.log('RESULT', {
+          result,
+          threadId,
+          run: run.id,
+          tool_call_id: run.required_action.submit_tool_outputs.tool_calls[0].id,
+        });
+        await openai.beta.threads.runs.submitToolOutputs(threadId, run.id, {
           tool_outputs: [
             {
               tool_call_id: run.required_action.submit_tool_outputs.tool_calls[0].id,
@@ -97,9 +103,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           ],
         });
       }
+      await sleep(3);
     }
 
-    await sleep(3);
     const messages = await openai.beta.threads.messages.list(threadId);
     console.log(JSON.stringify(messages.data, null, 2));
 

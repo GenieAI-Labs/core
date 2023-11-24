@@ -3,7 +3,7 @@ import { MdOutlineCleaningServices } from 'react-icons/md';
 import WishForm from '../Form/WishForm';
 import { FiLock } from 'react-icons/fi';
 
-function DropDataGenieModal({ showPopup, activeGenieId, clearThread }: any) {
+function DropDataGenieModal({ showPopup, activeGenieId, clearThread, isAnimated }: any) {
   const [show, setShow] = useState(showPopup);
 
   return (
@@ -18,7 +18,9 @@ function DropDataGenieModal({ showPopup, activeGenieId, clearThread }: any) {
 
       <button
         onClick={() => setShow(true)}
-        className='rounded-full bg-endnight text-white p-2 hover:opacity-80'
+        className={`rounded-full bg-endnight text-white p-2 hover:opacity-80 ${
+          isAnimated ? 'animate-pulse' : ''
+        }`}
         type='button'
         data-modal-toggle='defaultModal'>
         <FiLock size={15} />
@@ -50,7 +52,7 @@ function DropDataGenieModal({ showPopup, activeGenieId, clearThread }: any) {
                 <span className='sr-only'>Close modal</span>
               </button>
             </div>
-            <WishForm activeGenieId={activeGenieId} />
+            <WishForm activeGenieId={activeGenieId} closeModal={() => setShow(false)} />
           </div>
         </div>
       </div>

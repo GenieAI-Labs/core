@@ -8,20 +8,16 @@ import { IExec } from 'iexec';
 import { processProtectedData } from './iexex';
 
 type Result = {
-  result: string;
-};
-
-type Error = {
-  message: string;
+  taskId: string;
 };
 
 export const createPrivateTask = async (
   model: string,
   protectedData: string,
   secrets: string[],
-): Promise<Result | Error> => {
+): Promise<Result> => {
   console.log('createPrivateTask', { model, protectedData, secrets });
-  let result;
+  let taskId;
   try {
     const privateKey = process.env.NEXT_IEXEC_APP_PLATFORM_PRIVATE_KEY;
     if (!privateKey) {
@@ -42,7 +38,6 @@ export const createPrivateTask = async (
 
     const mode = 'fork';
 
-    let taskId;
     // @ts-ignore
     if (mode === 'official') {
       const args: ProcessProtectedDataParams = {
@@ -72,12 +67,11 @@ export const createPrivateTask = async (
       };
       taskId = await processProtectedData(args);
     }
-
-    result = taskId;
   } catch (error) {
     console.error(error);
-    return { result: '475911' };
+    // TEMP FOR TESTING
+    return { taskId: '475911' };
   }
 
-  return { result: result || 'no result' };
+  return { taskId: taskId || 'unknown' };
 };

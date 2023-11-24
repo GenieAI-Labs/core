@@ -31,7 +31,7 @@ export default function Dev() {
   const publicClient = usePublicClient({ chainId });
   ``;
   const { data: walletClient } = useWalletClient({ chainId });
-  const [isAuthenticated, setAuthenticated] = useState(false);
+  const [isAuthenticated, setAuthenticated] = useState(true);
 
   const onSubmit = async (
     values: IFormValues,

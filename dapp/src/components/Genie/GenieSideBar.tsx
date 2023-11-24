@@ -17,7 +17,7 @@ export const geniesMetadata = {
     pics: '/images/genies/legal.png',
     price: 101,
     headline: 'Analyse your legal documents',
-    assistantId: 'asst_MzDSgPrndkcyYkScrkaEXbSa',
+    assistantId: 'asst_zvkgnZ0gu3mB4JgOexrwBPez',
   },
   '2': {
     id: '2',

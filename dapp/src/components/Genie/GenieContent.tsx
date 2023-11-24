@@ -17,15 +17,28 @@ interface GenieContentProps {
 
 export default function GenieContent({ selectedGenie, onBack }: GenieContentProps) {
   const [userInput, setUserInput] = useState('');
-
-  console.log({ selectedGenie });
-
   const [messages, setMessages] = useState<ThreadMessage[]>([]);
   const [loading, setLoading] = useState(false);
+  const [isAskingForDataProtection, setIsAskingForDataProtection] = useState(false);
 
   useEffect(() => {
     setMessages([]);
   }, [selectedGenie.id]);
+
+  useEffect(() => {
+    console.log(
+      'messages',
+      messages.length > 0 ? messages[messages.length - 1].content[0].text?.value : '',
+    );
+    if (
+      messages.length > 0 &&
+      messages[messages.length - 1].content[0].text?.value.includes('the right top icon')
+    ) {
+      setIsAskingForDataProtection(true);
+    } else {
+      setIsAskingForDataProtection(false);
+    }
+  }, [messages]);
 
   const clearThread = () => {
     localStorage.removeItem(`threadId-${selectedGenie.id}`);
@@ -88,11 +101,14 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
     const existingThreadId = localStorage.getItem(`threadId-${selectedGenie.id}`);
 
     try {
+      // TMP, add automatically the dataProtected
+      const content = userInput.includes('Hello')
+        ? userInput
+        : userInput + ' (this is my dataProtected: 0xEbDCB3F7018812C60023b7dBdD2B66A78b271855)';
       const response = await fetch('/api/ai/create-message', {
         method: 'POST',
         body: JSON.stringify({
-          content:
-            userInput + ' (this is my dataProtected: 0xEbDCB3F7018812C60023b7dBdD2B66A78b271855)',
+          content,
           assistantId: selectedGenie.assistantId,
           threadId: existingThreadId,
         }),
@@ -139,6 +155,7 @@ export default function GenieContent({ selectedGenie, onBack }: GenieContentProp
               showPopup={false}
               activeGenieId={selectedGenie.id}
               clearThread={clearThread}
+              isAnimated={isAskingForDataProtection}
             />
           </div>
         </div>

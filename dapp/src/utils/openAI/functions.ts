@@ -6,10 +6,11 @@ export const analyze_contract_mistake = async (
 ): Promise<string> => {
   console.log('analyze_contract_mistake call', { country });
 
-  const taskId = await createPrivateTask('legal', protectedData, [country]);
+  const result = await createPrivateTask('legal', protectedData, [country]);
+
   return (
-    'Thank you, your contract analyze has been started, it will take few minutes. You can follow the progress here: https://genie.ai/task/' +
-    taskId
+    'the user contract analyze has been started, it will take few minutes. Please give him a link to follow the progress: https://genie.ai/task/' +
+    result.taskId
   );
 };
 
